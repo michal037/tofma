@@ -19,7 +19,7 @@ The following software may be included in this product:
 This software is subject to the following license and notice:
 
 ===============================================================================
-HTML5 Boilerplate
+1. HTML5 Boilerplate
 ===============================================================================
 
 MIT License
@@ -45,7 +45,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ===============================================================================
-normalize.css
+2. normalize.css
 ===============================================================================
 
 # The MIT License (MIT)
@@ -71,7 +71,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ===============================================================================
-plotly.js
+3. plotly.js
 ===============================================================================
 
 The MIT License (MIT)
@@ -97,7 +97,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ===============================================================================
-URLSearchParams Polyfill
+4. URLSearchParams Polyfill
 ===============================================================================
 
 MIT License
@@ -123,7 +123,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ===============================================================================
-Modernizr
+5. Modernizr
 ===============================================================================
 
 MIT License
@@ -149,7 +149,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ===============================================================================
-Hero Patterns
+6. Hero Patterns
 ===============================================================================
 
 Name: Hero Patterns
@@ -164,14 +164,14 @@ Changelist:
  1. Added: fill-opacity=".1"
 
 ===============================================================================
-Google Fonts
+7. Google Fonts
 ===============================================================================
 
 Terms: https://www.google.com/intl/en/policies/terms/
 Privacy: https://www.google.com/intl/en/policies/privacy/
 
 ===============================================================================
-Open Sans
+8. Open Sans
 ===============================================================================
 
 Name: Open Sans
