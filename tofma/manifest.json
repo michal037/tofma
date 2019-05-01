@@ -1,0 +1,25 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "short_name": "TOFMA",
+  "name": "Telecommunications Optical Fibers Modeling Application",
+  "description": "An application for modeling telecommunications optical fibers.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "browser",
+  "orientation": "any",
+  "theme_color": "#1B273F",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "src/img/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "src/img/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
