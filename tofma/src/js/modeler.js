@@ -1,4 +1,21 @@
+/**
+ * Lagrange's Interpolation Nodes Type
+ *
+ * The 'x' and 'y' arrays must be of the same length
+ *
+ * @typedef {Object} T_LagrangeInterpolationNodes
+ * @property {number[]} x - Array of arguments of the interpolated function
+ * @property {number[]} y - Array of values of the interpolated function
+ *
+ */
 
+/**
+ * Interpolate the value using the Lagrange polynomials
+ *
+ * @param {number} x - Value for interpolation
+ * @param {T_LagrangeInterpolationNodes} nodes - A set of at least two nodes for interpolation
+ * @return {string|number} - Interpolated value or "undefined" when an error occurs
+ */
 function LagrangeInterpolation(x, nodes)
 {
 	try {
@@ -89,61 +106,140 @@ function LagrangeInterpolation(x, nodes)
  * Sellmeier's Coefficients Type
  *
  * @typedef {Object} T_SellmeierCoefficients
- * @property {number[]} a - Three coefficients.
- * @property {number[]} b - Three coefficients.
+ * @property {number[]} a - Three coefficients
+ * @property {number[]} b - Three coefficients
  */
 
 /** @type {Object} */
 var SellmeierCoefficients = {};
 
 /**
- * Calculate Sellmeier's coefficients for germanium admixture.
+ * Calculate Sellmeier's coefficients for germanium admixture
  *
  * @method SellmeierCoefficients.Germanium
- * @param {number} concentration - Molecular concentration of germanium admixture in the optical fiber core [M%].
- * @return {T_SellmeierCoefficients} coefficients - Calculated coefficients.
+ * @param {number} concentration - Molecular concentration of germanium admixture in the optical fiber core [M%]
+ * @return {string|T_SellmeierCoefficients} coefficients - Calculated coefficients or "undefined" when an error occurs
  */
 SellmeierCoefficients.Germanium = function(concentration)
 {
-	var pow = Math.pow; /* shorter reference */
+	try {
+		/* 'concentration' type must be a number */
+		if(((typeof concentration) !== "number") || isNaN(concentration)) throw 1;
+		/* TODO opis */
+		if((concentration < 0) || (concentration > 15)) throw 2;
 
-	function a1(x) {
+		var x_values = [0, 3.1, 5.8, 7.9, 13.5];
 
+		function a1(x) {
+			var y_values = [
+				0.6961663,
+				0.7028554,
+				0.7088876,
+				0.7136824,
+				0.711040
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function a2(x) {
+			var y_values = [
+				0.4079426,
+				0.4146307,
+				0.4206803,
+				0.4254807,
+				0.451885
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function a3(x) {
+			var y_values = [
+				0.8974994,
+				0.8974540,
+				0.8956551,
+				0.8964226,
+				0.704048
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function b1(x) {
+			var y_values = [
+				0.0684043,
+				0.0727723,
+				0.0609053,
+				0.0617167,
+				0.064270
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function b2(x) {
+			var y_values = [
+				0.1162414,
+				0.1143085,
+				0.1254514,
+				0.1270814,
+				0.129408
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function b3(x) {
+			var y_values = [
+				9.8961610,
+				9.8961610,
+				9.8961620,
+				9.8961610,
+				9.425478
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		return {
+			a: [a1(concentration), a2(concentration), a3(concentration)],
+			b: [b1(concentration), b2(concentration), b3(concentration)]
+		};
+	} catch(error) {
+		/* for a better look in the console */
+		var errorFunctionName = "SellmeierCoefficients.Germanium:";
+
+		/* handle the right exception */
+		switch(error)
+		{
+			case 1:
+				console.error(errorFunctionName, "Bad data type for 'concentration'",
+					"\n\ttypeof(concentration):", typeof concentration,
+					"\n\tisNaN(concentration):", isNaN(concentration)
+				);
+				break;
+			case 2:
+				console.error(errorFunctionName, "", /* TODO */
+					"\n\tconcentration:", concentration
+				);
+				break;
+			default:
+				console.error(errorFunctionName, error);
+		}
+
+		/* no valid value */
+		return "undefined";
 	}
-
-	function a2(x) {
-
-	}
-
-	function a3(x) {
-
-	}
-
-	function b1(x) {
-
-	}
-
-	function b2(x) {
-
-	}
-
-	function b3(x) {
-
-	}
-
-	return {
-		a: [a1(concentration), a2(concentration), a3(concentration)],
-		b: [b1(concentration), b2(concentration), b3(concentration)]
-	};
 };
 
 /**
- * Calculate the Sellmeier equation.
+ * Calculate the Sellmeier equation
  *
  * @function Sellmeier
- * @param {number} wavelength - The wavelength [um].
- * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients.
- * @return {number} refractiveIndex - Refractive index squared (n^2).
+ * @param {number} wavelength - The wavelength [um]
+ * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients
+ * @return {number} refractiveIndex - Refractive index squared (n^2)
  */
 function Sellmeier(wavelength, coefficients)
 {
