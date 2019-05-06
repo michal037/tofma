@@ -236,6 +236,115 @@ SellmeierCoefficients.Germanium = function(concentration)
 };
 
 /**
+ * Calculate Sellmeier's coefficients for fluoride admixture
+ *
+ * @method SellmeierCoefficients.Fluorine
+ * @param {number} concentration - Molecular concentration of fluoride admixture in the optical fiber cladding [M%]
+ * @return {string|T_SellmeierCoefficients} coefficients - Calculated coefficients or "undefined" when an error occurs
+ */
+SellmeierCoefficients.Fluorine = function(concentration)
+{
+	try {
+		/* 'concentration' type must be a number */
+		if(((typeof concentration) !== "number") || isNaN(concentration)) throw 1;
+		/* for the nodes listed below, the concentration interpolation is true between [0 and 2] [M%] */
+		if((concentration < 0) || (concentration > 2)) throw 2;
+
+		var x_values = [0, 1, 2];
+
+		function a1(x) {
+			var y_values = [
+				0.6961663,
+				0.69325,
+				0.67744
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function a2(x) {
+			var y_values = [
+				0.4079426,
+				0.39720,
+				0.40101
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function a3(x) {
+			var y_values = [
+				0.8974994,
+				0.86008,
+				0.87193
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function b1(x) {
+			var y_values = [
+				0.0684043,
+				0.06724,
+				0.06135
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function b2(x) {
+			var y_values = [
+				0.1162414,
+				0.11714,
+				0.12030
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		function b3(x) {
+			var y_values = [
+				9.8961610,
+				9.77610,
+				9.85630
+			];
+
+			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+		}
+
+		return {
+			a: [a1(concentration), a2(concentration), a3(concentration)],
+			b: [b1(concentration), b2(concentration), b3(concentration)]
+		};
+	} catch (error) {
+		/* for a better look in the console */
+		var errorFunctionName = "SellmeierCoefficients.Fluorine:";
+
+		/* handle the right exception */
+		switch(error)
+		{
+			case 1:
+				console.error(errorFunctionName, "Bad data type for 'concentration'",
+					"\n\ttypeof(concentration):", typeof concentration,
+					"\n\tisNaN(concentration):",  isNaN(concentration)
+				);
+				break;
+			case 2:
+				console.error(errorFunctionName, "The acceptable range for the concentration has been exceeded." +
+					" The expected value is between 0 and 2.",
+					"\n\tconcentration:", concentration
+				);
+				break;
+			default:
+				console.error(errorFunctionName, error);
+		}
+
+		/* no valid value */
+		return "undefined";
+	}
+};
+
+/**
  * Calculate the Sellmeier equation
  *
  * @function Sellmeier
