@@ -350,7 +350,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
  * @function Sellmeier
  * @param {number} wavelength - The wavelength [um]
  * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients
- * @return {number} refractiveIndex - Refractive index squared (n^2) or "undefined" when an error occurs
+ * @return {string|number} refractiveIndex - Refractive index squared (n^2) or "undefined" when an error occurs
  */
 function Sellmeier(wavelength, coefficients)
 {
