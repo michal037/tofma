@@ -87,11 +87,12 @@ function LagrangeInterpolation(x, nodes)
 			case 5:
 				console.error(errorFunctionName, "Bad data type for 'x'",
 					"\n\ttypeof(x):", typeof x,
-					"\n\tisNaN(x):", isNaN(x)
+					"\n\tisNaN(x):",  isNaN(x)
 				);
 				break;
 			case 6:
-				console.error(errorFunctionName, "At least one element from the 'nodes.x' or 'nodes.y' array is not a number");
+				console.error(errorFunctionName, "At least one element from the 'nodes.x' or 'nodes.y' array is not" +
+					" a number");
 				break;
 			default:
 				console.error(errorFunctionName, error);
@@ -125,7 +126,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 	try {
 		/* 'concentration' type must be a number */
 		if(((typeof concentration) !== "number") || isNaN(concentration)) throw 1;
-		/* TODO opis */
+		/* for the nodes listed below, the concentration interpolation is true between [0 and 15] [M%] */
 		if((concentration < 0) || (concentration > 15)) throw 2;
 
 		var x_values = [0, 3.1, 5.8, 7.9, 13.5];
@@ -216,11 +217,12 @@ SellmeierCoefficients.Germanium = function(concentration)
 			case 1:
 				console.error(errorFunctionName, "Bad data type for 'concentration'",
 					"\n\ttypeof(concentration):", typeof concentration,
-					"\n\tisNaN(concentration):", isNaN(concentration)
+					"\n\tisNaN(concentration):",  isNaN(concentration)
 				);
 				break;
 			case 2:
-				console.error(errorFunctionName, "", /* TODO */
+				console.error(errorFunctionName, "The acceptable range for the concentration has been exceeded." +
+					" The expected value is between 0 and 15.",
 					"\n\tconcentration:", concentration
 				);
 				break;
@@ -239,18 +241,73 @@ SellmeierCoefficients.Germanium = function(concentration)
  * @function Sellmeier
  * @param {number} wavelength - The wavelength [um]
  * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients
- * @return {number} refractiveIndex - Refractive index squared (n^2)
+ * @return {number} refractiveIndex - Refractive index squared (n^2) or "undefined" when an error occurs
  */
 function Sellmeier(wavelength, coefficients)
 {
-	var i; /* for iterator */
-	var refractiveIndex = 1;
+	try {
+		/* 'wavelength' type must be a number */
+		if(((typeof wavelength) !== "number") || isNaN(wavelength)) throw 1;
+		/* the wavelength must be 0 or be positive */
+		if(wavelength < 0) throw 2;
+		/* discard the wrong data types for 'coefficients' */
+		if(!coefficients) throw 3;
+		/* check if 'coefficients' contains the required tables */
+		if(!Array.isArray(coefficients.a) || !Array.isArray(coefficients.b)) throw 4;
+		/* length of arrays coefficients.a and coefficients.b must be 3 */
+		if((coefficients.a.length !== 3) || (coefficients.b.length !== 3)) throw 5;
 
-	/* prepare values */
-	wavelength *= wavelength;
-	for(i=0; i<=2 ;i++) coefficients.b[i] *= coefficients.b[i];
+		var i; /* for iterator */
+		var refractiveIndex = 1;
 
-	for(i=0; i<=2 ;i++) refractiveIndex += (coefficients.a[i] * wavelength) / (wavelength - coefficients.b[i]);
+		/* prepare values */
+		wavelength *= wavelength;
+		for (i=0; i<=2; i++) coefficients.b[i] *= coefficients.b[i];
 
-	return refractiveIndex;
+		for (i=0; i<=2; i++) refractiveIndex += (coefficients.a[i] * wavelength) / (wavelength - coefficients.b[i]);
+
+		return refractiveIndex;
+	} catch (error) {
+		/* for a better look in the console */
+		var errorFunctionName = "Sellmeier:";
+
+		/* handle the right exception */
+		switch(error)
+		{
+			case 1:
+				console.error(errorFunctionName, "Bad data type for 'wavelength'",
+					"\n\ttypeof(wavelength):", typeof wavelength,
+					"\n\tisNaN(wavelength):",  isNaN(wavelength)
+				);
+				break;
+			case 2:
+				console.log(errorFunctionName, "The wavelength can not be negative",
+					"\n\twavelength:", wavelength
+				);
+				break;
+			case 3:
+				console.error(errorFunctionName, "Bad data type for 'coefficients'",
+					"\n\ttypeof(coefficients):", typeof coefficients
+				);
+				break;
+			case 4:
+				console.error(errorFunctionName, "'coefficients.a' or 'coefficients.b' does not contain an array",
+					"\n\ttypeof(coefficients):",   typeof coefficients,
+					"\n\ttypeof(coefficients.a):", typeof coefficients.a,
+					"\n\ttypeof(coefficients.b):", typeof coefficients.b
+				);
+				break;
+			case 5:
+				console.error(errorFunctionName, "length of array coefficients.a or coefficients.b is not 3",
+					"\n\tcoefficients.a.length:", coefficients.a.length,
+					"\n\tcoefficients.b.length:", coefficients.b.length
+				);
+				break;
+			default:
+				console.error(errorFunctionName, error);
+		}
+
+		/* no valid value */
+		return "undefined";
+	}
 }
