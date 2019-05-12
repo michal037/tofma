@@ -1,4 +1,26 @@
 /**
+ * Check if the variable is a number
+ *
+ * @param x - Variable to check
+ * @return {boolean}
+ */
+function isNumber(x)
+{
+	return ((typeof x) === "number") && !isNaN(x);
+}
+
+/**
+ * Check if the variable is not a number
+ *
+ * @param x - Variable to check
+ * @return {boolean}
+ */
+function isNotNumber(x)
+{
+	return ((typeof x) !== "number") || isNaN(x);
+}
+
+/**
  * Lagrange's Interpolation Nodes Type
  *
  * The 'x' and 'y' arrays must be of the same length
@@ -28,12 +50,12 @@ function LagrangeInterpolation(x, nodes)
 		/* value tables must be the same dimension */
 		if(nodes.x.length !== nodes.y.length) throw 4;
 		/* 'x' type must be a number */
-		if(((typeof x) !== "number") || isNaN(x)) throw 5;
+		if(isNotNumber(x)) throw 5;
 		/* each element of the array must be a number */
 		for(var _i=0; _i<nodes.x.length ;_i++)
 		{
-			if(((typeof nodes.x[_i]) !== "number") || isNaN(nodes.x[_i])) throw 6;
-			if(((typeof nodes.y[_i]) !== "number") || isNaN(nodes.y[_i])) throw 6;
+			if(isNotNumber(nodes.x[_i])) throw 6;
+			if(isNotNumber(nodes.y[_i])) throw 6;
 		}
 
 		var result = 0; /* default: neutral element for adding */
@@ -125,7 +147,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 {
 	try {
 		/* 'concentration' type must be a number */
-		if(((typeof concentration) !== "number") || isNaN(concentration)) throw 1;
+		if(isNotNumber(concentration)) throw 1;
 		/* for the nodes listed below, the concentration interpolation is true between [0 and 15] [M%] */
 		if((concentration < 0) || (concentration > 15)) throw 2;
 
@@ -246,7 +268,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 {
 	try {
 		/* 'concentration' type must be a number */
-		if(((typeof concentration) !== "number") || isNaN(concentration)) throw 1;
+		if(isNotNumber(concentration)) throw 1;
 		/* for the nodes listed below, the concentration interpolation is true between [0 and 2] [M%] */
 		if((concentration < 0) || (concentration > 2)) throw 2;
 
@@ -356,7 +378,7 @@ function Sellmeier(wavelength, coefficients)
 {
 	try {
 		/* 'wavelength' type must be a number */
-		if(((typeof wavelength) !== "number") || isNaN(wavelength)) throw 1;
+		if(isNotNumber(wavelength)) throw 1;
 		/* the wavelength must be 0 or be positive */
 		if(wavelength < 0) throw 2;
 		/* discard the wrong data types for 'coefficients' */
