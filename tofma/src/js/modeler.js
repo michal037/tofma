@@ -442,3 +442,69 @@ function Sellmeier(wavelength, coefficients)
 		return "undefined";
 	}
 }
+
+/**
+ * An object containing data to calculate the profile.
+ *
+ * @typedef {Object} T_ProfileData
+ * @property {number} shape -
+ * @property {number} n1 -
+ * @property {number} n2 -
+ * @property {number} n3 -
+ * @property {number} a -
+ * @property {number} b -
+ * @property {number} c -
+ * @property {number} q -
+ *
+ */
+
+/**
+ * Calculate the refractive index profile of the optical fiber.
+ * This function is not protected against errors. It has to be fast.
+ *
+ * @param {T_ProfileData} data - An object containing arguments for calculations
+ * @param {number} x - Distance from the center of the core. x: <0 ; Infinity)
+ * @return {number} result - The refractive index for a specific 'x'
+ */
+function profile(data, x) /* data: {shape, n1, n2, n3, a, b, c, q} */
+{
+	var result = null;
+
+	switch(data.shape)
+	{
+		case 1: /* triangular profile */
+			/* n1 -> n2 */
+			if((x >= 0) && (x < data.a)) result = data.n1 + (data.n2 - data.n1) * (x / data.a);
+			if(x >= data.a) result = data.n2;
+			break;
+
+		case 2: /* gradient profile */
+			/* n1 -> n2 */
+			if((x >= 0) && (x < data.a)) result = data.n1 + (data.n2 - data.n1) * Math.pow(x / data.a, data.q);
+			if(x >= data.a) result = data.n2;
+			break;
+
+		case 3: /* step profile */
+			/* n1 -> n2 */
+			if((x >= 0) && (x < data.a)) result = data.n1;
+			if(x >= data.a) result = data.n2;
+			break;
+
+		case 4: /* step profile with a depressive cladding */
+			/* n1 -> n3 -> n2 */
+			if((x >= 0) && (x < data.a)) result = data.n1;
+			if((x >= data.a) && (x < (data.a + data.b))) result = data.n3;
+			if(x >= (data.a + data.b)) result = data.n2;
+			break;
+
+		case 5: /* step profile with a depressive ring */
+			/* n1 -> n2 -> n3 -> n2 */
+			if((x >= 0) && (x < data.a)) result = data.n1;
+			if((x >= data.a) && (x < (data.a + data.b))) result = data.n2;
+			if((x >= (data.a + data.b)) && (x < (data.a + data.b + data.c))) result = data.n3;
+			if(x >= (data.a + data.b + data.c)) result = data.n2;
+			break;
+	}
+
+	return Math.sqrt(result);
+}
