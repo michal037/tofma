@@ -466,7 +466,7 @@ function Sellmeier(wavelength, coefficients)
  * @param {number} x - Distance from the center of the core. x: <0 ; Infinity)
  * @return {number} result - The refractive index for a specific 'x'
  */
-function profile(data, x) /* data: {shape, n1, n2, n3, a, b, c, q} */
+function profile(data, x)
 {
 	var result = null;
 
