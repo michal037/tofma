@@ -515,3 +515,22 @@ tofma.profile = function(data, x)
 
 	return Math.sqrt(result);
 };
+
+/* TODO */
+tofma.cutoffWavelength = function(data)
+{
+	try {
+		var NA = Math.sqrt(data.n1) * Math.sqrt((data.n1 - data.n2) / data.n1);
+		var Vc = 2.405; /* step+ profile */
+
+		if (data.shape === 1) { /* triangular profile */
+			Vc *= Math.sqrt(3);
+		} else if (data.shape === 2) { /* gradient profile */
+			Vc *= Math.sqrt((data.q + 2) / data.q);
+		}
+
+		return NA * ((2 * Math.PI * data.a) / Vc);
+	} catch (error) {
+
+	}
+};
