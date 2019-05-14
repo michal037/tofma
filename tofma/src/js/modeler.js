@@ -38,7 +38,7 @@ function isNotNumber(x)
  * @param {T_LagrangeInterpolationNodes} nodes - A set of at least two nodes for interpolation
  * @return {string|number} - Interpolated value or "undefined" when an error occurs
  */
-function LagrangeInterpolation(x, nodes)
+function lagrangeInterpolation(x, nodes)
 {
 	try {
 		/* discard the wrong data types for 'nodes' */
@@ -77,7 +77,7 @@ function LagrangeInterpolation(x, nodes)
 		return result;
 	} catch(error) {
 		/* for a better look in the console */
-		var errorFunctionName = "LagrangeInterpolation:";
+		var errorFunctionName = "lagrangeInterpolation:";
 
 		/* handle the right exception */
 		switch(error)
@@ -134,16 +134,16 @@ function LagrangeInterpolation(x, nodes)
  */
 
 /** @type {Object} */
-var SellmeierCoefficients = {};
+var sellmeierCoefficients = {};
 
 /**
  * Calculate Sellmeier's coefficients for germanium admixture
  *
- * @method SellmeierCoefficients.Germanium
+ * @method sellmeierCoefficients.germanium
  * @param {number} concentration - Molecular concentration of germanium admixture in the optical fiber core [M%]
  * @return {string|T_SellmeierCoefficients} coefficients - Calculated coefficients or "undefined" when an error occurs
  */
-SellmeierCoefficients.Germanium = function(concentration)
+sellmeierCoefficients.germanium = function(concentration)
 {
 	try {
 		/* 'concentration' type must be a number */
@@ -162,7 +162,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 				0.711040
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a2(x) {
@@ -174,7 +174,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 				0.451885
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a3(x) {
@@ -186,7 +186,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 				0.704048
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b1(x) {
@@ -198,7 +198,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 				0.064270
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b2(x) {
@@ -210,7 +210,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 				0.129408
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b3(x) {
@@ -222,7 +222,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 				9.425478
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		return {
@@ -231,7 +231,7 @@ SellmeierCoefficients.Germanium = function(concentration)
 		};
 	} catch(error) {
 		/* for a better look in the console */
-		var errorFunctionName = "SellmeierCoefficients.Germanium:";
+		var errorFunctionName = "sellmeierCoefficients.germanium:";
 
 		/* handle the right exception */
 		switch(error)
@@ -260,11 +260,11 @@ SellmeierCoefficients.Germanium = function(concentration)
 /**
  * Calculate Sellmeier's coefficients for fluoride admixture
  *
- * @method SellmeierCoefficients.Fluorine
+ * @method sellmeierCoefficients.fluorine
  * @param {number} concentration - Molecular concentration of fluoride admixture in the optical fiber cladding [M%]
  * @return {string|T_SellmeierCoefficients} coefficients - Calculated coefficients or "undefined" when an error occurs
  */
-SellmeierCoefficients.Fluorine = function(concentration)
+sellmeierCoefficients.fluorine = function(concentration)
 {
 	try {
 		/* 'concentration' type must be a number */
@@ -281,7 +281,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 				0.67744
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a2(x) {
@@ -291,7 +291,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 				0.40101
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a3(x) {
@@ -301,7 +301,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 				0.87193
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b1(x) {
@@ -311,7 +311,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 				0.06135
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b2(x) {
@@ -321,7 +321,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 				0.12030
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b3(x) {
@@ -331,7 +331,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 				9.85630
 			];
 
-			return LagrangeInterpolation(x, {x: x_values, y: y_values});
+			return lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		return {
@@ -340,7 +340,7 @@ SellmeierCoefficients.Fluorine = function(concentration)
 		};
 	} catch (error) {
 		/* for a better look in the console */
-		var errorFunctionName = "SellmeierCoefficients.Fluorine:";
+		var errorFunctionName = "sellmeierCoefficients.fluorine:";
 
 		/* handle the right exception */
 		switch(error)
@@ -369,12 +369,11 @@ SellmeierCoefficients.Fluorine = function(concentration)
 /**
  * Calculate the Sellmeier equation
  *
- * @function Sellmeier
  * @param {number} wavelength - The wavelength [um]
  * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients
  * @return {string|number} refractiveIndex - Refractive index squared (n^2) or "undefined" when an error occurs
  */
-function Sellmeier(wavelength, coefficients)
+function sellmeier(wavelength, coefficients)
 {
 	try {
 		/* 'wavelength' type must be a number */
@@ -400,7 +399,7 @@ function Sellmeier(wavelength, coefficients)
 		return refractiveIndex;
 	} catch (error) {
 		/* for a better look in the console */
-		var errorFunctionName = "Sellmeier:";
+		var errorFunctionName = "sellmeier:";
 
 		/* handle the right exception */
 		switch(error)
