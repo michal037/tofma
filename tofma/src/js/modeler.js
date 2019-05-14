@@ -1,10 +1,14 @@
-/** @type {Object} */
+/**
+ * Main program scope
+ *
+ * @type {Object}
+ */
 var tofma = {};
 
 /**
  * Check if the variable is a number
  *
- * @param x - Variable to check
+ * @param {*} x - Variable to check
  * @return {boolean}
  */
 tofma.isNumber = function(x)
@@ -15,7 +19,7 @@ tofma.isNumber = function(x)
 /**
  * Check if the variable is not a number
  *
- * @param x - Variable to check
+ * @param {*} x - Variable to check
  * @return {boolean}
  */
 tofma.isNotNumber = function(x)
@@ -31,7 +35,6 @@ tofma.isNotNumber = function(x)
  * @typedef {Object} T_LagrangeInterpolationNodes
  * @property {number[]} x - Array of arguments of the interpolated function
  * @property {number[]} y - Array of values of the interpolated function
- *
  */
 
 /**
@@ -80,7 +83,7 @@ tofma.lagrangeInterpolation = function(x, nodes)
 		return result;
 	} catch(error) {
 		/* for a better look in the console */
-		var errorFunctionName = "lagrangeInterpolation:";
+		var errorFunctionName = "tofma.lagrangeInterpolation:";
 
 		/* handle the right exception */
 		switch(error)
@@ -233,7 +236,7 @@ tofma.sellmeierCoefficients.germanium = function(concentration)
 		};
 	} catch(error) {
 		/* for a better look in the console */
-		var errorFunctionName = "sellmeierCoefficients.germanium:";
+		var errorFunctionName = "tofma.sellmeierCoefficients.germanium:";
 
 		/* handle the right exception */
 		switch(error)
@@ -341,7 +344,7 @@ tofma.sellmeierCoefficients.fluorine = function(concentration)
 		};
 	} catch (error) {
 		/* for a better look in the console */
-		var errorFunctionName = "sellmeierCoefficients.fluorine:";
+		var errorFunctionName = "tofma.sellmeierCoefficients.fluorine:";
 
 		/* handle the right exception */
 		switch(error)
@@ -400,7 +403,7 @@ tofma.sellmeier = function(wavelength, coefficients)
 		return refractiveIndex;
 	} catch (error) {
 		/* for a better look in the console */
-		var errorFunctionName = "sellmeier:";
+		var errorFunctionName = "tofma.sellmeier:";
 
 		/* handle the right exception */
 		switch(error)
@@ -460,7 +463,6 @@ tofma.sellmeier = function(wavelength, coefficients)
  * @property {number} b - Non-negative value determining range of the 'n2' or 'n3' refractive index
  * @property {number} c - Non-negative value determining range of the 'n3' refractive index
  * @property {number} q - Power which determine smoothness of the gradient profile. q: (0 ; Infinity)
- *
  */
 
 /**
