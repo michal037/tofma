@@ -1,13 +1,16 @@
+/** @type {Object} */
+var tofma = {};
+
 /**
  * Check if the variable is a number
  *
  * @param x - Variable to check
  * @return {boolean}
  */
-function isNumber(x)
+tofma.isNumber = function(x)
 {
 	return ((typeof x) === "number") && !isNaN(x);
-}
+};
 
 /**
  * Check if the variable is not a number
@@ -15,10 +18,10 @@ function isNumber(x)
  * @param x - Variable to check
  * @return {boolean}
  */
-function isNotNumber(x)
+tofma.isNotNumber = function(x)
 {
 	return ((typeof x) !== "number") || isNaN(x);
-}
+};
 
 /**
  * Lagrange's Interpolation Nodes Type
@@ -38,7 +41,7 @@ function isNotNumber(x)
  * @param {T_LagrangeInterpolationNodes} nodes - A set of at least two nodes for interpolation
  * @return {string|number} - Interpolated value or "undefined" when an error occurs
  */
-function lagrangeInterpolation(x, nodes)
+tofma.lagrangeInterpolation = function(x, nodes)
 {
 	try {
 		/* discard the wrong data types for 'nodes' */
@@ -50,12 +53,12 @@ function lagrangeInterpolation(x, nodes)
 		/* value tables must be the same dimension */
 		if(nodes.x.length !== nodes.y.length) throw 4;
 		/* 'x' type must be a number */
-		if(isNotNumber(x)) throw 5;
+		if(tofma.isNotNumber(x)) throw 5;
 		/* each element of the array must be a number */
 		for(var _i=0; _i<nodes.x.length ;_i++)
 		{
-			if(isNotNumber(nodes.x[_i])) throw 6;
-			if(isNotNumber(nodes.y[_i])) throw 6;
+			if(tofma.isNotNumber(nodes.x[_i])) throw 6;
+			if(tofma.isNotNumber(nodes.y[_i])) throw 6;
 		}
 
 		var result = 0; /* default: neutral element for adding */
@@ -123,7 +126,7 @@ function lagrangeInterpolation(x, nodes)
 		/* no valid value */
 		return "undefined";
 	}
-}
+};
 
 /**
  * Sellmeier's Coefficients Type
@@ -134,20 +137,19 @@ function lagrangeInterpolation(x, nodes)
  */
 
 /** @type {Object} */
-var sellmeierCoefficients = {};
+tofma.sellmeierCoefficients = {};
 
 /**
  * Calculate Sellmeier's coefficients for germanium admixture
  *
- * @method sellmeierCoefficients.germanium
  * @param {number} concentration - Molecular concentration of germanium admixture in the optical fiber core [M%]
  * @return {string|T_SellmeierCoefficients} coefficients - Calculated coefficients or "undefined" when an error occurs
  */
-sellmeierCoefficients.germanium = function(concentration)
+tofma.sellmeierCoefficients.germanium = function(concentration)
 {
 	try {
 		/* 'concentration' type must be a number */
-		if(isNotNumber(concentration)) throw 1;
+		if(tofma.isNotNumber(concentration)) throw 1;
 		/* for the nodes listed below, the concentration interpolation is true between [0 and 15] [M%] */
 		if((concentration < 0) || (concentration > 15)) throw 2;
 
@@ -162,7 +164,7 @@ sellmeierCoefficients.germanium = function(concentration)
 				0.711040
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a2(x) {
@@ -174,7 +176,7 @@ sellmeierCoefficients.germanium = function(concentration)
 				0.451885
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a3(x) {
@@ -186,7 +188,7 @@ sellmeierCoefficients.germanium = function(concentration)
 				0.704048
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b1(x) {
@@ -198,7 +200,7 @@ sellmeierCoefficients.germanium = function(concentration)
 				0.064270
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b2(x) {
@@ -210,7 +212,7 @@ sellmeierCoefficients.germanium = function(concentration)
 				0.129408
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b3(x) {
@@ -222,7 +224,7 @@ sellmeierCoefficients.germanium = function(concentration)
 				9.425478
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		return {
@@ -260,15 +262,14 @@ sellmeierCoefficients.germanium = function(concentration)
 /**
  * Calculate Sellmeier's coefficients for fluoride admixture
  *
- * @method sellmeierCoefficients.fluorine
  * @param {number} concentration - Molecular concentration of fluoride admixture in the optical fiber cladding [M%]
  * @return {string|T_SellmeierCoefficients} coefficients - Calculated coefficients or "undefined" when an error occurs
  */
-sellmeierCoefficients.fluorine = function(concentration)
+tofma.sellmeierCoefficients.fluorine = function(concentration)
 {
 	try {
 		/* 'concentration' type must be a number */
-		if(isNotNumber(concentration)) throw 1;
+		if(tofma.isNotNumber(concentration)) throw 1;
 		/* for the nodes listed below, the concentration interpolation is true between [0 and 2] [M%] */
 		if((concentration < 0) || (concentration > 2)) throw 2;
 
@@ -281,7 +282,7 @@ sellmeierCoefficients.fluorine = function(concentration)
 				0.67744
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a2(x) {
@@ -291,7 +292,7 @@ sellmeierCoefficients.fluorine = function(concentration)
 				0.40101
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function a3(x) {
@@ -301,7 +302,7 @@ sellmeierCoefficients.fluorine = function(concentration)
 				0.87193
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b1(x) {
@@ -311,7 +312,7 @@ sellmeierCoefficients.fluorine = function(concentration)
 				0.06135
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b2(x) {
@@ -321,7 +322,7 @@ sellmeierCoefficients.fluorine = function(concentration)
 				0.12030
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		function b3(x) {
@@ -331,7 +332,7 @@ sellmeierCoefficients.fluorine = function(concentration)
 				9.85630
 			];
 
-			return lagrangeInterpolation(x, {x: x_values, y: y_values});
+			return tofma.lagrangeInterpolation(x, {x: x_values, y: y_values});
 		}
 
 		return {
@@ -373,11 +374,11 @@ sellmeierCoefficients.fluorine = function(concentration)
  * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients
  * @return {string|number} refractiveIndex - Refractive index squared (n^2) or "undefined" when an error occurs
  */
-function sellmeier(wavelength, coefficients)
+tofma.sellmeier = function(wavelength, coefficients)
 {
 	try {
 		/* 'wavelength' type must be a number */
-		if(isNotNumber(wavelength)) throw 1;
+		if(tofma.isNotNumber(wavelength)) throw 1;
 		/* the wavelength must be 0 or be positive */
 		if(wavelength < 0) throw 2;
 		/* discard the wrong data types for 'coefficients' */
@@ -440,7 +441,7 @@ function sellmeier(wavelength, coefficients)
 		/* no valid value */
 		return "undefined";
 	}
-}
+};
 
 /**
  * An object containing data to calculate the profile
@@ -470,7 +471,7 @@ function sellmeier(wavelength, coefficients)
  * @param {number} x - Distance from the center of the core. x: <0 ; Infinity)
  * @return {number} result - The refractive index for a specific 'x'
  */
-function profile(data, x)
+tofma.profile = function(data, x)
 {
 	var result = null;
 
@@ -511,4 +512,4 @@ function profile(data, x)
 	}
 
 	return Math.sqrt(result);
-}
+};
