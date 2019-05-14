@@ -444,17 +444,22 @@ function Sellmeier(wavelength, coefficients)
 }
 
 /**
- * An object containing data to calculate the profile.
+ * An object containing data to calculate the profile
  *
  * @typedef {Object} T_ProfileData
- * @property {number} shape -
- * @property {number} n1 -
- * @property {number} n2 -
- * @property {number} n3 -
- * @property {number} a -
- * @property {number} b -
- * @property {number} c -
- * @property {number} q -
+ * @property {number} shape - Selection of profile shape
+ * <br> `1` - Triangular profile
+ * <br> `2` - Gradient profile
+ * <br> `3` - Step profile
+ * <br> `4` - Step profile with a depressive cladding
+ * <br> `5` - Step profile with a depressive ring
+ * @property {number} n1 - Squared refractive index 'n1'
+ * @property {number} n2 - Squared refractive index 'n2'
+ * @property {number} n3 - Squared refractive index 'n3'
+ * @property {number} a - Non-negative value determining range of the 'n1' refractive index
+ * @property {number} b - Non-negative value determining range of the 'n2' or 'n3' refractive index
+ * @property {number} c - Non-negative value determining range of the 'n3' refractive index
+ * @property {number} q - Power which determine smoothness of the gradient profile. q: (0 ; Infinity)
  *
  */
 
