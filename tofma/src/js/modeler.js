@@ -28,6 +28,34 @@ tofma.isNotNumber = function(x)
 };
 
 /**
+ * Error message log for the 'tofma.isNotNumber' function
+ *
+ * @param {string} functionName - The name of the function in which the error occurred
+ * @param {string} variableName - The name of the variable through which the error occurred
+ * @param {*} variable - The contents of the variable through which the error occurred
+ */
+tofma.isNotNumberErrLog = function(functionName, variableName, variable)
+{
+	console.error(functionName + " Bad data type for '" + variableName + "'",
+		"\n\ttypeof(" + variableName + "):", typeof variable,
+		"\n\tisNaN(" + variableName + "):",  isNaN(variable),
+		"\n\tExpected type: number"
+	);
+};
+
+/**
+ * Check if the variable is an integer
+ *
+ * @param {*} x - Variable to check
+ * @return {boolean}
+ */
+tofma.isInteger = function(x) {
+	return typeof x === 'number' &&
+		isFinite(x) &&
+		Math.floor(x) === x;
+};
+
+/**
  * Lagrange's Interpolation Nodes Type
  *
  * The 'x' and 'y' arrays must be of the same length
@@ -113,10 +141,7 @@ tofma.lagrangeInterpolation = function(x, nodes)
 				);
 				break;
 			case 5:
-				console.error(errorFunctionName, "Bad data type for 'x'",
-					"\n\ttypeof(x):", typeof x,
-					"\n\tisNaN(x):",  isNaN(x)
-				);
+				tofma.isNotNumberErrLog(errorFunctionName, "x", x);
 				break;
 			case 6:
 				console.error(errorFunctionName, "At least one element from the 'nodes.x' or 'nodes.y' array is not" +
@@ -242,10 +267,7 @@ tofma.sellmeierCoefficients.germanium = function(concentration)
 		switch(error)
 		{
 			case 1:
-				console.error(errorFunctionName, "Bad data type for 'concentration'",
-					"\n\ttypeof(concentration):", typeof concentration,
-					"\n\tisNaN(concentration):",  isNaN(concentration)
-				);
+				tofma.isNotNumberErrLog(errorFunctionName, "concentration", concentration);
 				break;
 			case 2:
 				console.error(errorFunctionName, "The acceptable range for the concentration has been exceeded." +
@@ -350,10 +372,7 @@ tofma.sellmeierCoefficients.fluorine = function(concentration)
 		switch(error)
 		{
 			case 1:
-				console.error(errorFunctionName, "Bad data type for 'concentration'",
-					"\n\ttypeof(concentration):", typeof concentration,
-					"\n\tisNaN(concentration):",  isNaN(concentration)
-				);
+				tofma.isNotNumberErrLog(errorFunctionName, "concentration", concentration);
 				break;
 			case 2:
 				console.error(errorFunctionName, "The acceptable range for the concentration has been exceeded." +
@@ -409,10 +428,7 @@ tofma.sellmeier = function(wavelength, coefficients)
 		switch(error)
 		{
 			case 1:
-				console.error(errorFunctionName, "Bad data type for 'wavelength'",
-					"\n\ttypeof(wavelength):", typeof wavelength,
-					"\n\tisNaN(wavelength):",  isNaN(wavelength)
-				);
+				tofma.isNotNumberErrLog(errorFunctionName, "wavelength", wavelength);
 				break;
 			case 2:
 				console.log(errorFunctionName, "The wavelength can not be negative",
@@ -459,7 +475,7 @@ tofma.sellmeier = function(wavelength, coefficients)
  * @property {number} n1 - Squared refractive index 'n1'
  * @property {number} n2 - Squared refractive index 'n2'
  * @property {number} n3 - Squared refractive index 'n3'
- * @property {number} a - Non-negative value determining range of the 'n1' refractive index
+ * @property {number} a - greater than zero value determining range of the 'n1' refractive index
  * @property {number} b - Non-negative value determining range of the 'n2' or 'n3' refractive index
  * @property {number} c - Non-negative value determining range of the 'n3' refractive index
  * @property {number} q - Power which determine smoothness of the gradient profile. q: (0 ; Infinity)
@@ -516,21 +532,92 @@ tofma.profile = function(data, x)
 	return Math.sqrt(result);
 };
 
-/* TODO */
+/**
+ * Calculate the cut-off wavelength
+ *
+ * @param {T_ProfileData} data - An object containing arguments for calculations
+ * @return {string|number} - The cut-off wavelength or "undefined" when an error occurs
+ */
 tofma.cutoffWavelength = function(data)
 {
 	try {
+		/* discard the wrong data types for 'data' */
+		if(!data) throw 1;
+		/* 'data.shape' type must be a number */
+		if(tofma.isNotNumber(data.shape)) throw 2;
+		/* 'data.shape' must be {1, 2, 3, 4, 5} */
+		if((data.shape < 1) || (data.shape > 5) || !tofma.isInteger(data.shape)) throw 3;
+		/* 'data.n1' type must be a number */
+		if(tofma.isNotNumber(data.n1)) throw 4;
+		/* 'data.n2' type must be a number */
+		if(tofma.isNotNumber(data.n2)) throw 5;
+		/* 'data.a' type must be a number */
+		if(tofma.isNotNumber(data.a)) throw 6;
+		/* 'data.a' must be greater than 0 */
+		if(data.a <= 0) throw 7;
+
 		var NA = Math.sqrt(data.n1) * Math.sqrt((data.n1 - data.n2) / data.n1);
 		var Vc = 2.405; /* step+ profile */
 
-		if (data.shape === 1) { /* triangular profile */
+		if(data.shape === 1) { /* triangular profile */
 			Vc *= Math.sqrt(3);
-		} else if (data.shape === 2) { /* gradient profile */
+		} else if(data.shape === 2) { /* gradient profile */
+			/* 'data.q' type must be a number */
+			if(tofma.isNotNumber(data.q)) throw 8;
+			/* 'data.q' must be greater than 1 */
+			if(data.q <= 1) throw 9;
+
 			Vc *= Math.sqrt((data.q + 2) / data.q);
 		}
 
 		return NA * ((2 * Math.PI * data.a) / Vc);
 	} catch (error) {
+		/* for a better look in the console */
+		var errorFunctionName = "tofma.cutoffWavelength:";
 
+		/* handle the right exception */
+		switch(error)
+		{
+			case 1:
+				console.error(errorFunctionName, "Bad data type for 'data'",
+					"\n\ttypeof(data):", typeof data
+				);
+				break;
+			case 2:
+				tofma.isNotNumberErrLog(errorFunctionName, "data.shape", data.shape);
+				break;
+			case 3:
+				console.error(errorFunctionName, "'data.shape' is not one of {1, 2, 3, 4, 5}",
+					"\n\tdata.shape: ", data.shape
+				);
+				break;
+			case 4:
+				tofma.isNotNumberErrLog(errorFunctionName, "data.n1", data.n1);
+				break;
+			case 5:
+				tofma.isNotNumberErrLog(errorFunctionName, "data.n2", data.n2);
+				break;
+			case 6:
+				tofma.isNotNumberErrLog(errorFunctionName, "data.a", data.a);
+				break;
+			case 7:
+				console.errpr(errorFunctionName, "'data.a' is not greater 0",
+					"\n\tdata.a: ", data.a
+				);
+				break;
+			case 8:
+				tofma.isNotNumberErrLog(errorFunctionName, "data.q", data.q);
+				break;
+			case 9:
+				console.error(errorFunctionName, "'data.q' is not greater than 1",
+					"\n\tdata.q: ", data.q
+				);
+				break;
+			default:
+				console.error(errorFunctionName, error);
+		}
+
+		/* no valid value */
+		return "undefined";
 	}
 };
