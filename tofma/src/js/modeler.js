@@ -415,9 +415,9 @@ tofma.sellmeier = function(wavelength, coefficients)
 
 		/* prepare values */
 		wavelength *= wavelength;
-		for (i=0; i<=2; i++) coefficients.b[i] *= coefficients.b[i];
+		for(i=0; i<=2; i++) coefficients.b[i] *= coefficients.b[i];
 
-		for (i=0; i<=2; i++) refractiveIndex += (coefficients.a[i] * wavelength) / (wavelength - coefficients.b[i]);
+		for(i=0; i<=2; i++) refractiveIndex += (coefficients.a[i] * wavelength) / (wavelength - coefficients.b[i]);
 
 		return refractiveIndex;
 	} catch (error) {
@@ -611,6 +611,89 @@ tofma.cutoffWavelength = function(data)
 			case 9:
 				console.error(errorFunctionName, "'data.q' is not greater than 1",
 					"\n\tdata.q: ", data.q
+				);
+				break;
+			default:
+				console.error(errorFunctionName, error);
+		}
+
+		/* no valid value */
+		return "undefined";
+	}
+};
+
+/**
+ * Calculate the Verdet Constant
+ *
+ * @param {number} wavelength - The wavelength [um]
+ * @param {T_SellmeierCoefficients} coefficients - Calculated coefficients
+ * @return {string|number} - Verdet constant or "undefined" when an error occurs
+ */
+tofma.verdetConstant = function(wavelength, coefficients)
+{
+	try {
+		/* 'wavelength' type must be a number */
+		if(tofma.isNotNumber(wavelength)) throw 1;
+		/* the wavelength must be 0 or be positive */
+		if(wavelength < 0) throw 2;
+		/* discard the wrong data types for 'coefficients' */
+		if(!coefficients) throw 3;
+		/* check if 'coefficients' contains the required tables */
+		if(!Array.isArray(coefficients.a) || !Array.isArray(coefficients.b)) throw 4;
+		/* length of arrays coefficients.a and coefficients.b must be 3 */
+		if((coefficients.a.length !== 3) || (coefficients.b.length !== 3)) throw 5;
+
+		var i; /* for iterator */
+
+		/* prepare values */
+		var wavelenPow2 = wavelength * wavelength;
+		for(i=0; i<=2; i++) coefficients.b[i] *= coefficients.b[i];
+
+		/* derivative TOP TOP TOP TOP */
+		var top = 0;
+		for(i=0; i<=2; i++) {
+			/* TODO */
+		}
+
+		/* derivative BOTTOM BOTTOM BOTTOM BOTTOM */
+		var bottom = 1;
+		for(i=0; i<=2; i++) {
+			/* TODO */
+		}
+		bottom = Math.sqrt(bottom);
+
+		return 293.3395375810288 * wavelength * Math.abs(top / bottom);
+	} catch (error) {
+		/* for a better look in the console */
+		var errorFunctionName = "tofma.verdetConstant:";
+
+		/* handle the right exception */
+		switch(error)
+		{
+			case 1:
+				tofma.isNotNumberErrLog(errorFunctionName, "wavelength", wavelength);
+				break;
+			case 2:
+				console.log(errorFunctionName, "The wavelength can not be negative",
+					"\n\twavelength:", wavelength
+				);
+				break;
+			case 3:
+				console.error(errorFunctionName, "Bad data type for 'coefficients'",
+					"\n\ttypeof(coefficients):", typeof coefficients
+				);
+				break;
+			case 4:
+				console.error(errorFunctionName, "'coefficients.a' or 'coefficients.b' does not contain an array",
+					"\n\ttypeof(coefficients):",   typeof coefficients,
+					"\n\ttypeof(coefficients.a):", typeof coefficients.a,
+					"\n\ttypeof(coefficients.b):", typeof coefficients.b
+				);
+				break;
+			case 5:
+				console.error(errorFunctionName, "length of array coefficients.a or coefficients.b is not 3",
+					"\n\tcoefficients.a.length:", coefficients.a.length,
+					"\n\tcoefficients.b.length:", coefficients.b.length
 				);
 				break;
 			default:
