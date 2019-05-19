@@ -652,17 +652,23 @@ tofma.verdetConstant = function(wavelength, coefficients)
 		/* derivative TOP TOP TOP TOP */
 		var top = 0;
 		for(i=0; i<=2; i++) {
-			/* TODO */
+			top +=
+				(coefficients.a[i] * coefficients.b[i] * wavelength)
+				/
+				Math.pow(wavelenPow2 - coefficients.b[i], 2);
 		}
 
 		/* derivative BOTTOM BOTTOM BOTTOM BOTTOM */
 		var bottom = 1;
 		for(i=0; i<=2; i++) {
-			/* TODO */
+			bottom +=
+				(coefficients.a[i] * wavelenPow2)
+				/
+				(wavelenPow2 - coefficients.b[i]);
 		}
 		bottom = Math.sqrt(bottom);
 
-		return 293.3395375810288 * wavelength * Math.abs(top / bottom);
+		return 293.3396048946175 * wavelength * Math.abs(top / bottom);
 	} catch (error) {
 		/* for a better look in the console */
 		var errorFunctionName = "tofma.verdetConstant:";
