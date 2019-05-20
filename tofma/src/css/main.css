@@ -201,6 +201,7 @@ a:hover {
 
 /* MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER--- */
 #modelerPlot2D, #modelerPlot3D {
+	display: none;
 	width: 998px;
 	height: 500px;
 	border: 1px solid #aaa;
@@ -209,6 +210,30 @@ a:hover {
 
 .modelerInput {
 	margin: 10px 0;
+}
+
+.modelerInputProfiles {
+	font-size: 0;
+}
+
+.modelerInputProfiles label {
+	display: inline-block;
+	margin-left: 1px;
+	cursor: pointer;
+}
+
+.modelerInputProfiles img {
+	border: 1px solid #aaaaaa;
+	margin-bottom: 10px;
+}
+
+.modelerInputProfiles img:hover {
+	border: 1px solid #1B273F;
+}
+
+.modelerInputProfiles input {
+	display: block;
+	margin: 0 auto;
 }
 
 /* DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION--- */
