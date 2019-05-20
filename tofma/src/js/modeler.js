@@ -478,7 +478,7 @@ tofma.sellmeier = function(wavelength, coefficients)
  * @property {number} a - greater than zero value determining range of the 'n1' refractive index
  * @property {number} b - Non-negative value determining range of the 'n2' or 'n3' refractive index
  * @property {number} c - Non-negative value determining range of the 'n3' refractive index
- * @property {number} q - Power which determine smoothness of the gradient profile. q: (0 ; Infinity)
+ * @property {number} q - Power which determine smoothness of the gradient profile. q: (1 ; Infinity)
  */
 
 /**
