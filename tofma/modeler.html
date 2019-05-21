@@ -77,6 +77,47 @@
 						<input type="radio" name="profile" value="5">
 					</label>
 				</div>
+
+				<div class="modelerInputArguments">
+					<table>
+						<tr>
+							<td>Germanium:</td>
+							<td><input type="number" name="inputGermanium" placeholder="min:0 max:15" min="0" max="15" step="0.1"> [M%]</td>
+						</tr>
+						<tr>
+							<td>Fluoride:</td>
+							<td><input type="number" name="inputFluoride" placeholder="min:0 max:2" min="0" max="2" step="0.1"> [M%]</td>
+						</tr>
+						<tr>
+							<td>Wavelength:</td>
+							<td><input type="number" name="inputWavelength" min="0" step="0.01"> [um]</td>
+						</tr>
+						<tr>
+							<td>a:</td>
+							<td><input type="number" name="inputA" placeholder="greater than 0" min="0" step="0.1"> [um]</td>
+						</tr>
+						<tr>
+							<td>b:</td>
+							<td><input type="number" name="inputB" placeholder="non-negative" min="0" step="0.1"> [um]</td>
+						</tr>
+						<tr>
+							<td>c:</td>
+							<td><input type="number" name="inputC" placeholder="non-negative" min="0" step="0.1"> [um]</td>
+						</tr>
+						<tr>
+							<td>q:</td>
+							<td><input type="number" name="inputQ" placeholder="greater than 1" min="1" step="0.1" value="4"></td>
+						</tr>
+						<tr>
+							<td>2D points:</td>
+							<td><input type="number" name="input2DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
+						</tr>
+						<tr>
+							<td>3D points:</td>
+							<td><input type="number" name="input3DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 			<div id="modelerPlot2D"></div>
 			<div id="modelerPlot3D"></div>

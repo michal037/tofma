@@ -214,6 +214,7 @@ a:hover {
 
 .modelerInputProfiles {
 	font-size: 0;
+	margin-bottom: 35px;
 }
 
 .modelerInputProfiles label {
@@ -223,7 +224,7 @@ a:hover {
 }
 
 .modelerInputProfiles img {
-	border: 1px solid #aaaaaa;
+	border: 1px solid #aaa;
 	margin-bottom: 10px;
 }
 
@@ -234,6 +235,25 @@ a:hover {
 .modelerInputProfiles input {
 	display: block;
 	margin: 0 auto;
+}
+
+.modelerInputArguments {
+	margin-bottom: 35px;
+}
+
+.modelerInputArguments td:first-child {
+	text-align: right;
+	font-weight: bold;
+}
+
+.modelerInputArguments input {
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+.modelerInputArguments input:hover {
+	border: 1px solid #1B273F;
 }
 
 /* DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION--- */
