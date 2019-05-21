@@ -200,16 +200,9 @@ a:hover {
 }
 
 /* MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER--- */
-#modelerPlot2D, #modelerPlot3D {
-	display: none;
-	width: 998px;
-	height: 500px;
-	border: 1px solid #aaa;
-	margin: 10px 0 0;
-}
-
 .modelerInput {
 	margin: 10px 0;
+	overflow: hidden;
 }
 
 .modelerInputProfiles {
@@ -254,6 +247,47 @@ a:hover {
 
 .modelerInputArguments input:hover {
 	border: 1px solid #1B273F;
+}
+
+.modelerInputSubmits {
+	display: inline-block;
+	float: right;
+	padding: 5px;
+}
+
+.modelerInputSubmits label {
+	margin-right: 5px;
+}
+
+.modelerInputSubmits label, input, button {
+	vertical-align: middle;
+}
+
+.modelerInputSubmits label, button {
+	font-weight: bold;
+}
+
+.modelerInputSubmits button {
+	background: #0066cc;
+	border: 1px solid #ccc;
+	padding: 8px;
+	color: #fff;
+}
+
+.modelerInputSubmits button:hover {
+	border: 1px solid #1B273F;
+}
+
+.modelerInputSubmits button:active {
+	box-shadow: inset 0 0 10px 2px #1B273F;
+}
+
+#modelerOutputPlot2D, #modelerOutputPlot3D {
+	display: none;
+	width: 998px;
+	height: 500px;
+	border: 1px solid #aaa;
+	margin: 10px 0 0;
 }
 
 /* DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION--- */
