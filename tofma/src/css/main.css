@@ -280,6 +280,7 @@ a:hover {
 
 .modelerInputSubmits button:active {
 	box-shadow: inset 0 0 10px 2px #1B273F;
+	border: 1px solid #1B273F;
 }
 
 #modelerOutputPlot2D, #modelerOutputPlot3D {
