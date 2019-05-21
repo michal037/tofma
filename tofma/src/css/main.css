@@ -241,18 +241,18 @@ a:hover {
 	margin-bottom: 35px;
 }
 
-.modelerInputArguments td:first-child {
+.modelerInputArguments table td:first-child {
 	text-align: right;
 	font-weight: bold;
 }
 
-.modelerInputArguments input {
+.modelerInputArguments table td input {
 	width: 150px;
 	padding: 5px;
 	border: 1px solid #ccc;
 }
 
-.modelerInputArguments input:hover {
+.modelerInputArguments table td input:hover {
 	border: 1px solid #1B273F;
 }
 
