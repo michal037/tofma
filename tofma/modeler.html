@@ -50,82 +50,82 @@
 						<img src="src/img/profile/p1.png" class="noselect"
 							 title="The triangular profile of refractive index in the optical fiber core."
 							 alt="The triangular profile of refractive index in the optical fiber core.">
-						<input type="radio" name="modelerInputProfile" value="1" checked>
+						<input id="modelerInputProfile1" type="radio" name="modelerInputProfile" value="1" checked>
 					</label>
 					<label>
 						<img src="src/img/profile/p2.png" class="noselect"
 							 title="The gradient profile of refractive index in the optical fiber core."
 							 alt="The gradient profile of refractive index in the optical fiber core.">
-						<input type="radio" name="modelerInputProfile" value="2">
+						<input id="modelerInputProfile2" type="radio" name="modelerInputProfile" value="2">
 					</label>
 					<label>
 						<img src="src/img/profile/p3.png" class="noselect"
 							 title="The step profile of refractive index in the optical fiber core."
 							 alt="The step profile of refractive index in the optical fiber core.">
-						<input type="radio" name="modelerInputProfile" value="3">
+						<input id="modelerInputProfile3" type="radio" name="modelerInputProfile" value="3">
 					</label>
 					<label>
 						<img src="src/img/profile/p4.png" class="noselect"
 							 title="The step profile of refractive index in the optical fiber core with depressive cladding."
 							 alt="The step profile of refractive index in the optical fiber core with depressive cladding.">
-						<input type="radio" name="modelerInputProfile" value="4">
+						<input id="modelerInputProfile4" type="radio" name="modelerInputProfile" value="4">
 					</label>
 					<label>
 						<img src="src/img/profile/p5.png" class="noselect"
 							 title="The step profile of refractive index in the optical fiber core with a depressive ring around the core."
 							 alt="The step profile of refractive index in the optical fiber core with a depressive ring around the core.">
-						<input type="radio" name="modelerInputProfile" value="5">
+						<input id="modelerInputProfile5" type="radio" name="modelerInputProfile" value="5">
 					</label>
 				</div>
 
 				<div class="modelerInputArguments">
 					<table>
 						<tr>
-							<td>Germanium: </td>
-							<td><input type="number" name="modelerInputGermanium" placeholder="min:0 max:15" min="0" max="15" step="0.1"> [M%]</td>
+							<td><label for="modelerInputGermanium">Germanium: </label></td>
+							<td><input id="modelerInputGermanium" type="number" name="modelerInputGermanium" placeholder="min:0 max:15" min="0" max="15" step="0.1"> [M%]</td>
 						</tr>
 						<tr>
-							<td>Fluoride: </td>
-							<td><input type="number" name="modelerInputFluoride" placeholder="min:0 max:2" min="0" max="2" step="0.1" disabled> [M%]</td>
+							<td><label for="modelerInputFluoride">Fluoride: </label></td>
+							<td><input id="modelerInputFluoride" type="number" name="modelerInputFluoride" placeholder="min:0 max:2" min="0" max="2" step="0.1" disabled> [M%]</td>
 						</tr>
 						<tr>
-							<td>Wavelength: </td>
-							<td><input type="number" name="modelerInputWavelength" placeholder="non-negative" min="0" step="0.01"> [um]</td>
+							<td><label for="modelerInputWavelength">Wavelength: </label></td>
+							<td><input id="modelerInputWavelength" type="number" name="modelerInputWavelength" placeholder="non-negative" min="0" step="0.01"> [um]</td>
 						</tr>
 						<tr>
-							<td>a: </td>
-							<td><input type="number" name="modelerInputA" placeholder="greater than 0" min="0" step="0.1"> [um]</td>
+							<td><label for="modelerInputA">a: </label></td>
+							<td><input id="modelerInputA" type="number" name="modelerInputA" placeholder="greater than 0" min="0" step="0.1"> [um]</td>
 						</tr>
 						<tr>
-							<td>b: </td>
-							<td><input type="number" name="modelerInputB" placeholder="non-negative" min="0" step="0.1" disabled> [um]</td>
+							<td><label for="modelerInputB">b: </label></td>
+							<td><input id="modelerInputB" type="number" name="modelerInputB" placeholder="non-negative" min="0" step="0.1" disabled> [um]</td>
 						</tr>
 						<tr>
-							<td>c: </td>
-							<td><input type="number" name="modelerInputC" placeholder="non-negative" min="0" step="0.1" disabled> [um]</td>
+							<td><label for="modelerInputC">c: </label></td>
+							<td><input id="modelerInputC" type="number" name="modelerInputC" placeholder="non-negative" min="0" step="0.1" disabled> [um]</td>
 						</tr>
 						<tr>
-							<td>q: </td>
-							<td><input type="number" name="modelerInputQ" placeholder="greater than 1" min="1" step="0.1" value="4" disabled></td>
+							<td><label for="modelerInputQ">q: </label></td>
+							<td><input id="modelerInputQ" type="number" name="modelerInputQ" placeholder="greater than 1" min="1" step="0.1" value="4" disabled></td>
 						</tr>
 						<tr>
-							<td>2D points: </td>
-							<td><input type="number" name="modelerInput2DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
+							<td><label for="modelerInput2DPoints">2D points: </label></td>
+							<td><input id="modelerInput2DPoints" type="number" name="modelerInput2DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
 						</tr>
 						<tr>
-							<td>3D points: </td>
-							<td><input type="number" name="modelerInput3DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
+							<td><label for="modelerInput3DPoints">3D points: </label></td>
+							<td><input id="modelerInput3DPoints" type="number" name="modelerInput3DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
 						</tr>
 					</table>
 				</div>
 				<div class="modelerInputSubmits">
 					<label>
-						2D: <input type="checkbox" name="modelerInputPlot2D" checked>
+						2D: <input id="modelerInputPlot2D" type="checkbox" name="modelerInputPlot2D" checked>
 					</label>
 					<label>
-						3D: <input type="checkbox" name="modelerInputPlot3D" checked>
+						3D: <input id="modelerInputPlot3D" type="checkbox" name="modelerInputPlot3D" checked>
 					</label>
-					<button type="button" name="modelerInputGenerate">GENERATE</button>
+					<button id="modelerInputGenerate" type="button" name="modelerInputGenerate">GENERATE</button>
 				</div>
 			</div>
 			<div id="modelerOutputPlot2D"></div>
