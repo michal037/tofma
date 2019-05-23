@@ -6,12 +6,8 @@ html, body {
 	border: 0;
 }
 
-html {
-	background: #fff url("../img/background.svg") repeat fixed top center;
-}
-
 body {
-	font-family: 'Open Sans', Helvetica, sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 1em;
 	line-height: 1.2;
 	width: 1024px;
@@ -138,7 +134,6 @@ a:hover {
 }
 
 /* INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX-INDEX- */
-
 /* Logo + Name */
 .indexHead {
 	margin-bottom: 20px;
@@ -200,11 +195,13 @@ a:hover {
 }
 
 /* MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER--- */
+/* Input */
 .modelerInput {
 	margin: 10px 0;
 	overflow: hidden;
 }
 
+/* Input Profiles */
 .modelerInputProfiles {
 	font-size: 0;
 	margin-bottom: 35px;
@@ -230,6 +227,22 @@ a:hover {
 	margin: 0 auto;
 }
 
+.modelerInputProfile1img, .modelerInputProfile2img, .modelerInputProfile3img {
+	height: 151px;
+	width: 151px;
+}
+
+.modelerInputProfile4img {
+	height: 151px;
+	width: 227px;
+}
+
+.modelerInputProfile5img {
+	height: 151px;
+	width: 303px;
+}
+
+/* Input Arguments */
 .modelerInputArguments {
 	margin-bottom: 35px;
 }
@@ -249,6 +262,7 @@ a:hover {
 	border: 1px solid #1B273F;
 }
 
+/* Input Submits */
 .modelerInputSubmits {
 	display: inline-block;
 	float: right;
@@ -283,6 +297,7 @@ a:hover {
 	border: 1px solid #1B273F;
 }
 
+/* Plots */
 #modelerOutputPlot2D, #modelerOutputPlot3D {
 	display: none;
 	width: 998px;

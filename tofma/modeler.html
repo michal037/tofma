@@ -17,7 +17,7 @@
 	<meta content="TOFMA" name="application-name">
 	<meta content="#1B273F" name="theme-color">
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 	<link href="src/css/vendor/normalize.css" rel="stylesheet">
 	<link href="src/css/main.css" rel="stylesheet">
 </head>
@@ -47,31 +47,31 @@
 			<div class="modelerInput">
 				<div class="modelerInputProfiles">
 					<label>
-						<img src="src/img/profile/p1.png" class="noselect"
+						<img src="src/img/profile/p1.png" class="noselect modelerInputProfile1img"
 							 title="The triangular profile of refractive index in the optical fiber core."
 							 alt="The triangular profile of refractive index in the optical fiber core.">
 						<input id="modelerInputProfile1" type="radio" name="modelerInputProfile" value="1" checked>
 					</label>
 					<label>
-						<img src="src/img/profile/p2.png" class="noselect"
+						<img src="src/img/profile/p2.png" class="noselect modelerInputProfile2img"
 							 title="The gradient profile of refractive index in the optical fiber core."
 							 alt="The gradient profile of refractive index in the optical fiber core.">
 						<input id="modelerInputProfile2" type="radio" name="modelerInputProfile" value="2">
 					</label>
 					<label>
-						<img src="src/img/profile/p3.png" class="noselect"
+						<img src="src/img/profile/p3.png" class="noselect modelerInputProfile3img"
 							 title="The step profile of refractive index in the optical fiber core."
 							 alt="The step profile of refractive index in the optical fiber core.">
 						<input id="modelerInputProfile3" type="radio" name="modelerInputProfile" value="3">
 					</label>
 					<label>
-						<img src="src/img/profile/p4.png" class="noselect"
+						<img src="src/img/profile/p4.png" class="noselect modelerInputProfile4img"
 							 title="The step profile of refractive index in the optical fiber core with depressive cladding."
 							 alt="The step profile of refractive index in the optical fiber core with depressive cladding.">
 						<input id="modelerInputProfile4" type="radio" name="modelerInputProfile" value="4">
 					</label>
 					<label>
-						<img src="src/img/profile/p5.png" class="noselect"
+						<img src="src/img/profile/p5.png" class="noselect modelerInputProfile5img"
 							 title="The step profile of refractive index in the optical fiber core with a depressive ring around the core."
 							 alt="The step profile of refractive index in the optical fiber core with a depressive ring around the core.">
 						<input id="modelerInputProfile5" type="radio" name="modelerInputProfile" value="5">
@@ -118,6 +118,7 @@
 						</tr>
 					</table>
 				</div>
+
 				<div class="modelerInputSubmits">
 					<label>
 						2D: <input id="modelerInputPlot2D" type="checkbox" name="modelerInputPlot2D" checked>
@@ -128,6 +129,7 @@
 					<button id="modelerInputGenerate" type="button" name="modelerInputGenerate">GENERATE</button>
 				</div>
 			</div>
+
 			<div id="modelerOutputPlot2D"></div>
 			<div id="modelerOutputPlot3D"></div>
 		</div>
