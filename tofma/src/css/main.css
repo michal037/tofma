@@ -322,6 +322,31 @@ a:hover {
 	padding-left: 10px;
 }
 
+/* Output Values */
+#modelerOutputValues {
+	display: none;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+
+#modelerOutputValues td:first-child {
+	text-align: right;
+	font-weight: bold;
+}
+
+#modelerOutputValues input {
+	width: 150px;
+	padding: 5px;
+	border: 0;
+	outline: 0;
+	color: #000;
+}
+
+#modelerOutputValues input:disabled {
+	background: #fff;
+}
+
 /* Plots */
 #modelerOutputPlot2D, #modelerOutputPlot3D {
 	display: none;
