@@ -345,11 +345,12 @@ a:hover {
 	padding: 5px;
 	border: 0;
 	outline: 0;
-	color: #000;
+	color: #222;
 }
 
 #modelerOutputValues input:disabled {
 	background: #fff;
+	color: #222;
 }
 
 /* Plots */
