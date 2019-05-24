@@ -297,6 +297,31 @@ a:hover {
 	border: 1px solid #1B273F;
 }
 
+/* Output Error */
+#modelerOutputError {
+	display: none;
+	margin-top: 10px;
+	background: #f2dede;
+	border: 1px solid #d4919c;
+	color: #79302f;
+	padding: 5px;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+#modelerOutputError p {
+	margin: 0;
+}
+
+#modelerOutputError p:first-child {
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+#modelerOutputError p:last-child {
+	padding-left: 10px;
+}
+
 /* Plots */
 #modelerOutputPlot2D, #modelerOutputPlot3D {
 	display: none;
