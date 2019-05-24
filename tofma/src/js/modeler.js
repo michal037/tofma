@@ -601,7 +601,7 @@ tofma.cutoffWavelength = function(data)
 				tofma.isNotNumberErrLog(errorFunctionName, "data.a", data.a);
 				break;
 			case 7:
-				console.errpr(errorFunctionName, "'data.a' is not greater 0",
+				console.error(errorFunctionName, "'data.a' is not greater 0",
 					"\n\tdata.a: ", data.a
 				);
 				break;
