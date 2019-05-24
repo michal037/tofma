@@ -49,41 +49,41 @@
 					<p>INFO</p>
 					<p>
 						The arguments in the URL query string were detected. Do you want to load them?
-						<button id="modelerInputURLArgumentsCancel" type="button" name="modelerInputURLArgumentsCancel">CANCEL</button>
-						<button id="modelerInputURLArgumentsLoad" type="button" name="modelerInputURLArgumentsLoad">LOAD</button>
+						<button id="modelerInputURLArgumentsCancel" name="modelerInputURLArgumentsCancel" type="button">CANCEL</button>
+						<button id="modelerInputURLArgumentsLoad" name="modelerInputURLArgumentsLoad" type="button">LOAD</button>
 					</p>
 				</div>
 
 				<div class="modelerInputProfiles">
 					<label>
-						<img src="src/img/profile/p1.png" class="noselect modelerInputProfile1img"
-							 title="The triangular profile of refractive index in the optical fiber core."
-							 alt="The triangular profile of refractive index in the optical fiber core.">
-						<input id="modelerInputProfile1" type="radio" name="modelerInputProfile" value="1" checked>
+						<img alt="The triangular profile of refractive index in the optical fiber core." class="noselect modelerInputProfile1img"
+							 src="src/img/profile/p1.png"
+							 title="The triangular profile of refractive index in the optical fiber core.">
+						<input checked id="modelerInputProfile1" name="modelerInputProfile" type="radio" value="1">
 					</label>
 					<label>
-						<img src="src/img/profile/p2.png" class="noselect modelerInputProfile2img"
-							 title="The gradient profile of refractive index in the optical fiber core."
-							 alt="The gradient profile of refractive index in the optical fiber core.">
-						<input id="modelerInputProfile2" type="radio" name="modelerInputProfile" value="2">
+						<img alt="The gradient profile of refractive index in the optical fiber core." class="noselect modelerInputProfile2img"
+							 src="src/img/profile/p2.png"
+							 title="The gradient profile of refractive index in the optical fiber core.">
+						<input id="modelerInputProfile2" name="modelerInputProfile" type="radio" value="2">
 					</label>
 					<label>
-						<img src="src/img/profile/p3.png" class="noselect modelerInputProfile3img"
-							 title="The step profile of refractive index in the optical fiber core."
-							 alt="The step profile of refractive index in the optical fiber core.">
-						<input id="modelerInputProfile3" type="radio" name="modelerInputProfile" value="3">
+						<img alt="The step profile of refractive index in the optical fiber core." class="noselect modelerInputProfile3img"
+							 src="src/img/profile/p3.png"
+							 title="The step profile of refractive index in the optical fiber core.">
+						<input id="modelerInputProfile3" name="modelerInputProfile" type="radio" value="3">
 					</label>
 					<label>
-						<img src="src/img/profile/p4.png" class="noselect modelerInputProfile4img"
-							 title="The step profile of refractive index in the optical fiber core with depressive cladding."
-							 alt="The step profile of refractive index in the optical fiber core with depressive cladding.">
-						<input id="modelerInputProfile4" type="radio" name="modelerInputProfile" value="4">
+						<img alt="The step profile of refractive index in the optical fiber core with depressive cladding." class="noselect modelerInputProfile4img"
+							 src="src/img/profile/p4.png"
+							 title="The step profile of refractive index in the optical fiber core with depressive cladding.">
+						<input id="modelerInputProfile4" name="modelerInputProfile" type="radio" value="4">
 					</label>
 					<label>
-						<img src="src/img/profile/p5.png" class="noselect modelerInputProfile5img"
-							 title="The step profile of refractive index in the optical fiber core with a depressive ring around the core."
-							 alt="The step profile of refractive index in the optical fiber core with a depressive ring around the core.">
-						<input id="modelerInputProfile5" type="radio" name="modelerInputProfile" value="5">
+						<img alt="The step profile of refractive index in the optical fiber core with a depressive ring around the core." class="noselect modelerInputProfile5img"
+							 src="src/img/profile/p5.png"
+							 title="The step profile of refractive index in the optical fiber core with a depressive ring around the core.">
+						<input id="modelerInputProfile5" name="modelerInputProfile" type="radio" value="5">
 					</label>
 				</div>
 
@@ -91,51 +91,51 @@
 					<table>
 						<tr>
 							<td><label for="modelerInputGermanium">Germanium: </label></td>
-							<td><input id="modelerInputGermanium" type="number" name="modelerInputGermanium" placeholder="min:0 max:15" min="0" max="15" step="0.1"> [M%]</td>
+							<td><input id="modelerInputGermanium" max="15" min="0" name="modelerInputGermanium" placeholder="min:0 max:15" step="0.1" type="number"> [M%]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerInputFluoride">Fluoride: </label></td>
-							<td><input id="modelerInputFluoride" type="number" name="modelerInputFluoride" placeholder="min:0 max:2" min="0" max="2" step="0.1" disabled> [M%]</td>
+							<td><input disabled id="modelerInputFluoride" max="2" min="0" name="modelerInputFluoride" placeholder="min:0 max:2" step="0.1" type="number"> [M%]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerInputWavelength">Wavelength: </label></td>
-							<td><input id="modelerInputWavelength" type="number" name="modelerInputWavelength" placeholder="non-negative" min="0" step="0.01"> [um]</td>
+							<td><input id="modelerInputWavelength" min="0" name="modelerInputWavelength" placeholder="non-negative" step="0.01" type="number"> [um]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerInputA">a: </label></td>
-							<td><input id="modelerInputA" type="number" name="modelerInputA" placeholder="greater than 0" min="0" step="0.1"> [um]</td>
+							<td><input id="modelerInputA" min="0" name="modelerInputA" placeholder="greater than 0" step="0.1" type="number"> [um]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerInputB">b: </label></td>
-							<td><input id="modelerInputB" type="number" name="modelerInputB" placeholder="non-negative" min="0" step="0.1" disabled> [um]</td>
+							<td><input disabled id="modelerInputB" min="0" name="modelerInputB" placeholder="non-negative" step="0.1" type="number"> [um]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerInputC">c: </label></td>
-							<td><input id="modelerInputC" type="number" name="modelerInputC" placeholder="non-negative" min="0" step="0.1" disabled> [um]</td>
+							<td><input disabled id="modelerInputC" min="0" name="modelerInputC" placeholder="non-negative" step="0.1" type="number"> [um]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerInputQ">q: </label></td>
-							<td><input id="modelerInputQ" type="number" name="modelerInputQ" placeholder="greater than 1" min="1" step="0.1" value="4" disabled></td>
+							<td><input disabled id="modelerInputQ" min="1" name="modelerInputQ" placeholder="greater than 1" step="0.1" type="number" value="4"></td>
 						</tr>
 						<tr>
 							<td><label for="modelerInput2DPoints">2D points: </label></td>
-							<td><input id="modelerInput2DPoints" type="number" name="modelerInput2DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
+							<td><input id="modelerInput2DPoints" min="1" name="modelerInput2DPoints" placeholder="greater than 1" step="1" type="number" value="1000"></td>
 						</tr>
 						<tr>
 							<td><label for="modelerInput3DPoints">3D points: </label></td>
-							<td><input id="modelerInput3DPoints" type="number" name="modelerInput3DPoints" placeholder="greater than 1" min="1" step="1" value="1000"></td>
+							<td><input id="modelerInput3DPoints" min="1" name="modelerInput3DPoints" placeholder="greater than 1" step="1" type="number" value="1000"></td>
 						</tr>
 					</table>
 				</div>
 
 				<div class="modelerInputSubmits">
 					<label>
-						2D: <input id="modelerInputPlot2D" type="checkbox" name="modelerInputPlot2D" checked>
+						2D: <input checked id="modelerInputPlot2D" name="modelerInputPlot2D" type="checkbox">
 					</label>
 					<label>
-						3D: <input id="modelerInputPlot3D" type="checkbox" name="modelerInputPlot3D" checked>
+						3D: <input checked id="modelerInputPlot3D" name="modelerInputPlot3D" type="checkbox">
 					</label>
-					<button id="modelerInputGenerate" type="button" name="modelerInputGenerate">GENERATE</button>
+					<button id="modelerInputGenerate" name="modelerInputGenerate" type="button">GENERATE</button>
 				</div>
 			</div>
 
@@ -149,27 +149,27 @@
 					<table>
 						<tr>
 							<td><label for="modelerOutputValuesN1">n1: </label></td>
-							<td><input id="modelerOutputValuesN1" name="modelerOutputValuesN1" type="number" disabled></td>
+							<td><input disabled id="modelerOutputValuesN1" name="modelerOutputValuesN1" type="number"></td>
 						</tr>
 						<tr>
 							<td><label for="modelerOutputValuesN2">n2: </label></td>
-							<td><input id="modelerOutputValuesN2" name="modelerOutputValuesN2" type="number" disabled></td>
+							<td><input disabled id="modelerOutputValuesN2" name="modelerOutputValuesN2" type="number"></td>
 						</tr>
 						<tr id="modelerOutputValuesN3Disabled">
 							<td><label for="modelerOutputValuesN3">n3: </label></td>
-							<td><input id="modelerOutputValuesN3" name="modelerOutputValuesN3" type="number" disabled></td>
+							<td><input disabled id="modelerOutputValuesN3" name="modelerOutputValuesN3" type="number"></td>
 						</tr>
 						<tr>
 							<td><label for="modelerOutputValuesV1">V1: </label></td>
-							<td><input id="modelerOutputValuesV1" name="modelerOutputValuesV1" type="number" disabled> [rad/(T*m)]</td>
+							<td><input disabled id="modelerOutputValuesV1" name="modelerOutputValuesV1" type="number"> [rad/(T*m)]</td>
 						</tr>
 						<tr>
 							<td><label for="modelerOutputValuesV2">V2: </label></td>
-							<td><input id="modelerOutputValuesV2" name="modelerOutputValuesV2" type="number" disabled> [rad/(T*m)]</td>
+							<td><input disabled id="modelerOutputValuesV2" name="modelerOutputValuesV2" type="number"> [rad/(T*m)]</td>
 						</tr>
 						<tr id="modelerOutputValuesV3Disabled">
 							<td><label for="modelerOutputValuesV3">V3: </label></td>
-							<td><input id="modelerOutputValuesV3" name="modelerOutputValuesV3" type="number" disabled> [rad/(T*m)]</td>
+							<td><input disabled id="modelerOutputValuesV3" name="modelerOutputValuesV3" type="number"> [rad/(T*m)]</td>
 						</tr>
 					</table>
 				</div>

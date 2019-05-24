@@ -121,8 +121,8 @@ a:hover {
 }
 
 .commonMenu {
-	text-align: center;
 	margin: 10px;
+	text-align: center;
 }
 
 .commonMenu span {
@@ -197,8 +197,8 @@ a:hover {
 /* MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER--- */
 /* Input */
 .modelerInput {
-	margin: 10px 0;
 	overflow: hidden;
+	margin: 10px 0;
 }
 
 /* Input URLArguments */
@@ -209,9 +209,9 @@ a:hover {
 	padding: 5px;
 	text-align: justify;
 	text-justify: inter-word;
-	background: #dee8f2;
-	border: 1px solid #91b2d4;
 	color: #2f5479;
+	border: 1px solid #91b2d4;
+	background: #dee8f2;
 }
 
 #modelerInputURLArguments p {
@@ -219,8 +219,8 @@ a:hover {
 }
 
 #modelerInputURLArguments p:first-child {
-	margin-bottom: 5px;
 	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 #modelerInputURLArguments p:last-child {
@@ -228,9 +228,9 @@ a:hover {
 }
 
 #modelerInputURLArguments button {
+	font-weight: bold;
 	margin-left: 5px;
 	padding: 2px 5px;
-	font-weight: bold;
 	color: #333;
 	border: 1px solid #a5a5a5;
 	background: linear-gradient(#f8f8f8, #ddd);
@@ -265,8 +265,8 @@ a:hover {
 }
 
 .modelerInputProfiles img {
-	border: 1px solid #aaa;
 	margin-bottom: 10px;
+	border: 1px solid #aaa;
 }
 
 .modelerInputProfiles img:hover {
@@ -279,18 +279,18 @@ a:hover {
 }
 
 .modelerInputProfile1img, .modelerInputProfile2img, .modelerInputProfile3img {
-	height: 151px;
 	width: 151px;
+	height: 151px;
 }
 
 .modelerInputProfile4img {
-	height: 151px;
 	width: 227px;
+	height: 151px;
 }
 
 .modelerInputProfile5img {
-	height: 151px;
 	width: 303px;
+	height: 151px;
 }
 
 /* Input Arguments */
@@ -299,8 +299,8 @@ a:hover {
 }
 
 .modelerInputArguments td:first-child {
-	text-align: right;
 	font-weight: bold;
+	text-align: right;
 }
 
 .modelerInputArguments input {
@@ -314,8 +314,8 @@ a:hover {
 }
 
 .modelerInputArguments input:focus {
-	outline: 1px solid #0066cc;
 	border: 1px solid #0066cc;
+	outline: 1px solid #0066cc;
 }
 
 /* Input Submits */
@@ -338,10 +338,10 @@ a:hover {
 }
 
 .modelerInputSubmits button {
-	background: #0066cc;
-	border: 1px solid #ccc;
 	padding: 8px;
 	color: #fff;
+	border: 1px solid #ccc;
+	background: #0066cc;
 }
 
 .modelerInputSubmits button:hover {
@@ -349,20 +349,20 @@ a:hover {
 }
 
 .modelerInputSubmits button:active {
-	box-shadow: inset 0 0 10px 2px #1B273F;
 	border: 1px solid #1B273F;
+	box-shadow: inset 0 0 10px 2px #1B273F;
 }
 
 /* Output Error */
 #modelerOutputError {
 	display: none;
 	margin-top: 10px;
-	background: #f2dede;
-	border: 1px solid #d4919c;
-	color: #79302f;
 	padding: 5px;
 	text-align: justify;
 	text-justify: inter-word;
+	color: #79302f;
+	border: 1px solid #d4919c;
+	background: #f2dede;
 }
 
 #modelerOutputError p {
@@ -370,8 +370,8 @@ a:hover {
 }
 
 #modelerOutputError p:first-child {
-	margin-bottom: 5px;
 	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 #modelerOutputError p:last-child {
@@ -382,26 +382,26 @@ a:hover {
 #modelerOutputValues {
 	display: none;
 	margin-top: 10px;
-	border: 1px solid #ccc;
 	padding: 5px;
+	border: 1px solid #ccc;
 }
 
 #modelerOutputValues td:first-child {
-	text-align: right;
 	font-weight: bold;
+	text-align: right;
 }
 
 #modelerOutputValues input {
 	width: 150px;
 	padding: 5px;
+	color: #222;
 	border: 0;
 	outline: 0;
-	color: #222;
 }
 
 #modelerOutputValues input:disabled {
-	background: #fff;
 	color: #222;
+	background: #fff;
 }
 
 /* Plots */
@@ -409,8 +409,8 @@ a:hover {
 	display: none;
 	width: 998px;
 	height: 500px;
-	border: 1px solid #aaa;
 	margin: 10px 0 0;
+	border: 1px solid #aaa;
 }
 
 /* DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION--- */
