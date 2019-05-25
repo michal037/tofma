@@ -854,6 +854,11 @@ tofma.output = {};
 	tofma.output.v3 = {};
 /* END - structure definition for global I/O - END */
 
+/**
+ * Show URL arguments block
+ *
+ * @param {boolean} show - 'true' or 'false'
+ */
 tofma.input.urlArgsShow = function(show) {
 	if(show === true) {
 		tofma.dom.input.urlArguments.block.style.display = "block";
@@ -862,6 +867,11 @@ tofma.input.urlArgsShow = function(show) {
 	}
 };
 
+/**
+ * Show error block
+ *
+ * @param {boolean} show - 'true' or 'false'
+ */
 tofma.output.errorShow = function(show) {
 	if(show === true) {
 		tofma.dom.output.error.block.style.display = "block";
@@ -870,10 +880,20 @@ tofma.output.errorShow = function(show) {
 	}
 };
 
+/**
+ * Print message to error block
+ *
+ * @param {string} text - message
+ */
 tofma.output.errorPrint = function(text) {
 	tofma.dom.output.error.text.textContent = text;
 };
 
+/**
+ * Show output values block
+ *
+ * @param {boolean} show - 'true' or 'false'
+ */
 tofma.output.show = function(show) {
 	if(show === true) {
 		tofma.dom.output.values.block.style.display = "block";
@@ -882,6 +902,11 @@ tofma.output.show = function(show) {
 	}
 };
 
+/**
+ * Show N3 in output values block
+ *
+ * @param {boolean} show - 'true' or 'false'
+ */
 tofma.output.n3Show = function(show) {
 	if(show === true) {
 		tofma.dom.output.values.n3Block.style.display = "table-row";
@@ -890,6 +915,11 @@ tofma.output.n3Show = function(show) {
 	}
 };
 
+/**
+ * Show V1 in output values block
+ *
+ * @param {boolean} show - 'true' or 'false'
+ */
 tofma.output.v3Show = function(show) {
 	if(show === true) {
 		tofma.dom.output.values.v3Block.style.display = "table-row";
@@ -898,12 +928,43 @@ tofma.output.v3Show = function(show) {
 	}
 };
 
+/**
+ * Set profile in UI
+ *
+ * @param {number} value - profile, one of {1, 2, 3, 4, 5}
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.profile.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* 'value' must be {1, 2, 3, 4, 5} */
+	if((value < 1) || (value > 5) || !tofma.isInteger(value)) return false;
 
+	/* set value */
+	if(value === 1) tofma.dom.input.profiles.p1.checked = true;
+	if(value === 2) tofma.dom.input.profiles.p2.checked = true;
+	if(value === 3) tofma.dom.input.profiles.p3.checked = true;
+	if(value === 4) tofma.dom.input.profiles.p4.checked = true;
+	if(value === 5) tofma.dom.input.profiles.p5.checked = true;
+
+	/* no errors */
+	return true;
 };
 
+/**
+ * Get profile from UI
+ *
+ * @return {number|boolean} - one of {1, 2, 3, 4, 5} or 'false' when an error occurs
+ */
 tofma.input.profile.get = function() {
+	if(tofma.dom.input.profiles.p1.checked) return 1;
+	if(tofma.dom.input.profiles.p2.checked) return 2;
+	if(tofma.dom.input.profiles.p3.checked) return 3;
+	if(tofma.dom.input.profiles.p4.checked) return 4;
+	if(tofma.dom.input.profiles.p5.checked) return 5;
 
+	/* error */
+	return false;
 };
 
 tofma.input.germanium.set = function(value) {
