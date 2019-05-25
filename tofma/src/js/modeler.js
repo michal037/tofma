@@ -967,12 +967,37 @@ tofma.input.profile.get = function() {
 	return false;
 };
 
+/**
+ * Set germanium admixture in UI
+ *
+ * @param {number} value - accept: <0; 15>
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.germanium.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: <0; 15> */
+	if((value < 0) || (value > 15)) return false;
 
+	tofma.dom.input.arguments.germanium.value = value;
+
+	return true;
 };
 
+/**
+ * Get germanium admixture from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.germanium.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.germanium.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: <0; 15> */
+	if((value < 0) || (value > 15)) return false;
+
+	return value;
 };
 
 tofma.input.fluoride.set = function(value) {
