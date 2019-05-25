@@ -634,13 +634,13 @@ tofma.verdetConstant = function(wavelength, coefficients)
 	try {
 		/* 'wavelength' type must be a number */
 		if(tofma.isNotNumber(wavelength)) throw 1;
-		/* the wavelength must be 0 or be positive */
+		/* the 'wavelength' must be 0 or be positive */
 		if(wavelength < 0) throw 2;
 		/* discard the wrong data types for 'coefficients' */
 		if(!coefficients) throw 3;
 		/* check if 'coefficients' contains the required tables */
 		if(!Array.isArray(coefficients.a) || !Array.isArray(coefficients.b)) throw 4;
-		/* length of arrays coefficients.a and coefficients.b must be 3 */
+		/* length of arrays 'coefficients.a' and 'coefficients.b' must be 3 */
 		if((coefficients.a.length !== 3) || (coefficients.b.length !== 3)) throw 5;
 
 		var i; /* for iterator */
@@ -697,7 +697,7 @@ tofma.verdetConstant = function(wavelength, coefficients)
 				);
 				break;
 			case 5:
-				console.error(errorFunctionName, "length of array coefficients.a or coefficients.b is not 3",
+				console.error(errorFunctionName, "length of array 'coefficients.a' or 'coefficients.b' is not 3",
 					"\n\tcoefficients.a.length:", coefficients.a.length,
 					"\n\tcoefficients.b.length:", coefficients.b.length
 				);
@@ -1000,28 +1000,103 @@ tofma.input.germanium.get = function() {
 	return value;
 };
 
+/**
+ * Set fluoride admixture in UI
+ *
+ * @param {number} value - accept: <0; 2>
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.fluoride.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: <0; 2> */
+	if((value < 0) || (value > 2)) return false;
 
+	tofma.dom.input.arguments.fluoride.value = value;
+
+	return true;
 };
 
+/**
+ * Get fluoride admixture from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.fluoride.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.fluoride.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: <0; 2> */
+	if((value < 0) || (value > 2)) return false;
+
+	return value;
 };
 
+/**
+ * Set wavelength in UI
+ *
+ * @param {number} value - accept: number>=0
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.wavelength.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be 0 or be positive */
+	if(value < 0) return false;
 
+	tofma.dom.input.arguments.wavelength.value = value;
+
+	return true;
 };
 
+/**
+ * Get wavelength from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.wavelength.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.wavelength.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be 0 or be positive */
+	if(value < 0) return false;
+
+	return value;
 };
 
+/**
+ * Set a in UI
+ *
+ * @param {number} value - accept: number>0
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.a.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be positive */
+	if(value <= 0) return false;
 
+	tofma.dom.input.arguments.a.value = value;
+
+	return true;
 };
 
+/**
+ * Get a from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.a.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.a.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be positive */
+	if(value <= 0) return false;
+
+	return value;
 };
 
 tofma.input.b.set = function(value) {
