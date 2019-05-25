@@ -1099,20 +1099,70 @@ tofma.input.a.get = function() {
 	return value;
 };
 
+/**
+ * Set b in UI
+ *
+ * @param {number} value - accept: number>=0
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.b.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be 0 or be positive */
+	if(value < 0) return false;
 
+	tofma.dom.input.arguments.b.value = value;
+
+	return true;
 };
 
+/**
+ * Get b from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.b.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.b.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be 0 or be positive */
+	if(value < 0) return false;
+
+	return value;
 };
 
+/**
+ * Set c in UI
+ *
+ * @param {number} value - accept: number>=0
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.c.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be 0 or be positive */
+	if(value < 0) return false;
 
+	tofma.dom.input.arguments.c.value = value;
+
+	return true;
 };
 
+/**
+ * Get c from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.c.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.c.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be 0 or be positive */
+	if(value < 0) return false;
+
+	return value;
 };
 
 tofma.input.q.set = function(value) {
