@@ -773,7 +773,7 @@ tofma.getModelerDOM = function() {
 	tofma.dom.output.plots.plot2D = document.getElementById("modelerOutputPlot2D");
 	tofma.dom.output.plots.plot3D = document.getElementById("modelerOutputPlot3D");
 
-	/* tests for null in tofma.dom */
+	/* tests for null in 'tofma.dom' */
 	try {
 		if(!tofma.dom.input.urlArguments.block) throw "tofma.dom.input.urlArguments.block";
 		if(!tofma.dom.input.urlArguments.cancel) throw "tofma.dom.input.urlArguments.cancel";
@@ -828,6 +828,194 @@ tofma.getModelerDOM = function() {
 
 		return null;
 	}
+};
+
+/* structure definition for global I/O */
+tofma.input = {};
+	tofma.input.profile = {};
+	tofma.input.germanium = {};
+	tofma.input.fluoride = {};
+	tofma.input.wavelength = {};
+	tofma.input.a = {};
+	tofma.input.b = {};
+	tofma.input.c = {};
+	tofma.input.q = {};
+	tofma.input.points2D = {};
+	tofma.input.points3D = {};
+	tofma.input.plot2D = {};
+	tofma.input.plot3D = {};
+
+tofma.output = {};
+	tofma.output.n1 = {};
+	tofma.output.n2 = {};
+	tofma.output.n3 = {};
+	tofma.output.v1 = {};
+	tofma.output.v2 = {};
+	tofma.output.v3 = {};
+/* END - structure definition for global I/O - END */
+
+tofma.input.urlArgsShow = function(show) {
+
+};
+
+tofma.output.errorShow = function(show) {
+
+};
+
+tofma.output.errorPrint = function(text) {
+
+};
+
+tofma.output.n3Show = function(show) {
+
+};
+
+tofma.output.v3Show = function(show) {
+
+};
+
+tofma.input.profile.set = function(value) {
+
+};
+
+tofma.input.profile.get = function() {
+
+};
+
+tofma.input.germanium.set = function(value) {
+
+};
+
+tofma.input.germanium.get = function() {
+
+};
+
+tofma.input.fluoride.set = function(value) {
+
+};
+
+tofma.input.fluoride.get = function() {
+
+};
+
+tofma.input.wavelength.set = function(value) {
+
+};
+
+tofma.input.wavelength.get = function() {
+
+};
+
+tofma.input.a.set = function(value) {
+
+};
+
+tofma.input.a.get = function() {
+
+};
+
+tofma.input.b.set = function(value) {
+
+};
+
+tofma.input.b.get = function() {
+
+};
+
+tofma.input.c.set = function(value) {
+
+};
+
+tofma.input.c.get = function() {
+
+};
+
+tofma.input.q.set = function(value) {
+
+};
+
+tofma.input.q.get = function() {
+
+};
+
+tofma.input.points2D.set = function(value) {
+
+};
+
+tofma.input.points2D.get = function() {
+
+};
+
+tofma.input.points3D.set = function(value) {
+
+};
+
+tofma.input.points3D.get = function() {
+
+};
+
+tofma.input.plot2D.set = function(value) {
+
+};
+
+tofma.input.plot2D.get = function() {
+
+};
+
+tofma.input.plot3D.set = function(value) {
+
+};
+
+tofma.input.plot3D.get = function() {
+
+};
+
+tofma.output.n1.set = function(value) {
+
+};
+
+tofma.output.n1.get = function() {
+
+};
+
+tofma.output.n2.set = function(value) {
+
+};
+
+tofma.output.n2.get = function() {
+
+};
+
+tofma.output.n3.set = function(value) {
+
+};
+
+tofma.output.n3.get = function() {
+
+};
+
+tofma.output.v1.set = function(value) {
+
+};
+
+tofma.output.v1.get = function() {
+
+};
+
+tofma.output.v2.set = function(value) {
+
+};
+
+tofma.output.v2.get = function() {
+
+};
+
+tofma.output.v3.set = function(value) {
+
+};
+
+tofma.output.v3.get = function() {
+
 };
 
 /* ENTRY POINT */
