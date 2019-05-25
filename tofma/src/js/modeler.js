@@ -855,23 +855,47 @@ tofma.output = {};
 /* END - structure definition for global I/O - END */
 
 tofma.input.urlArgsShow = function(show) {
-
+	if(show === true) {
+		tofma.dom.input.urlArguments.block.style.display = "block";
+	} else {
+		tofma.dom.input.urlArguments.block.style.display = "none";
+	}
 };
 
 tofma.output.errorShow = function(show) {
-
+	if(show === true) {
+		tofma.dom.output.error.block.style.display = "block";
+	} else {
+		tofma.dom.output.error.block.style.display = "none";
+	}
 };
 
 tofma.output.errorPrint = function(text) {
+	tofma.dom.output.error.text.textContent = text;
+};
 
+tofma.output.show = function(show) {
+	if(show === true) {
+		tofma.dom.output.values.block.style.display = "block";
+	} else {
+		tofma.dom.output.values.block.style.display = "none";
+	}
 };
 
 tofma.output.n3Show = function(show) {
-
+	if(show === true) {
+		tofma.dom.output.values.n3Block.style.display = "table-row";
+	} else {
+		tofma.dom.output.values.n3Block.style.display = "none";
+	}
 };
 
 tofma.output.v3Show = function(show) {
-
+	if(show === true) {
+		tofma.dom.output.values.v3Block.style.display = "table-row";
+	} else {
+		tofma.dom.output.values.v3Block.style.display = "none";
+	}
 };
 
 tofma.input.profile.set = function(value) {
