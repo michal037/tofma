@@ -726,8 +726,12 @@ tofma.dom = {};
 	tofma.dom.output.plots = {};
 /* END - structure definition for modeler DOM - END */
 
-/* ENTRY POINT */
-document.addEventListener("DOMContentLoaded", function() {
+/**
+ * Get modeler DOM and create 'tofma.dom'
+ *
+ * @return {null|boolean} - return 'true' or 'null' when an error occurs
+ */
+tofma.getModelerDOM = function() {
 	/* search for DOM elements */
 	tofma.dom.input.urlArguments.block = document.getElementById("modelerInputURLArguments");
 	tofma.dom.input.urlArguments.cancel = document.getElementById("modelerInputURLArgumentsCancel");
@@ -769,7 +773,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	tofma.dom.output.plots.plot2D = document.getElementById("modelerOutputPlot2D");
 	tofma.dom.output.plots.plot3D = document.getElementById("modelerOutputPlot3D");
 
-	/* test for null */
+	/* tests for null in tofma.dom */
 	try {
 		if(!tofma.dom.input.urlArguments.block) throw "tofma.dom.input.urlArguments.block";
 		if(!tofma.dom.input.urlArguments.cancel) throw "tofma.dom.input.urlArguments.cancel";
@@ -810,10 +814,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		if(!tofma.dom.output.plots.plot2D) throw "tofma.dom.output.plots.plot2D";
 		if(!tofma.dom.output.plots.plot3D) throw "tofma.dom.output.plots.plot3D";
+
+		return true;
 	} catch(error) {
+		/* for programmer */
+		console.error("tofma.getModelerDOM: The required DOM element was not found!\n\t" +
+			error + " is null!\n\tThe program stopped!");
+
+		/* for user */
 		alert("ERROR: The required DOM element was not found!");
 		alert(error + " is null!");
 		alert("The program stopped!");
+
 		return null;
 	}
+};
+
+/* ENTRY POINT */
+document.addEventListener("DOMContentLoaded", function() {
+	/* get modeler DOM, if an error has occurred, stop the program */
+	if(!tofma.getModelerDOM()) return null;
 });
