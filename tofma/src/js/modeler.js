@@ -364,7 +364,7 @@ tofma.sellmeierCoefficients.fluorine = function(concentration)
 			a: [a1(concentration), a2(concentration), a3(concentration)],
 			b: [b1(concentration), b2(concentration), b3(concentration)]
 		};
-	} catch (error) {
+	} catch(error) {
 		/* for a better look in the console */
 		var errorFunctionName = "tofma.sellmeierCoefficients.fluorine:";
 
@@ -420,7 +420,7 @@ tofma.sellmeier = function(wavelength, coefficients)
 		for(i=0; i<=2; i++) refractiveIndex += (coefficients.a[i] * wavelength) / (wavelength - coefficients.b[i]);
 
 		return refractiveIndex;
-	} catch (error) {
+	} catch(error) {
 		/* for a better look in the console */
 		var errorFunctionName = "tofma.sellmeier:";
 
@@ -571,7 +571,7 @@ tofma.cutoffWavelength = function(data)
 		}
 
 		return NA * ((2 * Math.PI * data.a) / Vc);
-	} catch (error) {
+	} catch(error) {
 		/* for a better look in the console */
 		var errorFunctionName = "tofma.cutoffWavelength:";
 
@@ -669,7 +669,7 @@ tofma.verdetConstant = function(wavelength, coefficients)
 		bottom = Math.sqrt(bottom);
 
 		return 293.3396048946175 * wavelength * Math.abs(top / bottom);
-	} catch (error) {
+	} catch(error) {
 		/* for a better look in the console */
 		var errorFunctionName = "tofma.verdetConstant:";
 
@@ -710,3 +710,110 @@ tofma.verdetConstant = function(wavelength, coefficients)
 		return "undefined";
 	}
 };
+
+/* structure definition for modeler DOM */
+tofma.dom = {};
+	/* inputs */
+	tofma.dom.input = {};
+	tofma.dom.input.urlArguments = {};
+	tofma.dom.input.profiles = {};
+	tofma.dom.input.arguments = {};
+	tofma.dom.input.submits = {};
+	/* outputs */
+	tofma.dom.output = {};
+	tofma.dom.output.error = {};
+	tofma.dom.output.values = {};
+	tofma.dom.output.plots = {};
+/* END - structure definition for modeler DOM - END */
+
+/* ENTRY POINT */
+document.addEventListener("DOMContentLoaded", function() {
+	/* search for DOM elements */
+	tofma.dom.input.urlArguments.block = document.getElementById("modelerInputURLArguments");
+	tofma.dom.input.urlArguments.cancel = document.getElementById("modelerInputURLArgumentsCancel");
+	tofma.dom.input.urlArguments.load = document.getElementById("modelerInputURLArgumentsLoad");
+
+	tofma.dom.input.profiles.p1 = document.getElementById("modelerInputProfile1");
+	tofma.dom.input.profiles.p2 = document.getElementById("modelerInputProfile2");
+	tofma.dom.input.profiles.p3 = document.getElementById("modelerInputProfile3");
+	tofma.dom.input.profiles.p4 = document.getElementById("modelerInputProfile4");
+	tofma.dom.input.profiles.p5 = document.getElementById("modelerInputProfile5");
+
+	tofma.dom.input.arguments.germanium = document.getElementById("modelerInputGermanium");
+	tofma.dom.input.arguments.fluoride = document.getElementById("modelerInputFluoride");
+	tofma.dom.input.arguments.wavelength = document.getElementById("modelerInputWavelength");
+	tofma.dom.input.arguments.a = document.getElementById("modelerInputA");
+	tofma.dom.input.arguments.b = document.getElementById("modelerInputB");
+	tofma.dom.input.arguments.c = document.getElementById("modelerInputC");
+	tofma.dom.input.arguments.q = document.getElementById("modelerInputQ");
+	tofma.dom.input.arguments.points2D = document.getElementById("modelerInputPoints2D");
+	tofma.dom.input.arguments.points3D = document.getElementById("modelerInputPoints3D");
+
+	tofma.dom.input.submits.plot2D = document.getElementById("modelerInputPlot2D");
+	tofma.dom.input.submits.plot3D = document.getElementById("modelerInputPlot3D");
+	tofma.dom.input.submits.generate = document.getElementById("modelerInputGenerate");
+
+	tofma.dom.output.error.block = document.getElementById("modelerOutputError");
+	tofma.dom.output.error.text = document.getElementById("modelerOutputErrorText");
+
+	tofma.dom.output.values.block = document.getElementById("modelerOutputValues");
+	tofma.dom.output.values.n1 = document.getElementById("modelerOutputValuesN1");
+	tofma.dom.output.values.n2 = document.getElementById("modelerOutputValuesN2");
+	tofma.dom.output.values.n3 = document.getElementById("modelerOutputValuesN3");
+	tofma.dom.output.values.n3Block = document.getElementById("modelerOutputValuesN3Block");
+	tofma.dom.output.values.v1 = document.getElementById("modelerOutputValuesV1");
+	tofma.dom.output.values.v2 = document.getElementById("modelerOutputValuesV2");
+	tofma.dom.output.values.v3 = document.getElementById("modelerOutputValuesV3");
+	tofma.dom.output.values.v3Block = document.getElementById("modelerOutputValuesV3Block");
+
+	tofma.dom.output.plots.plot2D = document.getElementById("modelerOutputPlot2D");
+	tofma.dom.output.plots.plot3D = document.getElementById("modelerOutputPlot3D");
+
+	/* test for null */
+	try {
+		if(!tofma.dom.input.urlArguments.block) throw "tofma.dom.input.urlArguments.block";
+		if(!tofma.dom.input.urlArguments.cancel) throw "tofma.dom.input.urlArguments.cancel";
+		if(!tofma.dom.input.urlArguments.load) throw "tofma.dom.input.urlArguments.load";
+
+		if(!tofma.dom.input.profiles.p1) throw "tofma.dom.input.profiles.p1";
+		if(!tofma.dom.input.profiles.p2) throw "tofma.dom.input.profiles.p2";
+		if(!tofma.dom.input.profiles.p3) throw "tofma.dom.input.profiles.p3";
+		if(!tofma.dom.input.profiles.p4) throw "tofma.dom.input.profiles.p4";
+		if(!tofma.dom.input.profiles.p5) throw "tofma.dom.input.profiles.p5";
+
+		if(!tofma.dom.input.arguments.germanium) throw "tofma.dom.input.arguments.germanium";
+		if(!tofma.dom.input.arguments.fluoride) throw "tofma.dom.input.arguments.fluoride";
+		if(!tofma.dom.input.arguments.wavelength) throw "tofma.dom.input.arguments.wavelength";
+		if(!tofma.dom.input.arguments.a) throw "tofma.dom.input.arguments.a";
+		if(!tofma.dom.input.arguments.b) throw "tofma.dom.input.arguments.b";
+		if(!tofma.dom.input.arguments.c) throw "tofma.dom.input.arguments.c";
+		if(!tofma.dom.input.arguments.q) throw "tofma.dom.input.arguments.q";
+		if(!tofma.dom.input.arguments.points2D) throw "tofma.dom.input.arguments.points2D";
+		if(!tofma.dom.input.arguments.points3D) throw "tofma.dom.input.arguments.points3D";
+
+		if(!tofma.dom.input.submits.plot2D) throw "tofma.dom.input.submits.plot2D";
+		if(!tofma.dom.input.submits.plot3D) throw "tofma.dom.input.submits.plot3D";
+		if(!tofma.dom.input.submits.generate) throw "tofma.dom.input.submits.generate";
+
+		if(!tofma.dom.output.error.block) throw "tofma.dom.output.error.block";
+		if(!tofma.dom.output.error.text) throw "tofma.dom.output.error.text";
+
+		if(!tofma.dom.output.values.block) throw "tofma.dom.output.values.block";
+		if(!tofma.dom.output.values.n1) throw "tofma.dom.output.values.n1";
+		if(!tofma.dom.output.values.n2) throw "tofma.dom.output.values.n2";
+		if(!tofma.dom.output.values.n3) throw "tofma.dom.output.values.n3";
+		if(!tofma.dom.output.values.n3Block) throw "tofma.dom.output.values.n3Block";
+		if(!tofma.dom.output.values.v1) throw "tofma.dom.output.values.v1";
+		if(!tofma.dom.output.values.v2) throw "tofma.dom.output.values.v2";
+		if(!tofma.dom.output.values.v3) throw "tofma.dom.output.values.v3";
+		if(!tofma.dom.output.values.v3Block) throw "tofma.dom.output.values.v3Block";
+
+		if(!tofma.dom.output.plots.plot2D) throw "tofma.dom.output.plots.plot2D";
+		if(!tofma.dom.output.plots.plot3D) throw "tofma.dom.output.plots.plot3D";
+	} catch(error) {
+		alert("ERROR: The required DOM element was not found!");
+		alert(error + " is null!");
+		alert("The program stopped!");
+		return null;
+	}
+});
