@@ -1209,10 +1209,10 @@ tofma.input.points3D.get = function() {
 
 /**
  * Set plot2D in UI
- * @param {boolean} value - 'true' or 'false'
  */
 tofma.input.plot2D.set = function(value) {
 	tofma.dom.input.submits.plot2D.checked = (value === true);
+	return true;
 };
 
 /**
@@ -1225,10 +1225,10 @@ tofma.input.plot2D.get = function() {
 
 /**
  * Set plot3D in UI
- * @param {boolean} value - 'true' or 'false'
  */
 tofma.input.plot3D.set = function(value) {
 	tofma.dom.input.submits.plot3D.checked = (value === true);
+	return true;
 };
 
 /**
