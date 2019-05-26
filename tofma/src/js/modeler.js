@@ -872,10 +872,10 @@ tofma.output.errorShow = function(show) {
 
 /**
  * Print message to error block
- * @param {string} text - message
+ * @param {string} message
  */
-tofma.output.errorPrint = function(text) {
-	tofma.dom.output.error.text.textContent = text;
+tofma.output.errorPrint = function(message) {
+	tofma.dom.output.error.text.textContent = message;
 };
 
 /**
@@ -951,7 +951,6 @@ tofma.input.germanium.set = function(value) {
 	if((value < 0) || (value > 15)) return false;
 
 	tofma.dom.input.arguments.germanium.value = value;
-
 	return true;
 };
 
@@ -980,7 +979,6 @@ tofma.input.fluoride.set = function(value) {
 	if((value < 0) || (value > 2)) return false;
 
 	tofma.dom.input.arguments.fluoride.value = value;
-
 	return true;
 };
 
@@ -1009,7 +1007,6 @@ tofma.input.wavelength.set = function(value) {
 	if(value < 0) return false;
 
 	tofma.dom.input.arguments.wavelength.value = value;
-
 	return true;
 };
 
@@ -1038,7 +1035,6 @@ tofma.input.a.set = function(value) {
 	if(value <= 0) return false;
 
 	tofma.dom.input.arguments.a.value = value;
-
 	return true;
 };
 
@@ -1067,7 +1063,6 @@ tofma.input.b.set = function(value) {
 	if(value < 0) return false;
 
 	tofma.dom.input.arguments.b.value = value;
-
 	return true;
 };
 
@@ -1096,7 +1091,6 @@ tofma.input.c.set = function(value) {
 	if(value < 0) return false;
 
 	tofma.dom.input.arguments.c.value = value;
-
 	return true;
 };
 
@@ -1125,7 +1119,6 @@ tofma.input.q.set = function(value) {
 	if(value <= 1) return false;
 
 	tofma.dom.input.arguments.q.value = value;
-
 	return true;
 };
 
@@ -1154,7 +1147,6 @@ tofma.input.points2D.set = function(value) {
 	if(value < 1) return false;
 
 	tofma.dom.input.arguments.points2D.value = value;
-
 	return true;
 };
 
@@ -1186,7 +1178,6 @@ tofma.input.points3D.set = function(value) {
 	if(value < 1) return false;
 
 	tofma.dom.input.arguments.points3D.value = value;
-
 	return true;
 };
 
@@ -1246,9 +1237,7 @@ tofma.input.plot3D.get = function() {
  */
 tofma.output.n1.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-
 	tofma.dom.output.values.n1.value = value;
-
 	return true;
 };
 
@@ -1259,9 +1248,7 @@ tofma.output.n1.set = function(value) {
  */
 tofma.output.n2.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-
 	tofma.dom.output.values.n2.value = value;
-
 	return true;
 };
 
@@ -1272,9 +1259,7 @@ tofma.output.n2.set = function(value) {
  */
 tofma.output.n3.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-
 	tofma.dom.output.values.n3.value = value;
-
 	return true;
 };
 
@@ -1285,9 +1270,7 @@ tofma.output.n3.set = function(value) {
  */
 tofma.output.v1.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-
 	tofma.dom.output.values.v1.value = value;
-
 	return true;
 };
 
@@ -1298,9 +1281,7 @@ tofma.output.v1.set = function(value) {
  */
 tofma.output.v2.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-
 	tofma.dom.output.values.v2.value = value;
-
 	return true;
 };
 
@@ -1311,9 +1292,7 @@ tofma.output.v2.set = function(value) {
  */
 tofma.output.v3.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-
 	tofma.dom.output.values.v3.value = value;
-
 	return true;
 };
 
