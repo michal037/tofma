@@ -1296,6 +1296,60 @@ tofma.output.v3.set = function(value) {
 	return true;
 };
 
+/* structure definition for callbacks */
+tofma.callback = {};
+/* END - structure definition for callbacks - END */
+
+/** callback for URL arguments' cancel button */
+tofma.callback.urlArgsCancel = function() {
+
+};
+
+/** callback for URL arguments' load button */
+tofma.callback.urlArgsLoad = function() {
+
+};
+
+/** callback for profile1 radio input */
+tofma.callback.profile1 = function() {
+
+};
+
+/** callback for profile2 radio input */
+tofma.callback.profile2 = function() {
+
+};
+
+/** callback for profile3 radio input */
+tofma.callback.profile3 = function() {
+
+};
+
+/** callback for profile4 radio input */
+tofma.callback.profile4 = function() {
+
+};
+
+/** callback for profile5 radio input */
+tofma.callback.profile5 = function() {
+
+};
+
+/** callback for plot 2D checkbox */
+tofma.callback.submitPlot2D = function() {
+
+};
+
+/** callback for plot 3D checkbox */
+tofma.callback.submitPlot3D = function() {
+
+};
+
+/** callback for generate button */
+tofma.callback.submitGenerate = function() {
+
+};
+
 /* ENTRY POINT */
 document.addEventListener("DOMContentLoaded", function() {
 	/* get modeler DOM, stop the program if an error has occurred */
