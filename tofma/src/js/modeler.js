@@ -856,7 +856,6 @@ tofma.output = {};
 
 /**
  * Show URL arguments block
- *
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.input.urlArgsShow = function(show) {
@@ -865,7 +864,6 @@ tofma.input.urlArgsShow = function(show) {
 
 /**
  * Show error block
- *
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.errorShow = function(show) {
@@ -874,7 +872,6 @@ tofma.output.errorShow = function(show) {
 
 /**
  * Print message to error block
- *
  * @param {string} text - message
  */
 tofma.output.errorPrint = function(text) {
@@ -883,7 +880,6 @@ tofma.output.errorPrint = function(text) {
 
 /**
  * Show output values block
- *
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.show = function(show) {
@@ -892,7 +888,6 @@ tofma.output.show = function(show) {
 
 /**
  * Show N3 in output values block
- *
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.n3Show = function(show) {
@@ -901,7 +896,6 @@ tofma.output.n3Show = function(show) {
 
 /**
  * Show V1 in output values block
- *
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.v3Show = function(show) {
@@ -910,14 +904,12 @@ tofma.output.v3Show = function(show) {
 
 /**
  * Set profile in UI
- *
  * @param {number} value - profile, one of {1, 2, 3, 4, 5}
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.profile.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: one of {1, 2, 3, 4, 5} */
 	if(tofma.isNotNumber(value)) return false;
-	/* 'value' must be {1, 2, 3, 4, 5} */
 	if((value < 1) || (value > 5) || !tofma.isInteger(value)) return false;
 
 	/* set value */
@@ -935,7 +927,6 @@ tofma.input.profile.set = function(value) {
 
 /**
  * Get profile from UI
- *
  * @return {number|boolean} - one of {1, 2, 3, 4, 5} or 'false' when an error occurs
  */
 tofma.input.profile.get = function() {
@@ -951,14 +942,12 @@ tofma.input.profile.get = function() {
 
 /**
  * Set germanium admixture in UI
- *
  * @param {number} value - accept: <0; 15>
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.germanium.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number <0; 15> */
 	if(tofma.isNotNumber(value)) return false;
-	/* accept: <0; 15> */
 	if((value < 0) || (value > 15)) return false;
 
 	tofma.dom.input.arguments.germanium.value = value;
@@ -968,15 +957,13 @@ tofma.input.germanium.set = function(value) {
 
 /**
  * Get germanium admixture from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.germanium.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.germanium.value);
 
-	/* 'value' type must be a number */
+	/* accept: number <0; 15> */
 	if(tofma.isNotNumber(value)) return false;
-	/* accept: <0; 15> */
 	if((value < 0) || (value > 15)) return false;
 
 	return value;
@@ -984,14 +971,12 @@ tofma.input.germanium.get = function() {
 
 /**
  * Set fluoride admixture in UI
- *
  * @param {number} value - accept: <0; 2>
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.fluoride.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number <0; 2> */
 	if(tofma.isNotNumber(value)) return false;
-	/* accept: <0; 2> */
 	if((value < 0) || (value > 2)) return false;
 
 	tofma.dom.input.arguments.fluoride.value = value;
@@ -1001,15 +986,13 @@ tofma.input.fluoride.set = function(value) {
 
 /**
  * Get fluoride admixture from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.fluoride.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.fluoride.value);
 
-	/* 'value' type must be a number */
+	/* accept: number <0; 2> */
 	if(tofma.isNotNumber(value)) return false;
-	/* accept: <0; 2> */
 	if((value < 0) || (value > 2)) return false;
 
 	return value;
@@ -1017,14 +1000,12 @@ tofma.input.fluoride.get = function() {
 
 /**
  * Set wavelength in UI
- *
  * @param {number} value - accept: number>=0
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.wavelength.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number>=0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be 0 or be positive */
 	if(value < 0) return false;
 
 	tofma.dom.input.arguments.wavelength.value = value;
@@ -1034,15 +1015,13 @@ tofma.input.wavelength.set = function(value) {
 
 /**
  * Get wavelength from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.wavelength.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.wavelength.value);
 
-	/* 'value' type must be a number */
+	/* accept: number>=0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be 0 or be positive */
 	if(value < 0) return false;
 
 	return value;
@@ -1050,14 +1029,12 @@ tofma.input.wavelength.get = function() {
 
 /**
  * Set a in UI
- *
  * @param {number} value - accept: number>0
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.a.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number>0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be positive */
 	if(value <= 0) return false;
 
 	tofma.dom.input.arguments.a.value = value;
@@ -1067,15 +1044,13 @@ tofma.input.a.set = function(value) {
 
 /**
  * Get a from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.a.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.a.value);
 
-	/* 'value' type must be a number */
+	/* accept: number>0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be positive */
 	if(value <= 0) return false;
 
 	return value;
@@ -1083,14 +1058,12 @@ tofma.input.a.get = function() {
 
 /**
  * Set b in UI
- *
  * @param {number} value - accept: number>=0
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.b.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number>=0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be 0 or be positive */
 	if(value < 0) return false;
 
 	tofma.dom.input.arguments.b.value = value;
@@ -1100,15 +1073,13 @@ tofma.input.b.set = function(value) {
 
 /**
  * Get b from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.b.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.b.value);
 
-	/* 'value' type must be a number */
+	/* accept: number>=0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be 0 or be positive */
 	if(value < 0) return false;
 
 	return value;
@@ -1116,14 +1087,12 @@ tofma.input.b.get = function() {
 
 /**
  * Set c in UI
- *
  * @param {number} value - accept: number>=0
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.c.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number>=0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be 0 or be positive */
 	if(value < 0) return false;
 
 	tofma.dom.input.arguments.c.value = value;
@@ -1133,15 +1102,13 @@ tofma.input.c.set = function(value) {
 
 /**
  * Get c from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.c.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.c.value);
 
-	/* 'value' type must be a number */
+	/* accept: number>=0 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be 0 or be positive */
 	if(value < 0) return false;
 
 	return value;
@@ -1149,14 +1116,12 @@ tofma.input.c.get = function() {
 
 /**
  * Set q in UI
- *
  * @param {number} value - accept: number>1
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.q.set = function(value) {
-	/* 'value' type must be a number */
+	/* accept: number>1 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be greater than 1 */
 	if(value <= 1) return false;
 
 	tofma.dom.input.arguments.q.value = value;
@@ -1166,15 +1131,13 @@ tofma.input.q.set = function(value) {
 
 /**
  * Get q from UI
- *
  * @return {number|boolean} - number or 'false' when an error occurs
  */
 tofma.input.q.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.q.value);
 
-	/* 'value' type must be a number */
+	/* accept: number>1 */
 	if(tofma.isNotNumber(value)) return false;
-	/* the 'value' must be greater than 1 */
 	if(value <= 1) return false;
 
 	return value;
@@ -1182,14 +1145,12 @@ tofma.input.q.get = function() {
 
 /**
  * Set points2D in UI
- *
  * @param {number} value - accept: number>=1
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.points2D.set = function(value) {
-	/* 'value' type must be a number */
-	if(tofma.isNotNumber(value)) return false;
 	/* accept: number>=1 */
+	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
 	tofma.dom.input.arguments.points2D.value = value;
@@ -1199,15 +1160,13 @@ tofma.input.points2D.set = function(value) {
 
 /**
  * Get points2D from UI
- *
  * @return {number|boolean} - odd number >=1 or 'false' when an error occurs
  */
 tofma.input.points2D.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.points2D.value);
 
-	/* 'value' type must be a number */
-	if(tofma.isNotNumber(value)) return false;
 	/* accept: number>=1 */
+	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
 	/* I want odd 'value' for easy centering */
@@ -1218,14 +1177,12 @@ tofma.input.points2D.get = function() {
 
 /**
  * Set points3D in UI
- *
  * @param {number} value - accept: number>=1
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.input.points3D.set = function(value) {
-	/* 'value' type must be a number */
-	if(tofma.isNotNumber(value)) return false;
 	/* accept: number>=1 */
+	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
 	tofma.dom.input.arguments.points3D.value = value;
@@ -1235,15 +1192,13 @@ tofma.input.points3D.set = function(value) {
 
 /**
  * Get points3D from UI
- *
  * @return {number|boolean} - odd number >=1 or 'false' when an error occurs
  */
 tofma.input.points3D.get = function() {
 	var value = parseFloat(tofma.dom.input.arguments.points3D.value);
 
-	/* 'value' type must be a number */
-	if(tofma.isNotNumber(value)) return false;
 	/* accept: number>=1 */
+	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
 	/* I want odd 'value' for easy centering */
@@ -1254,7 +1209,6 @@ tofma.input.points3D.get = function() {
 
 /**
  * Set plot2D in UI
- *
  * @param {boolean} value - 'true' or 'false'
  */
 tofma.input.plot2D.set = function(value) {
@@ -1263,7 +1217,6 @@ tofma.input.plot2D.set = function(value) {
 
 /**
  * Get plot2D from UI
- *
  * @return {boolean} - 'true' or 'false'
  */
 tofma.input.plot2D.get = function() {
@@ -1272,7 +1225,6 @@ tofma.input.plot2D.get = function() {
 
 /**
  * Set plot3D in UI
- *
  * @param {boolean} value - 'true' or 'false'
  */
 tofma.input.plot3D.set = function(value) {
@@ -1281,7 +1233,6 @@ tofma.input.plot3D.set = function(value) {
 
 /**
  * Get plot3D from UI
- *
  * @return {boolean} - 'true' or 'false'
  */
 tofma.input.plot3D.get = function() {
@@ -1290,12 +1241,10 @@ tofma.input.plot3D.get = function() {
 
 /**
  * Set n1 in UI
- *
  * @param {number} value - n1
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.n1.set = function(value) {
-	/* 'value' type must be a number */
 	if(tofma.isNotNumber(value)) return false;
 
 	tofma.dom.output.values.n1.value = value;
@@ -1305,12 +1254,10 @@ tofma.output.n1.set = function(value) {
 
 /**
  * Set n2 in UI
- *
  * @param {number} value - n2
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.n2.set = function(value) {
-	/* 'value' type must be a number */
 	if(tofma.isNotNumber(value)) return false;
 
 	tofma.dom.output.values.n2.value = value;
@@ -1320,12 +1267,10 @@ tofma.output.n2.set = function(value) {
 
 /**
  * Set n3 in UI
- *
  * @param {number} value - n3
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.n3.set = function(value) {
-	/* 'value' type must be a number */
 	if(tofma.isNotNumber(value)) return false;
 
 	tofma.dom.output.values.n3.value = value;
@@ -1335,12 +1280,10 @@ tofma.output.n3.set = function(value) {
 
 /**
  * Set v1 in UI
- *
  * @param {number} value - v1
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.v1.set = function(value) {
-	/* 'value' type must be a number */
 	if(tofma.isNotNumber(value)) return false;
 
 	tofma.dom.output.values.v1.value = value;
@@ -1350,12 +1293,10 @@ tofma.output.v1.set = function(value) {
 
 /**
  * Set v2 in UI
- *
  * @param {number} value - v2
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.v2.set = function(value) {
-	/* 'value' type must be a number */
 	if(tofma.isNotNumber(value)) return false;
 
 	tofma.dom.output.values.v2.value = value;
@@ -1365,12 +1306,10 @@ tofma.output.v2.set = function(value) {
 
 /**
  * Set v3 in UI
- *
  * @param {number} value - v3
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.v3.set = function(value) {
-	/* 'value' type must be a number */
 	if(tofma.isNotNumber(value)) return false;
 
 	tofma.dom.output.values.v3.value = value;
