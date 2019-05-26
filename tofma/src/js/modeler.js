@@ -1232,7 +1232,7 @@ tofma.input.plot3D.get = function() {
 
 /**
  * Set n1 in UI
- * @param {number} value - n1
+ * @param {number} value
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.n1.set = function(value) {
@@ -1243,7 +1243,7 @@ tofma.output.n1.set = function(value) {
 
 /**
  * Set n2 in UI
- * @param {number} value - n2
+ * @param {number} value
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.n2.set = function(value) {
@@ -1254,7 +1254,7 @@ tofma.output.n2.set = function(value) {
 
 /**
  * Set n3 in UI
- * @param {number} value - n3
+ * @param {number} value
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.n3.set = function(value) {
@@ -1265,7 +1265,7 @@ tofma.output.n3.set = function(value) {
 
 /**
  * Set v1 in UI
- * @param {number} value - v1
+ * @param {number} value
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.v1.set = function(value) {
@@ -1276,7 +1276,7 @@ tofma.output.v1.set = function(value) {
 
 /**
  * Set v2 in UI
- * @param {number} value - v2
+ * @param {number} value
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.v2.set = function(value) {
@@ -1287,7 +1287,7 @@ tofma.output.v2.set = function(value) {
 
 /**
  * Set v3 in UI
- * @param {number} value - v3
+ * @param {number} value
  * @return {boolean} - no errors -> 'true' | error -> 'false'
  */
 tofma.output.v3.set = function(value) {
@@ -1298,6 +1298,6 @@ tofma.output.v3.set = function(value) {
 
 /* ENTRY POINT */
 document.addEventListener("DOMContentLoaded", function() {
-	/* get modeler DOM, if an error has occurred, stop the program */
+	/* get modeler DOM, stop the program if an error has occurred */
 	if(!tofma.getModelerDOM()) return null;
 });
