@@ -1165,28 +1165,109 @@ tofma.input.c.get = function() {
 	return value;
 };
 
+/**
+ * Set q in UI
+ *
+ * @param {number} value - accept: number>1
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.q.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be greater than 1 */
+	if(value <= 1) return false;
 
+	tofma.dom.input.arguments.q.value = value;
+
+	return true;
 };
 
+/**
+ * Get q from UI
+ *
+ * @return {number|boolean} - number or 'false' when an error occurs
+ */
 tofma.input.q.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.q.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* the 'value' must be greater than 1 */
+	if(value <= 1) return false;
+
+	return value;
 };
 
+/**
+ * Set points2D in UI
+ *
+ * @param {number} value - accept: number>=1
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.points2D.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: number>=1 */
+	if(value < 1) return false;
 
+	tofma.dom.input.arguments.points2D.value = value;
+
+	return true;
 };
 
+/**
+ * Get points2D from UI
+ *
+ * @return {number|boolean} - odd number >=1 or 'false' when an error occurs
+ */
 tofma.input.points2D.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.points2D.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: number>=1 */
+	if(value < 1) return false;
+
+	/* I want odd 'value' for easy centering */
+	if((value % 2) === 0) value++;
+
+	return value;
 };
 
+/**
+ * Set points3D in UI
+ *
+ * @param {number} value - accept: number>=1
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.input.points3D.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: number>=1 */
+	if(value < 1) return false;
 
+	tofma.dom.input.arguments.points3D.value = value;
+
+	return true;
 };
 
+/**
+ * Get points3D from UI
+ *
+ * @return {number|boolean} - odd number >=1 or 'false' when an error occurs
+ */
 tofma.input.points3D.get = function() {
+	var value = parseFloat(tofma.dom.input.arguments.points3D.value);
 
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
+	/* accept: number>=1 */
+	if(value < 1) return false;
+
+	/* I want odd 'value' for easy centering */
+	if((value % 2) === 0) value++;
+
+	return value;
 };
 
 tofma.input.plot2D.set = function(value) {
@@ -1205,52 +1286,94 @@ tofma.input.plot3D.get = function() {
 
 };
 
+/**
+ * Set n1 in UI
+ *
+ * @param {number} value - n1
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.n1.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
 
+	tofma.dom.output.values.n1.value = value;
+
+	return true;
 };
 
-tofma.output.n1.get = function() {
-
-};
-
+/**
+ * Set n2 in UI
+ *
+ * @param {number} value - n2
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.n2.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
 
+	tofma.dom.output.values.n2.value = value;
+
+	return true;
 };
 
-tofma.output.n2.get = function() {
-
-};
-
+/**
+ * Set n3 in UI
+ *
+ * @param {number} value - n3
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.n3.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
 
+	tofma.dom.output.values.n3.value = value;
+
+	return true;
 };
 
-tofma.output.n3.get = function() {
-
-};
-
+/**
+ * Set v1 in UI
+ *
+ * @param {number} value - v1
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.v1.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
 
+	tofma.dom.output.values.v1.value = value;
+
+	return true;
 };
 
-tofma.output.v1.get = function() {
-
-};
-
+/**
+ * Set v2 in UI
+ *
+ * @param {number} value - v2
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.v2.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
 
+	tofma.dom.output.values.v2.value = value;
+
+	return true;
 };
 
-tofma.output.v2.get = function() {
-
-};
-
+/**
+ * Set v3 in UI
+ *
+ * @param {number} value - v3
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.v3.set = function(value) {
+	/* 'value' type must be a number */
+	if(tofma.isNotNumber(value)) return false;
 
-};
+	tofma.dom.output.values.v3.value = value;
 
-tofma.output.v3.get = function() {
-
+	return true;
 };
 
 /* ENTRY POINT */
