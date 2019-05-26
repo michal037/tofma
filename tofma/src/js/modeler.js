@@ -860,11 +860,7 @@ tofma.output = {};
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.input.urlArgsShow = function(show) {
-	if(show === true) {
-		tofma.dom.input.urlArguments.block.style.display = "block";
-	} else {
-		tofma.dom.input.urlArguments.block.style.display = "none";
-	}
+	tofma.dom.input.urlArguments.block.style.display = (show === true) ? "block" : "none";
 };
 
 /**
@@ -873,11 +869,7 @@ tofma.input.urlArgsShow = function(show) {
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.errorShow = function(show) {
-	if(show === true) {
-		tofma.dom.output.error.block.style.display = "block";
-	} else {
-		tofma.dom.output.error.block.style.display = "none";
-	}
+	tofma.dom.output.error.block.style.display = (show === true) ? "block" : "none";
 };
 
 /**
@@ -895,11 +887,7 @@ tofma.output.errorPrint = function(text) {
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.show = function(show) {
-	if(show === true) {
-		tofma.dom.output.values.block.style.display = "block";
-	} else {
-		tofma.dom.output.values.block.style.display = "none";
-	}
+	tofma.dom.output.values.block.style.display = (show === true) ? "block" : "none";
 };
 
 /**
@@ -908,11 +896,7 @@ tofma.output.show = function(show) {
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.n3Show = function(show) {
-	if(show === true) {
-		tofma.dom.output.values.n3Block.style.display = "table-row";
-	} else {
-		tofma.dom.output.values.n3Block.style.display = "none";
-	}
+	tofma.dom.output.values.n3Block.style.display = (show === true) ? "table-row" : "none";
 };
 
 /**
@@ -921,11 +905,7 @@ tofma.output.n3Show = function(show) {
  * @param {boolean} show - 'true' or 'false'
  */
 tofma.output.v3Show = function(show) {
-	if(show === true) {
-		tofma.dom.output.values.v3Block.style.display = "table-row";
-	} else {
-		tofma.dom.output.values.v3Block.style.display = "none";
-	}
+	tofma.dom.output.values.v3Block.style.display = (show === true) ? "table-row" : "none";
 };
 
 /**
@@ -941,11 +921,13 @@ tofma.input.profile.set = function(value) {
 	if((value < 1) || (value > 5) || !tofma.isInteger(value)) return false;
 
 	/* set value */
-	if(value === 1) tofma.dom.input.profiles.p1.checked = true;
-	if(value === 2) tofma.dom.input.profiles.p2.checked = true;
-	if(value === 3) tofma.dom.input.profiles.p3.checked = true;
-	if(value === 4) tofma.dom.input.profiles.p4.checked = true;
-	if(value === 5) tofma.dom.input.profiles.p5.checked = true;
+	switch(value) {
+		case 1: tofma.dom.input.profiles.p1.checked = true; break;
+		case 2: tofma.dom.input.profiles.p2.checked = true; break;
+		case 3: tofma.dom.input.profiles.p3.checked = true; break;
+		case 4: tofma.dom.input.profiles.p4.checked = true; break;
+		case 5: tofma.dom.input.profiles.p5.checked = true; break;
+	}
 
 	/* no errors */
 	return true;
@@ -1270,20 +1252,40 @@ tofma.input.points3D.get = function() {
 	return value;
 };
 
+/**
+ * Set plot2D in UI
+ *
+ * @param {boolean} value - 'true' or 'false'
+ */
 tofma.input.plot2D.set = function(value) {
-
+	tofma.dom.input.submits.plot2D.checked = (value === true);
 };
 
+/**
+ * Get plot2D from UI
+ *
+ * @return {boolean} - 'true' or 'false'
+ */
 tofma.input.plot2D.get = function() {
-
+	return tofma.dom.input.submits.plot2D.checked === true;
 };
 
+/**
+ * Set plot3D in UI
+ *
+ * @param {boolean} value - 'true' or 'false'
+ */
 tofma.input.plot3D.set = function(value) {
-
+	tofma.dom.input.submits.plot3D.checked = (value === true);
 };
 
+/**
+ * Get plot3D from UI
+ *
+ * @return {boolean} - 'true' or 'false'
+ */
 tofma.input.plot3D.get = function() {
-
+	return tofma.dom.input.submits.plot3D.checked === true;
 };
 
 /**
