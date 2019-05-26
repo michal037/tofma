@@ -729,7 +729,7 @@ tofma.dom = {};
 /**
  * Get modeler DOM and create 'tofma.dom'
  *
- * @return {null|boolean} - return 'true' or 'null' when an error occurs
+ * @return {boolean} - return 'true' or 'false' when an error occurs
  */
 tofma.getModelerDOM = function() {
 	/* search for DOM elements */
@@ -826,7 +826,7 @@ tofma.getModelerDOM = function() {
 		alert(error + " is null!");
 		alert("The program stopped!");
 
-		return null;
+		return false;
 	}
 };
 
