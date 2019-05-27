@@ -234,6 +234,7 @@ a:hover {
 	color: #333;
 	border: 1px solid #a5a5a5;
 	background: linear-gradient(#f8f8f8, #ddd);
+	cursor: pointer;
 }
 
 #modelerInputURLArguments button:hover {
@@ -276,6 +277,7 @@ a:hover {
 .modelerInputProfiles input {
 	display: block;
 	margin: 0 auto;
+	cursor: pointer;
 }
 
 .modelerInputProfile1img, .modelerInputProfile2img, .modelerInputProfile3img {
@@ -307,6 +309,7 @@ a:hover {
 	width: 150px;
 	padding: 5px;
 	border: 1px solid #ccc;
+	vertical-align: middle;
 }
 
 .modelerInputArguments input:hover {
@@ -329,11 +332,12 @@ a:hover {
 	margin-right: 5px;
 }
 
-.modelerInputSubmits label, input, button {
+.modelerInputSubmits label, .modelerInputSubmits input, .modelerInputSubmits button {
 	vertical-align: middle;
+	cursor: pointer;
 }
 
-.modelerInputSubmits label, button {
+.modelerInputSubmits label, .modelerInputSubmits button {
 	font-weight: bold;
 }
 

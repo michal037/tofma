@@ -1302,56 +1302,144 @@ tofma.callback = {};
 
 /** callback for URL arguments' cancel button */
 tofma.callback.urlArgsCancel = function() {
-
+	tofma.input.urlArgsShow(false);
 };
 
-/** callback for URL arguments' load button */
-tofma.callback.urlArgsLoad = function() {
+/**
+ * TODO docs
+ *
+ *
+ */
+tofma.callback.urlArgsLoad = function(onlyCheck) {
+	/*
+	 * Support old versions of browsers. There are facilities, but for newer browsers.
+	 * Firefox 57 bug: https://bugzil.la/1386683
+	 */
 
+	var errorFunctionName = "tofma.callback.urlArgsLoad" + ((onlyCheck === true) ? "(true)" : "") + ": ";
+	var tempURL = null;
+	var beginIndex = null;
+	var endIndex = null;
+	var args = null;
+
+	/* decode URL */
+	try {
+		tempURL = decodeURI(document.URL);
+	} catch(error) {
+		/* catch malformed URI */
+		console.error(errorFunctionName + error.message);
+		return false;
+	}
+
+	/* get begin index of the query string */
+	beginIndex = tempURL.indexOf("?");
+	if(beginIndex === -1) { /* catch error */
+		console.error(errorFunctionName + "The query string was not found in the URL\n\tURL: " + tempURL);
+		return false;
+	}
+
+	/* get end index of the query string */
+	endIndex = tempURL.indexOf("#");
+
+	/* get the query string with the '?' char */
+	tempURL = (endIndex === -1) ? tempURL.slice(beginIndex) : tempURL.slice(beginIndex, endIndex);
+
+	args = new URLSearchParams(tempURL);
+
+	/* If the flag 'onlyCheck' is true only return whether the URL contains the query string. */
+	if(onlyCheck === true) {
+		var _i;
+		var argsNames = ["profile", "germanium", "fluoride", "wavelength",
+			"a", "b", "c", "q", "points2D", "points3D", "plot2D", "plot3D"];
+
+		/* for any occurrence of parameter return true */
+		for(_i=0; _i < argsNames.length ;_i++) {
+			if(args.has(argsNames[_i])) return true;
+		}
+
+		/* If no parameter was found return false */
+		return false;
+	}
+
+	/* assign the arguments to the inputs */
+	if(args.has("profile")) tofma.input.profile.set(args.get("profile"));
+	if(args.has("germanium")) tofma.input.germanium.set(args.get("germanium"));
+	if(args.has("fluoride")) tofma.input.fluoride.set(args.get("fluoride"));
+	if(args.has("wavelength")) tofma.input.wavelength.set(args.get("wavelength"));
+	if(args.has("a")) tofma.input.a.set(args.get("a"));
+
+
+	/* TODO rest */
+
+
+// plot2d i plot3d może mieć true albo false // uwazac na to
+	return true;
 };
 
 /** callback for profile1 radio input */
 tofma.callback.profile1 = function() {
-
+	alert("p1");
 };
 
 /** callback for profile2 radio input */
 tofma.callback.profile2 = function() {
-
+	alert("p2");
 };
 
 /** callback for profile3 radio input */
 tofma.callback.profile3 = function() {
-
+	alert("p3");
 };
 
 /** callback for profile4 radio input */
 tofma.callback.profile4 = function() {
-
+	alert("p4");
 };
 
 /** callback for profile5 radio input */
 tofma.callback.profile5 = function() {
-
+	alert("p5");
 };
 
 /** callback for plot 2D checkbox */
 tofma.callback.submitPlot2D = function() {
-
+	if(tofma.dom.input.submits.plot2D.checked) {
+		tofma.dom.input.arguments.points2D.disabled = false;
+	} else {
+		tofma.dom.input.arguments.points2D.disabled = true;
+	}
 };
 
 /** callback for plot 3D checkbox */
 tofma.callback.submitPlot3D = function() {
-
+	if(tofma.dom.input.submits.plot3D.checked) {
+		tofma.dom.input.arguments.points3D.disabled = false;
+	} else {
+		tofma.dom.input.arguments.points3D.disabled = true;
+	}
 };
 
 /** callback for generate button */
 tofma.callback.submitGenerate = function() {
-
+	alert("submit generate");
 };
 
 /* ENTRY POINT */
 document.addEventListener("DOMContentLoaded", function() {
 	/* get modeler DOM, stop the program if an error has occurred */
 	if(!tofma.getModelerDOM()) return null;
+
+	/* add callbacks to events */
+	tofma.dom.input.urlArguments.cancel.addEventListener("click", tofma.callback.urlArgsCancel);
+	tofma.dom.input.urlArguments.load.addEventListener("click", tofma.callback.urlArgsLoad);
+
+	tofma.dom.input.profiles.p1.addEventListener("click", tofma.callback.profile1);
+	tofma.dom.input.profiles.p2.addEventListener("click", tofma.callback.profile2);
+	tofma.dom.input.profiles.p3.addEventListener("click", tofma.callback.profile3);
+	tofma.dom.input.profiles.p4.addEventListener("click", tofma.callback.profile4);
+	tofma.dom.input.profiles.p5.addEventListener("click", tofma.callback.profile5);
+
+	tofma.dom.input.submits.plot2D.addEventListener("click", tofma.callback.submitPlot2D);
+	tofma.dom.input.submits.plot3D.addEventListener("click", tofma.callback.submitPlot3D);
+	tofma.dom.input.submits.generate.addEventListener("click", tofma.callback.submitGenerate);
 });
