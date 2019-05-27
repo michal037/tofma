@@ -1395,10 +1395,11 @@ tofma.callback.profile1 = function() {
 
 	/* clear the inputs */
 	var _i;
-	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c"];
 	for(_i=0; _i < argsNames.length ;_i++) {
 		tofma.dom.input.arguments[argsNames[_i]].value = "";
 	}
+	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(1000);
 };
@@ -1413,10 +1414,11 @@ tofma.callback.profile2 = function() {
 
 	/* clear the inputs */
 	var _i;
-	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c"];
 	for(_i=0; _i < argsNames.length ;_i++) {
 		tofma.dom.input.arguments[argsNames[_i]].value = "";
 	}
+	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(1000);
 };
@@ -1431,10 +1433,11 @@ tofma.callback.profile3 = function() {
 
 	/* clear the inputs */
 	var _i;
-	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c"];
 	for(_i=0; _i < argsNames.length ;_i++) {
 		tofma.dom.input.arguments[argsNames[_i]].value = "";
 	}
+	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(1000);
 };
@@ -1449,10 +1452,11 @@ tofma.callback.profile4 = function() {
 
 	/* clear the inputs */
 	var _i;
-	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c"];
 	for(_i=0; _i < argsNames.length ;_i++) {
 		tofma.dom.input.arguments[argsNames[_i]].value = "";
 	}
+	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(1000);
 };
@@ -1467,10 +1471,11 @@ tofma.callback.profile5 = function() {
 
 	/* clear the inputs */
 	var _i;
-	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c"];
 	for(_i=0; _i < argsNames.length ;_i++) {
 		tofma.dom.input.arguments[argsNames[_i]].value = "";
 	}
+	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(1000);
 };
