@@ -1387,27 +1387,92 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 
 /** callback for profile1 radio input */
 tofma.callback.profile1 = function() {
-	alert("p1");
+	/* block unnecessary inputs */
+	tofma.dom.input.arguments.fluoride.disabled = true;
+	tofma.dom.input.arguments.b.disabled = true;
+	tofma.dom.input.arguments.c.disabled = true;
+	tofma.dom.input.arguments.q.disabled = true;
+
+	/* clear the inputs */
+	var _i;
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	for(_i=0; _i < argsNames.length ;_i++) {
+		tofma.dom.input.arguments[argsNames[_i]].value = "";
+	}
+	tofma.input.points2D.set(1000);
+	tofma.input.points3D.set(1000);
 };
 
 /** callback for profile2 radio input */
 tofma.callback.profile2 = function() {
-	alert("p2");
+	/* block unnecessary inputs */
+	tofma.dom.input.arguments.fluoride.disabled = true;
+	tofma.dom.input.arguments.b.disabled = true;
+	tofma.dom.input.arguments.c.disabled = true;
+	tofma.dom.input.arguments.q.disabled = false;
+
+	/* clear the inputs */
+	var _i;
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	for(_i=0; _i < argsNames.length ;_i++) {
+		tofma.dom.input.arguments[argsNames[_i]].value = "";
+	}
+	tofma.input.points2D.set(1000);
+	tofma.input.points3D.set(1000);
 };
 
 /** callback for profile3 radio input */
 tofma.callback.profile3 = function() {
-	alert("p3");
+	/* block unnecessary inputs */
+	tofma.dom.input.arguments.fluoride.disabled = true;
+	tofma.dom.input.arguments.b.disabled = true;
+	tofma.dom.input.arguments.c.disabled = true;
+	tofma.dom.input.arguments.q.disabled = true;
+
+	/* clear the inputs */
+	var _i;
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	for(_i=0; _i < argsNames.length ;_i++) {
+		tofma.dom.input.arguments[argsNames[_i]].value = "";
+	}
+	tofma.input.points2D.set(1000);
+	tofma.input.points3D.set(1000);
 };
 
 /** callback for profile4 radio input */
 tofma.callback.profile4 = function() {
-	alert("p4");
+	/* block unnecessary inputs */
+	tofma.dom.input.arguments.fluoride.disabled = false;
+	tofma.dom.input.arguments.b.disabled = false;
+	tofma.dom.input.arguments.c.disabled = true;
+	tofma.dom.input.arguments.q.disabled = true;
+
+	/* clear the inputs */
+	var _i;
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	for(_i=0; _i < argsNames.length ;_i++) {
+		tofma.dom.input.arguments[argsNames[_i]].value = "";
+	}
+	tofma.input.points2D.set(1000);
+	tofma.input.points3D.set(1000);
 };
 
 /** callback for profile5 radio input */
 tofma.callback.profile5 = function() {
-	alert("p5");
+	/* block unnecessary inputs */
+	tofma.dom.input.arguments.fluoride.disabled = false;
+	tofma.dom.input.arguments.b.disabled = false;
+	tofma.dom.input.arguments.c.disabled = false;
+	tofma.dom.input.arguments.q.disabled = true;
+
+	/* clear the inputs */
+	var _i;
+	var argsNames = ["germanium", "fluoride", "wavelength", "a", "b", "c", "q"];
+	for(_i=0; _i < argsNames.length ;_i++) {
+		tofma.dom.input.arguments[argsNames[_i]].value = "";
+	}
+	tofma.input.points2D.set(1000);
+	tofma.input.points3D.set(1000);
 };
 
 /** callback for plot 2D checkbox */
