@@ -1146,7 +1146,7 @@ tofma.input.points2D.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
-	tofma.dom.input.arguments.points2D.value = value;
+	tofma.dom.input.arguments.points2D.value = Math.floor(value);
 	return true;
 };
 
@@ -1155,7 +1155,7 @@ tofma.input.points2D.set = function(value) {
  * @return {number|boolean} - odd number >=1 or 'false' when an error occurs
  */
 tofma.input.points2D.get = function() {
-	var value = parseFloat(tofma.dom.input.arguments.points2D.value);
+	var value = parseInt(tofma.dom.input.arguments.points2D.value, 10);
 
 	/* accept: number>=1 */
 	if(tofma.isNotNumber(value)) return false;
@@ -1177,7 +1177,7 @@ tofma.input.points3D.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
-	tofma.dom.input.arguments.points3D.value = value;
+	tofma.dom.input.arguments.points3D.value = Math.floor(value);
 	return true;
 };
 
@@ -1186,7 +1186,7 @@ tofma.input.points3D.set = function(value) {
  * @return {number|boolean} - odd number >=1 or 'false' when an error occurs
  */
 tofma.input.points3D.get = function() {
-	var value = parseFloat(tofma.dom.input.arguments.points3D.value);
+	var value = parseInt(tofma.dom.input.arguments.points3D.value, 10);
 
 	/* accept: number>=1 */
 	if(tofma.isNotNumber(value)) return false;
@@ -1306,9 +1306,13 @@ tofma.callback.urlArgsCancel = function() {
 };
 
 /**
- * TODO docs
+ * Function for URL arguments' load button and for detecting the presence of URL parameters.
+ * Callback will only load the correct arguments.
  *
- *
+ * @param {boolean} onlyCheck - 'true' -> only detect | 'undefined' or 'false' -> callback for loading arguments
+ * <br> onlyCheck=true - returns 'true' if at least one parameter is detected, otherwise 'false'
+ * <br> onlyCheck=undefined|false - no errors -> 'true' | errors -> 'false'
+ * @return {boolean}
  */
 tofma.callback.urlArgsLoad = function(onlyCheck) {
 	/*
@@ -1316,11 +1320,8 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 	 * Firefox 57 bug: https://bugzil.la/1386683
 	 */
 
+	var tempURL, beginIndex, endIndex, args, _i, argsNames, temp;
 	var errorFunctionName = "tofma.callback.urlArgsLoad" + ((onlyCheck === true) ? "(true)" : "") + ": ";
-	var tempURL = null;
-	var beginIndex = null;
-	var endIndex = null;
-	var args = null;
 
 	/* decode URL */
 	try {
@@ -1348,8 +1349,7 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 
 	/* If the flag 'onlyCheck' is true only return whether the URL contains the query string. */
 	if(onlyCheck === true) {
-		var _i;
-		var argsNames = ["profile", "germanium", "fluoride", "wavelength",
+		argsNames = ["profile", "germanium", "fluoride", "wavelength",
 			"a", "b", "c", "q", "points2D", "points3D", "plot2D", "plot3D"];
 
 		/* for any occurrence of parameter return true */
@@ -1362,17 +1362,26 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 	}
 
 	/* assign the arguments to the inputs */
-	if(args.has("profile")) tofma.input.profile.set(args.get("profile"));
-	if(args.has("germanium")) tofma.input.germanium.set(args.get("germanium"));
-	if(args.has("fluoride")) tofma.input.fluoride.set(args.get("fluoride"));
-	if(args.has("wavelength")) tofma.input.wavelength.set(args.get("wavelength"));
-	if(args.has("a")) tofma.input.a.set(args.get("a"));
+	argsNames = ["profile", "germanium", "fluoride", "wavelength", "a", "b", "c", "q", "points2D", "points3D"];
+	for(_i=0; _i < argsNames.length ;_i++) {
+		if(args.has(argsNames[_i])) tofma.input[argsNames[_i]].set(parseFloat(args.get(argsNames[_i])));
+	}
 
+	if(args.has("plot2D")) {
+		temp = args.get("plot2D");
+		if(temp === "true")  tofma.input.plot2D.set(true);
+		if(temp === "false") tofma.input.plot2D.set(false);
+	}
 
-	/* TODO rest */
+	if(args.has("plot3D")) {
+		temp = args.get("plot3D");
+		if(temp === "true")  tofma.input.plot3D.set(true);
+		if(temp === "false") tofma.input.plot3D.set(false);
+	}
 
+	/* hide the box after loading arguments */
+	tofma.input.urlArgsShow(false);
 
-// plot2d i plot3d może mieć true albo false // uwazac na to
 	return true;
 };
 
@@ -1442,4 +1451,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	tofma.dom.input.submits.plot2D.addEventListener("click", tofma.callback.submitPlot2D);
 	tofma.dom.input.submits.plot3D.addEventListener("click", tofma.callback.submitPlot3D);
 	tofma.dom.input.submits.generate.addEventListener("click", tofma.callback.submitGenerate);
+
+	/* show box with the question about loading arguments */
+	tofma.input.urlArgsShow(tofma.callback.urlArgsLoad(true));
 });
