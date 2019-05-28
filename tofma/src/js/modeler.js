@@ -875,7 +875,7 @@ tofma.output.errorShow = function(show) {
  * @param {string} message
  */
 tofma.output.errorPrint = function(message) {
-	tofma.dom.output.error.text.textContent = message;
+	tofma.dom.output.error.text.innerHTML = message;
 };
 
 /**
@@ -1335,6 +1335,7 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 	/* get begin index of the query string */
 	beginIndex = tempURL.indexOf("?");
 	if(beginIndex === -1) { /* catch error */
+		if(onlyCheck === true) return false; /* onlyCheck: do not write the error when the query string was not found */
 		console.error(errorFunctionName + "The query string was not found in the URL\n\tURL: " + tempURL);
 		return false;
 	}
@@ -1500,7 +1501,79 @@ tofma.callback.submitPlot3D = function() {
 
 /** callback for generate button */
 tofma.callback.submitGenerate = function() {
-	alert("submit generate");
+	function errorUser(message) {
+		tofma.output.errorPrint(message);
+		tofma.output.errorShow(true);
+	}
+
+	var args = {};
+
+	/* hide error box if it was previously opened */
+	tofma.output.errorShow(false);
+
+	/* get arguments from UI */
+	args.profile = tofma.input.profile.get();
+	args.germanium = tofma.input.germanium.get();
+	args.fluoride = tofma.input.fluoride.get();
+	args.wavelength = tofma.input.wavelength.get();
+	args.a = tofma.input.a.get();
+	args.b = tofma.input.b.get();
+	args.c = tofma.input.c.get();
+	args.q = tofma.input.q.get();
+	args.points2D = tofma.input.points2D.get();
+	args.points3D = tofma.input.points3D.get();
+
+	/* check the data loaded from the inputs */
+	if(args.profile === false) {
+		errorUser("No <strong>profile</strong> selected.");
+		return false;
+	}
+	if(args.germanium === false) {
+		errorUser("The entered value for the <strong>germanium admixture</strong> is outside the acceptable range.");
+		return false;
+	}
+	if(args.wavelength === false) {
+		errorUser("The entered value for <strong>wavelength</strong> can not be less than 0.");
+		return false;
+	}
+	if(args.a === false) {
+		errorUser("The entered value for <strong>a</strong> parameter can not be less than or equal 0.");
+		return false;
+	}
+  	if((args.profile === 4) || (args.profile === 5)) {
+  		if(args.fluoride === false) {
+			errorUser("The entered value for the <strong>fluoride admixture</strong> is outside the acceptable range.");
+			return false;
+		}
+  		if(args.b === false) {
+			errorUser("The entered value for <strong>b</strong> parameter can not be less than 0.");
+			return false;
+		}
+	}
+  	if((args.profile === 5) && (args.c === false)) {
+		errorUser("The entered value for <strong>c</strong> parameter can not be less than 0.");
+		return false;
+	}
+	if((args.profile === 2) && (args.q === false)) {
+		errorUser("The entered value for <strong>q</strong> parameter can not be less than or equal 1.");
+		return false;
+	}
+	if(tofma.input.plot2D.get() && (args.points2D === false)) {
+		errorUser("The entered value for <strong>2D points</strong> can not be less than 1.");
+		return false;
+	}
+	if(tofma.input.plot3D.get() && (args.points3D === false)) {
+		errorUser("The entered value for <strong>3D points</strong> can not be less than 1.");
+		return false;
+	}
+};
+
+tofma.makePlot2D = function() {
+	alert("plot 2D");
+};
+
+tofma.makePlot3D = function() {
+	alert("plot 3D");
 };
 
 /* ENTRY POINT */
