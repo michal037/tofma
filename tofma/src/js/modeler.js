@@ -769,6 +769,7 @@ tofma.getModelerDOM = function() {
 	tofma.dom.output.values.v2 = document.getElementById("modelerOutputValuesV2");
 	tofma.dom.output.values.v3 = document.getElementById("modelerOutputValuesV3");
 	tofma.dom.output.values.v3Block = document.getElementById("modelerOutputValuesV3Block");
+	tofma.dom.output.values.cutWave = document.getElementById("modelerOutputValuesCutWave");
 
 	tofma.dom.output.plots.plot2D = document.getElementById("modelerOutputPlot2D");
 	tofma.dom.output.plots.plot3D = document.getElementById("modelerOutputPlot3D");
@@ -811,6 +812,7 @@ tofma.getModelerDOM = function() {
 		if(!tofma.dom.output.values.v2) throw "tofma.dom.output.values.v2";
 		if(!tofma.dom.output.values.v3) throw "tofma.dom.output.values.v3";
 		if(!tofma.dom.output.values.v3Block) throw "tofma.dom.output.values.v3Block";
+		if(!tofma.dom.output.values.cutWave) throw "tofma.dom.output.values.cutWave";
 
 		if(!tofma.dom.output.plots.plot2D) throw "tofma.dom.output.plots.plot2D";
 		if(!tofma.dom.output.plots.plot3D) throw "tofma.dom.output.plots.plot3D";
@@ -852,6 +854,7 @@ tofma.output = {};
 	tofma.output.v1 = {};
 	tofma.output.v2 = {};
 	tofma.output.v3 = {};
+	tofma.output.cutWave = {};
 /* END - structure definition for global I/O - END */
 
 /**
@@ -1293,6 +1296,12 @@ tofma.output.v2.set = function(value) {
 tofma.output.v3.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
 	tofma.dom.output.values.v3.value = value;
+	return true;
+};
+
+tofma.output.cutWave.set = function(value) {
+	if(tofma.isNotNumber(value)) return false;
+	tofma.dom.output.values.cutWave.value = value;
 	return true;
 };
 
