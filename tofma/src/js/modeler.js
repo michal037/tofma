@@ -1703,7 +1703,11 @@ tofma.callback.submitGenerate = function() {
 		tofma.output.n3Show(false);
 		tofma.output.v3Show(false);
 	}
-	tofma.output.cutWave.set(cutWave);
+	if(tofma.isNumber(cutWave)) {
+		tofma.output.cutWave.set(cutWave);
+	} else {
+		tofma.dom.output.values.cutWave.value = "NaN";
+	}
 
 	/* show output text */
 	tofma.output.show(true);
