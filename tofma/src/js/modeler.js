@@ -1388,6 +1388,9 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 
 /** callback for profile1 radio input */
 tofma.callback.profile1 = function() {
+	/* hide error box after changing the profile */
+	tofma.output.errorShow(false);
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1407,6 +1410,9 @@ tofma.callback.profile1 = function() {
 
 /** callback for profile2 radio input */
 tofma.callback.profile2 = function() {
+	/* hide error box after changing the profile */
+	tofma.output.errorShow(false);
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1426,6 +1432,9 @@ tofma.callback.profile2 = function() {
 
 /** callback for profile3 radio input */
 tofma.callback.profile3 = function() {
+	/* hide error box after changing the profile */
+	tofma.output.errorShow(false);
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1445,6 +1454,9 @@ tofma.callback.profile3 = function() {
 
 /** callback for profile4 radio input */
 tofma.callback.profile4 = function() {
+	/* hide error box after changing the profile */
+	tofma.output.errorShow(false);
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = false;
 	tofma.dom.input.arguments.b.disabled = false;
@@ -1464,6 +1476,9 @@ tofma.callback.profile4 = function() {
 
 /** callback for profile5 radio input */
 tofma.callback.profile5 = function() {
+	/* hide error box after changing the profile */
+	tofma.output.errorShow(false);
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = false;
 	tofma.dom.input.arguments.b.disabled = false;
