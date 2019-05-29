@@ -1544,41 +1544,77 @@ tofma.callback.submitGenerate = function() {
 		return false;
 	}
 	if(args.germanium === false) {
-		errorUser("The entered value for the <strong>germanium admixture</strong> is outside the acceptable range.");
+		if(tofma.dom.input.arguments.germanium.value === "") {
+			errorUser("No value entered for <strong>germanium</strong> admixture.");
+		} else {
+			errorUser("The entered value for the <strong>germanium</strong> admixture is outside the acceptable range.");
+		}
 		return false;
 	}
 	if(args.wavelength === false) {
-		errorUser("The entered value for <strong>wavelength</strong> can not be less than 0.");
+		if(tofma.dom.input.arguments.wavelength.value === "") {
+			errorUser("No value entered for <strong>wavelength</strong>.");
+		} else {
+			errorUser("The entered value for <strong>wavelength</strong> can not be less than 0.");
+		}
 		return false;
 	}
 	if(args.a === false) {
-		errorUser("The entered value for <strong>a</strong> parameter can not be less than or equal 0.");
+		if(tofma.dom.input.arguments.a.value === "") {
+			errorUser("No value entered for <strong>a</strong> parameter.");
+		} else {
+			errorUser("The entered value for <strong>a</strong> parameter can not be less than or equal 0.");
+		}
 		return false;
 	}
   	if((args.profile === 4) || (args.profile === 5)) {
   		if(args.fluoride === false) {
-			errorUser("The entered value for the <strong>fluoride admixture</strong> is outside the acceptable range.");
+  			if(tofma.dom.input.arguments.fluoride.value === "") {
+				errorUser("No value entered for <strong>fluoride</strong> admixture.");
+			} else {
+				errorUser("The entered value for the <strong>fluoride</strong> admixture is outside the acceptable range.");
+			}
 			return false;
 		}
   		if(args.b === false) {
-			errorUser("The entered value for <strong>b</strong> parameter can not be less than 0.");
+  			if(tofma.dom.input.arguments.b.value === "") {
+				errorUser("No value entered for <strong>b</strong> parameter.");
+			} else {
+				errorUser("The entered value for <strong>b</strong> parameter can not be less than 0.");
+			}
 			return false;
 		}
 	}
   	if((args.profile === 5) && (args.c === false)) {
-		errorUser("The entered value for <strong>c</strong> parameter can not be less than 0.");
+  		if(tofma.dom.input.arguments.c.value === "") {
+			errorUser("No value entered for <strong>c</strong> parameter.");
+		} else {
+			errorUser("The entered value for <strong>c</strong> parameter can not be less than 0.");
+		}
 		return false;
 	}
 	if((args.profile === 2) && (args.q === false)) {
-		errorUser("The entered value for <strong>q</strong> parameter can not be less than or equal 1.");
+		if(tofma.dom.input.arguments.q.value === "") {
+			errorUser("No value entered for <strong>q</strong> parameter.");
+		} else {
+			errorUser("The entered value for <strong>q</strong> parameter can not be less than or equal 1.");
+		}
 		return false;
 	}
 	if(tofma.input.plot2D.get() && (args.points2D === false)) {
-		errorUser("The entered value for <strong>2D points</strong> can not be less than 1.");
+		if(tofma.dom.input.arguments.points2D.value === "") {
+			errorUser("No value entered for <strong>2D points</strong>.");
+		} else {
+			errorUser("The entered value for <strong>2D points</strong> can not be less than 1.");
+		}
 		return false;
 	}
 	if(tofma.input.plot3D.get() && (args.points3D === false)) {
-		errorUser("The entered value for <strong>3D points</strong> can not be less than 1.");
+		if(tofma.dom.input.arguments.points3D.value === "") {
+			errorUser("No value entered for <strong>3D points</strong>.");
+		} else {
+			errorUser("The entered value for <strong>3D points</strong> can not be less than 1.");
+		}
 		return false;
 	}
 };
