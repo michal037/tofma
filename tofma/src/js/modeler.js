@@ -1299,6 +1299,11 @@ tofma.output.v3.set = function(value) {
 	return true;
 };
 
+/**
+ * Set cutWave in UI
+ * @param {number} value
+ * @return {boolean} - no errors -> 'true' | error -> 'false'
+ */
 tofma.output.cutWave.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
 	tofma.dom.output.values.cutWave.value = value;
@@ -1626,6 +1631,68 @@ tofma.callback.submitGenerate = function() {
 		}
 		return false;
 	}
+
+	/* calculate Sellmeier's coefficients */
+	var sellCoeffPure = tofma.sellmeierCoefficients.germanium(0);
+	var sellCoeffGerm = tofma.sellmeierCoefficients.germanium(args.germanium);
+
+	var sellCoeffFluo;
+	if((args.profile === 4) || (args.profile === 5)) {
+		sellCoeffFluo = tofma.sellmeierCoefficients.fluorine(args.fluoride);
+	}
+
+	/* calculate the Sellmeier equation */
+	var n1 = tofma.sellmeier(args.wavelength, sellCoeffGerm);
+	var n2 = tofma.sellmeier(args.wavelength, sellCoeffPure);
+
+	var n3;
+	if((args.profile === 4) || (args.profile === 5)) {
+		n3 = tofma.sellmeier(args.wavelength, sellCoeffFluo);
+	}
+
+	/* calculate the Verdet Constant */
+	var v1 = tofma.verdetConstant(args.wavelength, sellCoeffGerm);
+	var v2 = tofma.verdetConstant(args.wavelength, sellCoeffPure);
+
+	var v3;
+	if((args.profile === 4) || (args.profile === 5)) {
+		v3 = tofma.verdetConstant(args.wavelength,sellCoeffFluo);
+	}
+
+	/* make T_ProfileData object */
+	var profileData = {
+		shape: args.profile,
+		n1: n1,
+		n2: n2,
+		n3: n3,
+		a: args.a,
+		b: args.b,
+		c: args.c,
+		q: args.q
+	};
+
+	/* calculate the cut-off wavelength */
+	var cutWave = tofma.cutoffWavelength(profileData);
+
+	/* print data to UI */
+	tofma.output.n1.set(n1);
+	tofma.output.n2.set(n2);
+	tofma.output.v1.set(v1);
+	tofma.output.v2.set(v2);
+
+	if((args.profile === 4) || (args.profile === 5)) {
+		tofma.output.n3.set(n3);
+		tofma.output.v3.set(v3);
+		tofma.output.n3Show(true);
+		tofma.output.v3Show(true);
+	} else {
+		tofma.output.n3Show(false);
+		tofma.output.v3Show(false);
+	}
+
+	tofma.output.cutWave.set(cutWave);
+
+	tofma.output.show(true);
 };
 
 tofma.makePlot2D = function() {
