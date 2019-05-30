@@ -1748,11 +1748,11 @@ tofma.callback.submitGenerate = function() {
 };
 
 tofma.makePlot2D = function(args) {
-	var handlePlot2D = tofma.dom.output.plots.plot2D;
+	var handle = tofma.dom.output.plots.plot2D;
 	var _i;
 	var arrX = [], arrY = [];
 	var points = tofma.input.points2D.get();
-	var dataPlot2D = {};
+	var dataPlot = {};
 
 	/* calculate */
 	for(_i=points; _i>=0 ;_i--)
@@ -1767,8 +1767,8 @@ tofma.makePlot2D = function(args) {
 	}
 
 	/* make object */
-	dataPlot2D.x = arrX;
-	dataPlot2D.y = arrY;
+	dataPlot.x = arrX;
+	dataPlot.y = arrY;
 
 	var layout = {
 
@@ -1786,10 +1786,10 @@ tofma.makePlot2D = function(args) {
 	};
 
 	/* make plot */
-	Plotly.newPlot(handlePlot2D, [dataPlot2D], layout, config);
+	Plotly.newPlot(handle, [dataPlot], layout, config);
 
 	/* show plot 2D */
-	handlePlot2D.style.display = "block";
+	handle.style.display = "block";
 };
 
 tofma.makePlot3D = function(args) {
