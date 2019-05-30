@@ -1405,6 +1405,39 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 		if(temp === "false") tofma.input.plot3D.set(false);
 	}
 
+	if(args.has("profile")) switch(tofma.input.profile.get()) {
+		case 1:
+			tofma.dom.input.arguments.fluoride.disabled = true;
+			tofma.dom.input.arguments.b.disabled = true;
+			tofma.dom.input.arguments.c.disabled = true;
+			tofma.dom.input.arguments.q.disabled = true;
+			break;
+		case 2:
+			tofma.dom.input.arguments.fluoride.disabled = true;
+			tofma.dom.input.arguments.b.disabled = true;
+			tofma.dom.input.arguments.c.disabled = true;
+			tofma.dom.input.arguments.q.disabled = false;
+			break;
+		case 3:
+			tofma.dom.input.arguments.fluoride.disabled = true;
+			tofma.dom.input.arguments.b.disabled = true;
+			tofma.dom.input.arguments.c.disabled = true;
+			tofma.dom.input.arguments.q.disabled = true;
+			break;
+		case 4:
+			tofma.dom.input.arguments.fluoride.disabled = false;
+			tofma.dom.input.arguments.b.disabled = false;
+			tofma.dom.input.arguments.c.disabled = true;
+			tofma.dom.input.arguments.q.disabled = true;
+			break;
+		case 5:
+			tofma.dom.input.arguments.fluoride.disabled = false;
+			tofma.dom.input.arguments.b.disabled = false;
+			tofma.dom.input.arguments.c.disabled = false;
+			tofma.dom.input.arguments.q.disabled = true;
+			break;
+	}
+
 	/* hide the box after loading arguments */
 	tofma.input.urlArgsShow(false);
 
@@ -1580,6 +1613,12 @@ tofma.callback.submitGenerate = function() {
 
 	/* hide error box if it was previously opened */
 	tofma.output.errorShow(false);
+
+	/* hide output text */
+	tofma.output.show(false);
+
+	/* hide plot 2D */
+	tofma.dom.output.plots.plot2D.style.display = "none";
 
 	/* get arguments from UI */
 	args.profile = tofma.input.profile.get();
