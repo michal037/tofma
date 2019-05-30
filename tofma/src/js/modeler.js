@@ -1821,8 +1821,8 @@ tofma.makePlot2D = function(args) {
 		toImageButtonOptions: {
 			format: 'png', /* one of png, svg, jpeg, webp */
 			filename: 'tofmaPlot2D',
-			width: 1000,
-			height: 650,
+			width: 700,
+			height: 450,
 			scale: 2 /* multiply title/legend/axis/canvas sizes by this factor */
 		},
 		displaylogo: false
