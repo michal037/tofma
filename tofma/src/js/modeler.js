@@ -1815,7 +1815,10 @@ tofma.makePlot2D = function(args) {
 	};
 
 	var layout = {
-
+		font: {
+			size: 14,
+			color: "black"
+		}
 	};
 
 	var config = {
