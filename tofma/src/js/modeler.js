@@ -1781,7 +1781,8 @@ tofma.makePlot2D = function(args) {
 			width: 1000,
 			height: 650,
 			scale: 2 /* multiply title/legend/axis/canvas sizes by this factor */
-		}
+		},
+		displaylogo: false
 	};
 
 	/* make plot */
