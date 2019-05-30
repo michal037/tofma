@@ -1810,7 +1810,8 @@ tofma.makePlot2D = function(args) {
 	dataPlot.y = arrY;
 
 	dataPlot.line = {
-		color: "#1B273F"
+		color: "#1B273F",
+		width: 3
 	};
 
 	var layout = {
@@ -1825,7 +1826,8 @@ tofma.makePlot2D = function(args) {
 			height: 450,
 			scale: 2 /* multiply title/legend/axis/canvas sizes by this factor */
 		},
-		displaylogo: false
+		displaylogo: false,
+		showSendToCloud: true
 	};
 
 	/* make plot */
