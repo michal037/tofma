@@ -257,7 +257,14 @@ tofma.sellmeierCoefficients.germanium = function(concentration)
 
 		return {
 			a: [a1(concentration), a2(concentration), a3(concentration)],
-			b: [b1(concentration), b2(concentration), b3(concentration)]
+			b: [b1(concentration), b2(concentration), b3(concentration)],
+			clone: function() {
+				return {
+					a: this.a.slice(0),
+					b: this.b.slice(0),
+					clone: this.clone
+				};
+			}
 		};
 	} catch(error) {
 		/* for a better look in the console */
@@ -362,7 +369,14 @@ tofma.sellmeierCoefficients.fluorine = function(concentration)
 
 		return {
 			a: [a1(concentration), a2(concentration), a3(concentration)],
-			b: [b1(concentration), b2(concentration), b3(concentration)]
+			b: [b1(concentration), b2(concentration), b3(concentration)],
+			clone: function() {
+				return {
+					a: this.a.slice(0),
+					b: this.b.slice(0),
+					clone: this.clone
+				};
+			}
 		};
 	} catch(error) {
 		/* for a better look in the console */
@@ -1657,21 +1671,21 @@ tofma.callback.submitGenerate = function() {
 	}
 
 	/* calculate the Sellmeier equation */
-	var n1 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffGerm));
-	var n2 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffPure));
+	var n1 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffGerm.clone()));
+	var n2 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffPure.clone()));
 
 	var n3;
 	if((args.profile === 4) || (args.profile === 5)) {
-		n3 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffFluo));
+		n3 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffFluo.clone()));
 	}
 
 	/* calculate the Verdet Constant */
-	var v1 = tofma.verdetConstant(args.wavelength, sellCoeffGerm);
-	var v2 = tofma.verdetConstant(args.wavelength, sellCoeffPure);
+	var v1 = tofma.verdetConstant(args.wavelength, sellCoeffGerm.clone());
+	var v2 = tofma.verdetConstant(args.wavelength, sellCoeffPure.clone());
 
 	var v3;
 	if((args.profile === 4) || (args.profile === 5)) {
-		v3 = tofma.verdetConstant(args.wavelength,sellCoeffFluo);
+		v3 = tofma.verdetConstant(args.wavelength, sellCoeffFluo.clone());
 	}
 
 	/* make T_ProfileData object */
