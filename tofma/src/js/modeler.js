@@ -1770,8 +1770,22 @@ tofma.makePlot2D = function(args) {
 	dataPlot2D.x = arrX;
 	dataPlot2D.y = arrY;
 
+	var layout = {
+
+	};
+
+	var config = {
+		toImageButtonOptions: {
+			format: 'png', /* one of png, svg, jpeg, webp */
+			filename: 'tofmaPlot2D',
+			width: 1000,
+			height: 650,
+			scale: 2 /* multiply title/legend/axis/canvas sizes by this factor */
+		}
+	};
+
 	/* make plot */
-	Plotly.newPlot(handlePlot2D, [dataPlot2D], {});
+	Plotly.newPlot(handlePlot2D, [dataPlot2D], layout, config);
 
 	/* show plot 2D */
 	handlePlot2D.style.display = "block";
