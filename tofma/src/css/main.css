@@ -412,7 +412,7 @@ a:hover {
 #modelerOutputPlot2D, #modelerOutputPlot3D {
 	display: none;
 	width: 998px;
-	height: 500px;
+	height: 650px;
 	margin: 10px 0 0;
 	border: 1px solid #aaa;
 }

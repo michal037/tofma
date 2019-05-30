@@ -1178,9 +1178,6 @@ tofma.input.points2D.get = function() {
 	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
-	/* I want odd 'value' for easy centering */
-	if((value % 2) === 0) value++;
-
 	return value;
 };
 
@@ -1422,6 +1419,9 @@ tofma.callback.profile1 = function() {
 	/* hide output text */
 	tofma.output.show(false);
 
+	/* hide plot 2D */
+	tofma.dom.output.plots.plot2D.style.display = "none";
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1446,6 +1446,9 @@ tofma.callback.profile2 = function() {
 
 	/* hide output text */
 	tofma.output.show(false);
+
+	/* hide plot 2D */
+	tofma.dom.output.plots.plot2D.style.display = "none";
 
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
@@ -1472,6 +1475,9 @@ tofma.callback.profile3 = function() {
 	/* hide output text */
 	tofma.output.show(false);
 
+	/* hide plot 2D */
+	tofma.dom.output.plots.plot2D.style.display = "none";
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1497,6 +1503,9 @@ tofma.callback.profile4 = function() {
 	/* hide output text */
 	tofma.output.show(false);
 
+	/* hide plot 2D */
+	tofma.dom.output.plots.plot2D.style.display = "none";
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = false;
 	tofma.dom.input.arguments.b.disabled = false;
@@ -1521,6 +1530,9 @@ tofma.callback.profile5 = function() {
 
 	/* hide output text */
 	tofma.output.show(false);
+
+	/* hide plot 2D */
+	tofma.dom.output.plots.plot2D.style.display = "none";
 
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = false;
@@ -1736,11 +1748,37 @@ tofma.callback.submitGenerate = function() {
 };
 
 tofma.makePlot2D = function(args) {
-	alert("plot 2D");
+	var handlePlot2D = tofma.dom.output.plots.plot2D;
+	var _i;
+	var arrX = [], arrY = [];
+	var points = tofma.input.points2D.get();
+	var dataPlot2D = {};
+
+	/* calculate */
+	for(_i=points; _i>=0 ;_i--)
+	{
+		arrX.push((-_i/points) * 62.5);
+		arrY.push(tofma.profile(args, (_i/points) * 62.5));
+	}
+	for(_i=arrX.length-2; _i>=0 ;_i--)
+	{
+		arrX.push(Math.abs(arrX[_i]));
+		arrY.push(arrY[_i]);
+	}
+
+	/* make object */
+	dataPlot2D.x = arrX;
+	dataPlot2D.y = arrY;
+
+	/* make plot */
+	Plotly.newPlot(handlePlot2D, [dataPlot2D], {});
+
+	/* show plot 2D */
+	handlePlot2D.style.display = "block";
 };
 
 tofma.makePlot3D = function(args) {
-	alert("plot 3D");
+	//alert("plot 3D");
 };
 
 /* ENTRY POINT */
