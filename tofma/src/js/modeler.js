@@ -1671,12 +1671,12 @@ tofma.callback.submitGenerate = function() {
 	}
 
 	/* calculate the Sellmeier equation */
-	var n1 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffGerm.clone()));
-	var n2 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffPure.clone()));
+	var n1kw = tofma.sellmeier(args.wavelength, sellCoeffGerm.clone());
+	var n2kw = tofma.sellmeier(args.wavelength, sellCoeffPure.clone());
 
-	var n3;
+	var n3kw;
 	if((args.profile === 4) || (args.profile === 5)) {
-		n3 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffFluo.clone()));
+		n3kw = tofma.sellmeier(args.wavelength, sellCoeffFluo.clone());
 	}
 
 	/* calculate the Verdet Constant */
@@ -1688,28 +1688,21 @@ tofma.callback.submitGenerate = function() {
 		v3 = tofma.verdetConstant(args.wavelength, sellCoeffFluo.clone());
 	}
 
-	/* make T_ProfileData object */
-	var profileData = {
-		shape: args.profile,
-		n1: n1,
-		n2: n2,
-		n3: n3,
-		a: args.a,
-		b: args.b,
-		c: args.c,
-		q: args.q
-	};
-
 	/* calculate the cut-off wavelength */
-	var cutWave = tofma.cutoffWavelength(profileData);
+	var cutWave = tofma.cutoffWavelength({
+		shape: args.profile,
+		n1: n1kw, n2: n2kw, n3: n3kw,
+		a: args.a, b: args.b, c: args.c,
+		q: args.q
+	});
 
 	/* print data to UI */
-	tofma.output.n1.set(n1);
-	tofma.output.n2.set(n2);
+	tofma.output.n1.set(Math.sqrt(n1kw));
+	tofma.output.n2.set(Math.sqrt(n2kw));
 	tofma.output.v1.set(v1);
 	tofma.output.v2.set(v2);
 	if((args.profile === 4) || (args.profile === 5)) {
-		tofma.output.n3.set(n3);
+		tofma.output.n3.set(Math.sqrt(n3kw));
 		tofma.output.v3.set(v3);
 		tofma.output.n3Show(true);
 		tofma.output.v3Show(true);
@@ -1725,13 +1718,28 @@ tofma.callback.submitGenerate = function() {
 
 	/* show output text */
 	tofma.output.show(true);
+
+	/* make plots */
+	if(tofma.input.plot2D.get()) tofma.makePlot2D({
+		shape: args.profile,
+		n1: n1kw, n2: n2kw, n3: n3kw,
+		a: args.a, b: args.b, c: args.c,
+		q: args.q
+	});
+
+	if(tofma.input.plot3D.get()) tofma.makePlot3D({
+		shape: args.profile,
+		n1: n1kw, n2: n2kw, n3: n3kw,
+		a: args.a, b: args.b, c: args.c,
+		q: args.q
+	});
 };
 
-tofma.makePlot2D = function() {
+tofma.makePlot2D = function(args) {
 	alert("plot 2D");
 };
 
-tofma.makePlot3D = function() {
+tofma.makePlot3D = function(args) {
 	alert("plot 3D");
 };
 
