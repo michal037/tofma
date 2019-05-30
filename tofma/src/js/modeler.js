@@ -1809,6 +1809,10 @@ tofma.makePlot2D = function(args) {
 	dataPlot.x = arrX;
 	dataPlot.y = arrY;
 
+	dataPlot.line = {
+		color: "#1B273F"
+	};
+
 	var layout = {
 
 	};
