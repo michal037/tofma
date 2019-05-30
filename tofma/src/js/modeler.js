@@ -1657,12 +1657,12 @@ tofma.callback.submitGenerate = function() {
 	}
 
 	/* calculate the Sellmeier equation */
-	var n1 = tofma.sellmeier(args.wavelength, sellCoeffGerm);
-	var n2 = tofma.sellmeier(args.wavelength, sellCoeffPure);
+	var n1 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffGerm));
+	var n2 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffPure));
 
 	var n3;
 	if((args.profile === 4) || (args.profile === 5)) {
-		n3 = tofma.sellmeier(args.wavelength, sellCoeffFluo);
+		n3 = Math.sqrt(tofma.sellmeier(args.wavelength, sellCoeffFluo));
 	}
 
 	/* calculate the Verdet Constant */
