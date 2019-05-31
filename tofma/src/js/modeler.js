@@ -1455,6 +1455,9 @@ tofma.callback.profile1 = function() {
 	/* hide plot 2D */
 	tofma.dom.output.plots.plot2D.style.display = "none";
 
+	/* hide plot 3D */
+	tofma.dom.output.plots.plot3D.style.display = "none";
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1482,6 +1485,9 @@ tofma.callback.profile2 = function() {
 
 	/* hide plot 2D */
 	tofma.dom.output.plots.plot2D.style.display = "none";
+
+	/* hide plot 3D */
+	tofma.dom.output.plots.plot3D.style.display = "none";
 
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
@@ -1511,6 +1517,9 @@ tofma.callback.profile3 = function() {
 	/* hide plot 2D */
 	tofma.dom.output.plots.plot2D.style.display = "none";
 
+	/* hide plot 3D */
+	tofma.dom.output.plots.plot3D.style.display = "none";
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = true;
 	tofma.dom.input.arguments.b.disabled = true;
@@ -1539,6 +1548,9 @@ tofma.callback.profile4 = function() {
 	/* hide plot 2D */
 	tofma.dom.output.plots.plot2D.style.display = "none";
 
+	/* hide plot 3D */
+	tofma.dom.output.plots.plot3D.style.display = "none";
+
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = false;
 	tofma.dom.input.arguments.b.disabled = false;
@@ -1566,6 +1578,9 @@ tofma.callback.profile5 = function() {
 
 	/* hide plot 2D */
 	tofma.dom.output.plots.plot2D.style.display = "none";
+
+	/* hide plot 3D */
+	tofma.dom.output.plots.plot3D.style.display = "none";
 
 	/* block unnecessary inputs */
 	tofma.dom.input.arguments.fluoride.disabled = false;
@@ -1619,6 +1634,9 @@ tofma.callback.submitGenerate = function() {
 
 	/* hide plot 2D */
 	tofma.dom.output.plots.plot2D.style.display = "none";
+
+	/* hide plot 3D */
+	tofma.dom.output.plots.plot3D.style.display = "none";
 
 	/* get arguments from UI */
 	args.profile = tofma.input.profile.get();
@@ -1841,7 +1859,56 @@ tofma.makePlot2D = function(args) {
 };
 
 tofma.makePlot3D = function(args) {
-	//alert("plot 3D");
+	var _i, _j;
+	var arrZ = [];
+	var dataPlot = {};
+	var handle = tofma.dom.output.plots.plot3D;
+	var points = tofma.input.points3D.get();
+
+	/* minimum 3 points */
+	if(points < 3) points = 3;
+
+	/* always an odd number of points */
+	if((points % 2) === 0) points++;
+
+	var center = Math.floor(points / 2);
+
+	var distance = function(y, x) {
+		return Math.sqrt(Math.pow(x - center, 2) + Math.pow(y - center, 2)) / center;
+	};
+
+	for(_i=0; _i<points ;_i++) arrZ[_i] = [];
+
+	/* calculate */
+	for(_i=0; _i<points ;_i++)
+		for(_j=0; _j<points ;_j++)
+			arrZ[_i][_j] = tofma.profile(args,distance(_i, _j) * 62.5);
+
+	/* make object */
+	dataPlot.z = arrZ;
+	dataPlot.type = "surface";
+
+	var layout = {
+
+	};
+
+	var config = {
+		toImageButtonOptions: {
+			format: 'png', /* one of png, svg, jpeg, webp */
+			filename: 'tofmaPlot3D',
+			width: 700,
+			height: 450,
+			scale: 2 /* multiply title/legend/axis/canvas sizes by this factor */
+		},
+		displaylogo: false,
+		showSendToCloud: true
+	};
+
+	/* make plot */
+	Plotly.newPlot(handle, [dataPlot], layout, config);
+
+	/* show plot 3D */
+	handle.style.display = "block";
 };
 
 /* ENTRY POINT */
