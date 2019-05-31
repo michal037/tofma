@@ -1206,9 +1206,6 @@ tofma.input.points3D.get = function() {
 	if(tofma.isNotNumber(value)) return false;
 	if(value < 1) return false;
 
-	/* I want odd 'value' for easy centering */
-	if((value % 2) === 0) value++;
-
 	return value;
 };
 
@@ -1472,7 +1469,7 @@ tofma.callback.profile1 = function() {
 	}
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
-	tofma.input.points3D.set(1000);
+	tofma.input.points3D.set(500);
 };
 
 /** callback for profile2 radio input */
@@ -1503,7 +1500,7 @@ tofma.callback.profile2 = function() {
 	}
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
-	tofma.input.points3D.set(1000);
+	tofma.input.points3D.set(500);
 };
 
 /** callback for profile3 radio input */
@@ -1534,7 +1531,7 @@ tofma.callback.profile3 = function() {
 	}
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
-	tofma.input.points3D.set(1000);
+	tofma.input.points3D.set(500);
 };
 
 /** callback for profile4 radio input */
@@ -1565,7 +1562,7 @@ tofma.callback.profile4 = function() {
 	}
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
-	tofma.input.points3D.set(1000);
+	tofma.input.points3D.set(500);
 };
 
 /** callback for profile5 radio input */
@@ -1596,7 +1593,7 @@ tofma.callback.profile5 = function() {
 	}
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
-	tofma.input.points3D.set(1000);
+	tofma.input.points3D.set(500);
 };
 
 /** callback for plot 2D checkbox */
