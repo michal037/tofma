@@ -1886,7 +1886,10 @@ tofma.makePlot3D = function(args) {
 	dataPlot.type = "surface";
 
 	var layout = {
-
+		font: {
+			size: 13,
+			color: "black"
+		}
 	};
 
 	var config = {
