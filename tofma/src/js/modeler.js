@@ -1850,12 +1850,14 @@ tofma.makePlot2D = function(args) {
 			gridcolor: "#ccc",
 			nticks: 7,
 			showline: true,
-			linecolor: "#000"
+			linecolor: "#000",
+			tickformat: ".3f"
 		},
 		yaxis: {
 			gridcolor: "#ccc",
 			showline: true,
-			linecolor: "#000"
+			linecolor: "#000",
+			tickformat: ".3f"
 		}
 	};
 
@@ -1937,7 +1939,8 @@ tofma.makePlot3D = function(args) {
 				nticks: 5,
 				gridcolor: "#505050",
 				showline: true,
-				linecolor: "#000"
+				linecolor: "#000",
+				tickformat: ".3f"
 			},
 			xaxis: {
 				gridcolor: "#505050",
@@ -1953,9 +1956,9 @@ tofma.makePlot3D = function(args) {
 	};
 
 	layout.scene.xaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
-	layout.scene.xaxis.ticktext = ["-62.50", "-31.25", "0.00", "31.25", "62.50"];
+	layout.scene.xaxis.ticktext = ["-62.500", "-31.250", "0.000", "31.250", "62.500"];
 	layout.scene.yaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
-	layout.scene.yaxis.ticktext = ["-62.50", "-31.25", "0.00", "31.25", "62.50"];
+	layout.scene.yaxis.ticktext = ["-62.500", "-31.250", "0.000", "31.250", "62.500"];
 
 	var config = {
 		toImageButtonOptions: {
