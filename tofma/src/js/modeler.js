@@ -1952,6 +1952,11 @@ tofma.makePlot3D = function(args) {
 			}
 		}
 	};
+	
+	layout.scene.xaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
+	layout.scene.xaxis.ticktext = [-62.5, -31.25, 0, 31.25, 62.5];
+	layout.scene.yaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
+	layout.scene.yaxis.ticktext = [-62.5, -31.25, 0, 31.25, 62.5];
 
 	var config = {
 		toImageButtonOptions: {
