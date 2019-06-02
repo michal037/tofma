@@ -1801,14 +1801,18 @@ tofma.callback.submitGenerate = function() {
 	});
 };
 
+/**
+ * Make plot 2D
+ *
+ * @param {T_ProfileData} args - An object containing arguments for calculations
+ */
 tofma.makePlot2D = function(args) {
 	var handle = tofma.dom.output.plots.plot2D;
 	var _i;
 	var arrX = [], arrY = [];
 	var points = tofma.input.points2D.get();
-	var dataPlot = {};
 
-	/* calculate */
+	/* calculate profile */
 	for(_i=points; _i>=0 ;_i--)
 	{
 		arrX.push((-_i/points) * 62.5);
@@ -1821,14 +1825,16 @@ tofma.makePlot2D = function(args) {
 	}
 
 	/* make object */
-	dataPlot.x = arrX;
-	dataPlot.y = arrY;
-
-	dataPlot.line = {
-		color: "#1B273F",
-		width: 3
+	var dataPlot = {
+		x: arrX,
+		y: arrY,
+		line: {
+			color: "#1B273F",
+			width: 3
+		}
 	};
 
+	/* plot layout */
 	var layout = {
 		font: {
 			size: 14,
@@ -1848,9 +1854,9 @@ tofma.makePlot2D = function(args) {
 		},
 		xaxis: {
 			gridcolor: "#222",
-			nticks: 7,
 			showline: true,
 			linecolor: "#000",
+			nticks: 7,
 			tickformat: ".2f"
 		},
 		yaxis: {
@@ -1861,6 +1867,7 @@ tofma.makePlot2D = function(args) {
 		}
 	};
 
+	/* plot config */
 	var config = {
 		toImageButtonOptions: {
 			format: 'png', /* one of png, svg, jpeg, webp */
@@ -1880,10 +1887,14 @@ tofma.makePlot2D = function(args) {
 	handle.style.display = "block";
 };
 
+/**
+ * Make plot 3D
+ *
+ * @param {T_ProfileData} args - An object containing arguments for calculations
+ */
 tofma.makePlot3D = function(args) {
 	var _i, _j;
 	var arrZ = [];
-	var dataPlot = {};
 	var handle = tofma.dom.output.plots.plot3D;
 	var points = tofma.input.points3D.get();
 
@@ -1893,49 +1904,48 @@ tofma.makePlot3D = function(args) {
 	/* always an odd number of points */
 	if((points % 2) === 0) points++;
 
+	/* center of profile */
 	var center = Math.floor(points / 2);
 
+	/* calculate distance from center of profile to point */
 	var distance = function(y, x) {
 		return Math.sqrt(Math.pow(x - center, 2) + Math.pow(y - center, 2)) / center;
 	};
 
+	/* allocate memory */
 	for(_i=0; _i<points ;_i++) arrZ[_i] = [];
 
-	/* calculate */
+	/* calculate profile */
 	for(_i=0; _i<points ;_i++)
 		for(_j=0; _j<points ;_j++)
 			arrZ[_i][_j] = tofma.profile(args,distance(_i, _j) * 62.5);
 
 	/* make object */
-	dataPlot.z = arrZ;
-	dataPlot.type = "surface";
-
-	dataPlot.colorbar = {
-		outlinecolor: "#000",
-		bordercolor: "#000",
-		tickformat: ".3f"
-	};
-
-	dataPlot.contours = {
-		x: {
-			highlightcolor: "#222"
+	var dataPlot = {
+		type: "surface",
+		z: arrZ,
+		colorbar: {
+			outlinecolor: "#000",
+			bordercolor: "#000",
+			tickformat: ".3f"
 		},
-		y: {
-			highlightcolor: "#222"
-		},
-		z: {
-			highlightcolor: "#222"
+		contours: {
+			x: {
+				highlightcolor: "#222"
+			},
+			y: {
+				highlightcolor: "#222"
+			},
+			z: {
+				highlightcolor: "#222"
+			}
 		}
 	};
 
+	/* plot layout */
 	var layout = {
 		font: {
 			color: "black"
-		},
-		modebar: {
-			bgcolor: "#fff",
-			color: "#909090",
-			activecolor: "#000"
 		},
 		margin: {
 			l: 5,
@@ -1944,53 +1954,61 @@ tofma.makePlot3D = function(args) {
 			b: 5,
 			pad: 0
 		},
+		modebar: {
+			bgcolor: "#fff",
+			color: "#909090",
+			activecolor: "#000"
+		},
 		scene: {
 			zaxis: {
 				title: {
 					text: "n"
 				},
 				nticks: 5,
-				gridcolor: "#222",
-				showline: true,
-				linecolor: "#222",
 				tickformat: ".3f",
-				linewidth: 2,
-				gridwidth: 2,
-				color: "#222",
+				gridcolor: "#222",
+				linecolor: "#222",
 				zerolinecolor: "#222",
-				spikecolor: "#222"
+				spikecolor: "#222",
+				color: "#222",
+				showline: true,
+				linewidth: 2,
+				gridwidth: 2
 			},
 			xaxis: {
 				gridcolor: "#222",
-				showline: true,
 				linecolor: "#222",
-				linewidth: 2,
-				gridwidth: 2,
-				color: "#222",
 				zerolinecolor: "#222",
-				spikecolor: "#222"
+				spikecolor: "#222",
+				color: "#222",
+				showline: true,
+				linewidth: 2,
+				gridwidth: 2
 			},
 			yaxis: {
 				gridcolor: "#222",
-				showline: true,
 				linecolor: "#222",
-				linewidth: 2,
-				gridwidth: 2,
-				color: "#222",
 				zerolinecolor: "#222",
-				spikecolor: "#222"
+				spikecolor: "#222",
+				color: "#222",
+				showline: true,
+				linewidth: 2,
+				gridwidth: 2
+
 			}
 		}
 	};
 
+	/* manually created grid */
 	layout.scene.xaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
 	layout.scene.xaxis.ticktext = ["-62.50", "-31.25", "0.00", "31.25", "62.50"];
 	layout.scene.yaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
 	layout.scene.yaxis.ticktext = ["-62.50", "-31.25", "0.00", "31.25", "62.50"];
 
+	/* plot config */
 	var config = {
 		toImageButtonOptions: {
-			format: 'png', /* one of png, svg, jpeg, webp */
+			format: 'png', /* one of png/svg/jpeg/webp */
 			filename: 'tofmaPlot3D',
 			width: 700,
 			height: 450,
