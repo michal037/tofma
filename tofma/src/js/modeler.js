@@ -1833,6 +1833,29 @@ tofma.makePlot2D = function(args) {
 		font: {
 			size: 14,
 			color: "black"
+		},
+		modebar: {
+			bgcolor: "#fff",
+			color: "#909090",
+			activecolor: "#000"
+		},
+		margin: {
+			l: 80,
+			r: 15,
+			t: 40,
+			b: 60,
+			pad: 0
+		},
+		xaxis: {
+			gridcolor: "#ccc",
+			nticks: 7,
+			showline: true,
+			linecolor: "#000"
+		},
+		yaxis: {
+			gridcolor: "#ccc",
+			showline: true,
+			linecolor: "#000"
 		}
 	};
 
@@ -1885,10 +1908,48 @@ tofma.makePlot3D = function(args) {
 	dataPlot.z = arrZ;
 	dataPlot.type = "surface";
 
+	dataPlot.colorbar = {
+		outlinecolor: "#fff",
+		bordercolor: "#fff"
+	};
+	
 	var layout = {
 		font: {
 			size: 13,
 			color: "black"
+		},
+		modebar: {
+			bgcolor: "#fff",
+			color: "#909090",
+			activecolor: "#000"
+		},
+		margin: {
+			l: 5,
+			r: 80,
+			t: 35,
+			b: 5,
+			pad: 0
+		},
+		scene: {
+			zaxis: {
+				title: {
+					text: "n"
+				},
+				nticks: 5,
+				gridcolor: "#505050",
+				showline: true,
+				linecolor: "#000"
+			},
+			xaxis: {
+				gridcolor: "#505050",
+				showline: true,
+				linecolor: "#000"
+			},
+			yaxis: {
+				gridcolor: "#505050",
+				showline: true,
+				linecolor: "#000"
+			}
 		}
 	};
 
