@@ -1851,7 +1851,7 @@ tofma.makePlot2D = function(args) {
 			nticks: 7,
 			showline: true,
 			linecolor: "#000",
-			tickformat: ".3f"
+			tickformat: ".2f"
 		},
 		yaxis: {
 			gridcolor: "#ccc",
@@ -1912,7 +1912,8 @@ tofma.makePlot3D = function(args) {
 
 	dataPlot.colorbar = {
 		outlinecolor: "#000",
-		bordercolor: "#000"
+		bordercolor: "#000",
+		tickformat: ".3f"
 	};
 
 	var layout = {
@@ -1937,28 +1938,34 @@ tofma.makePlot3D = function(args) {
 					text: "n"
 				},
 				nticks: 5,
-				gridcolor: "#505050",
+				gridcolor: "#222",
 				showline: true,
-				linecolor: "#000",
-				tickformat: ".3f"
+				linecolor: "#222",
+				tickformat: ".3f",
+				linewidth: 2,
+				gridwidth: 2
 			},
 			xaxis: {
-				gridcolor: "#505050",
+				gridcolor: "#222",
 				showline: true,
-				linecolor: "#000"
+				linecolor: "#222",
+				linewidth: 2,
+				gridwidth: 2
 			},
 			yaxis: {
-				gridcolor: "#505050",
+				gridcolor: "#222",
 				showline: true,
-				linecolor: "#000"
+				linecolor: "#222",
+				linewidth: 2,
+				gridwidth: 2
 			}
 		}
 	};
 
 	layout.scene.xaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
-	layout.scene.xaxis.ticktext = ["-62.500", "-31.250", "0.000", "31.250", "62.500"];
+	layout.scene.xaxis.ticktext = ["-62.50", "-31.25", "0.00", "31.25", "62.50"];
 	layout.scene.yaxis.tickvals = [0, center/2, center, (center+points-1)/2, points-1];
-	layout.scene.yaxis.ticktext = ["-62.500", "-31.250", "0.000", "31.250", "62.500"];
+	layout.scene.yaxis.ticktext = ["-62.50", "-31.25", "0.00", "31.25", "62.50"];
 
 	var config = {
 		toImageButtonOptions: {
