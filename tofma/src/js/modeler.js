@@ -1916,6 +1916,18 @@ tofma.makePlot3D = function(args) {
 		tickformat: ".3f"
 	};
 
+	dataPlot.contours = {
+		x: {
+			highlightcolor: "#222"
+		},
+		y: {
+			highlightcolor: "#222"
+		},
+		z: {
+			highlightcolor: "#222"
+		}
+	};
+
 	var layout = {
 		font: {
 			color: "black"
@@ -1943,21 +1955,30 @@ tofma.makePlot3D = function(args) {
 				linecolor: "#222",
 				tickformat: ".3f",
 				linewidth: 2,
-				gridwidth: 2
+				gridwidth: 2,
+				color: "#222",
+				zerolinecolor: "#222",
+				spikecolor: "#222"
 			},
 			xaxis: {
 				gridcolor: "#222",
 				showline: true,
 				linecolor: "#222",
 				linewidth: 2,
-				gridwidth: 2
+				gridwidth: 2,
+				color: "#222",
+				zerolinecolor: "#222",
+				spikecolor: "#222"
 			},
 			yaxis: {
 				gridcolor: "#222",
 				showline: true,
 				linecolor: "#222",
 				linewidth: 2,
-				gridwidth: 2
+				gridwidth: 2,
+				color: "#222",
+				zerolinecolor: "#222",
+				spikecolor: "#222"
 			}
 		}
 	};
