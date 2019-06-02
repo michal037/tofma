@@ -1847,14 +1847,14 @@ tofma.makePlot2D = function(args) {
 			pad: 0
 		},
 		xaxis: {
-			gridcolor: "#ccc",
+			gridcolor: "#222",
 			nticks: 7,
 			showline: true,
 			linecolor: "#000",
 			tickformat: ".2f"
 		},
 		yaxis: {
-			gridcolor: "#ccc",
+			gridcolor: "#222",
 			showline: true,
 			linecolor: "#000",
 			tickformat: ".3f"
