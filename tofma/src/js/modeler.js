@@ -1909,10 +1909,10 @@ tofma.makePlot3D = function(args) {
 	dataPlot.type = "surface";
 
 	dataPlot.colorbar = {
-		outlinecolor: "#fff",
-		bordercolor: "#fff"
+		outlinecolor: "#000",
+		bordercolor: "#000"
 	};
-	
+
 	var layout = {
 		font: {
 			size: 13,
