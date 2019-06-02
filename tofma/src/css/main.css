@@ -194,6 +194,11 @@ a:hover {
 	color: #222;
 }
 
+/* Bibliography */
+.indexBibliography li {
+	margin-bottom: 5px;
+}
+
 /* MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER-MODELER--- */
 /* Input */
 .modelerInput {
