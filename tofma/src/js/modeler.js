@@ -1847,7 +1847,7 @@ tofma.makePlot2D = function(args) {
 		},
 		margin: {
 			l: 80,
-			r: 15,
+			r: 20,
 			t: 40,
 			b: 60,
 			pad: 0
