@@ -1857,13 +1857,23 @@ tofma.makePlot2D = function(args) {
 			showline: true,
 			linecolor: "#000",
 			nticks: 7,
-			tickformat: ".2f"
+			tickformat: ".2f",
+			type: "linear",
+			range: [-63.5, 63.5],
+			autorange: false,
+			mirror: "ticks",
+			linewidth: 2,
+			tickmode: "linear",
+			tick0: 0,
+			dtick: 15.625
 		},
 		yaxis: {
 			gridcolor: "#222",
 			showline: true,
 			linecolor: "#000",
-			tickformat: ".3f"
+			tickformat: ".3f",
+			mirror: "ticks",
+			linewidth: 2
 		}
 	};
 
