@@ -1853,7 +1853,7 @@ tofma.makePlot2D = function(args) {
 			pad: 0
 		},
 		xaxis: {
-			gridcolor: "#222",
+			gridcolor: "#444",
 			showline: true,
 			linecolor: "#000",
 			nticks: 7,
@@ -1868,7 +1868,7 @@ tofma.makePlot2D = function(args) {
 			dtick: 15.625
 		},
 		yaxis: {
-			gridcolor: "#222",
+			gridcolor: "#444",
 			showline: true,
 			linecolor: "#000",
 			tickformat: ".3f",
@@ -1958,10 +1958,10 @@ tofma.makePlot3D = function(args) {
 			color: "black"
 		},
 		margin: {
-			l: 5,
+			l: 2,
 			r: 80,
-			t: 35,
-			b: 5,
+			t: 26,
+			b: 2,
 			pad: 0
 		},
 		modebar: {
@@ -1983,7 +1983,8 @@ tofma.makePlot3D = function(args) {
 				color: "#222",
 				showline: true,
 				linewidth: 2,
-				gridwidth: 2
+				gridwidth: 2,
+				mirror: true
 			},
 			xaxis: {
 				gridcolor: "#222",
@@ -1993,7 +1994,8 @@ tofma.makePlot3D = function(args) {
 				color: "#222",
 				showline: true,
 				linewidth: 2,
-				gridwidth: 2
+				gridwidth: 2,
+				mirror: true
 			},
 			yaxis: {
 				gridcolor: "#222",
@@ -2003,8 +2005,16 @@ tofma.makePlot3D = function(args) {
 				color: "#222",
 				showline: true,
 				linewidth: 2,
-				gridwidth: 2
+				gridwidth: 2,
+				mirror: true
 
+			},
+			camera: {
+				center: {
+					x: 0,
+					y: 0,
+					z: -0.2
+				}
 			}
 		}
 	};
