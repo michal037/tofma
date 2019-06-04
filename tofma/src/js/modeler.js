@@ -1928,7 +1928,7 @@ tofma.makePlot3D = function(args) {
 	/* calculate profile */
 	for(_i=0; _i<points ;_i++)
 		for(_j=0; _j<points ;_j++)
-			arrZ[_i][_j] = tofma.profile(args,distance(_i, _j) * 62.5);
+			arrZ[_i][_j] = tofma.profile(args, distance(_i, _j) * 62.5);
 
 	/* make object */
 	var dataPlot = {
