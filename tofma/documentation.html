@@ -42,6 +42,86 @@
 		</div>
 
 		<h1 class="commonWebpageTitle">Documentation</h1>
+
+		<div class="documentationTOC">
+			<p>Table of Contents</p>
+			<ol>
+				<li><a href="#documentationInputs">Inputs</a></li>
+				<li><a href="#documentationOutputs">Outputs</a></li>
+				<li><a href="#documentationURLParameters">URL parameters</a></li>
+			</ol>
+		</div>
+
+		<div id="documentationInputs" class="documentationSection">
+			<p>1. Inputs</p>
+			<ul>
+				<li><b>Profile 1</b> - The triangular profile of refractive index in the optical fiber core.</li>
+				<li><b>Profile 2</b> - The gradient profile of refractive index in the optical fiber core.</li>
+				<li><b>Profile 3</b> - The step profile of refractive index in the optical fiber core.</li>
+				<li><b>Profile 4</b> - The step profile of refractive index in the optical fiber core with depressive cladding.</li>
+				<li><b>Profile 5</b> - The step profile of refractive index in the optical fiber core with a depressive ring around the core.</li>
+				<li><b>Germanium</b> - A molecular concentration of germanium admixture in the optical fiber core [M%].</li>
+				<li><b>Fluoride</b> - A molecular concentration of fluoride admixture in the optical fiber cladding [M%].</li>
+				<li><b>Wavelength</b> - A wavelength for the optical fiber concerned [um].</li>
+				<li><b>a</b> - A greater than zero value determining range of the 'n1' refractive index [um].</li>
+				<li><b>b</b> - A Non-negative value determining range of the 'n2' xor 'n3' refractive index [um].</li>
+				<li><b>c</b> - A Non-negative value determining range of the 'n3' refractive index [um].</li>
+				<li><b>q</b> - A power which determine smoothness of the gradient profile.</li>
+				<li><b>2D points</b> - A number of points making up the 2D plot.</li>
+				<li><b>3D points</b> - A number of points making up the 3D plot.</li>
+				<li><b>2D plot</b> - Determining whether to create the 2D plot.</li>
+				<li><b>3D plot</b> - Determining whether to create the 3D plot.</li>
+			</ul>
+		</div>
+
+		<div id="documentationOutputs" class="documentationSection">
+			<p>2. Outputs</p>
+			<ul>
+				<li><b>n1</b> - The refractive index in the optical fiber core.</li>
+				<li><b>n2</b> - The refractive index in the optical fiber cladding.</li>
+				<li><b>n3</b> - The refractive index in the optical fiber depressive cladding xor ring.</li>
+				<li><b>V1</b> - The Verdet constant in the optical fiber core [rad/(T*m)].</li>
+				<li><b>V2</b> - The Verdet constant in the optical fiber cladding [rad/(T*m)].</li>
+				<li><b>V3</b> - The Verdet constant in the optical fiber depressive cladding xor ring [rad/(T*m)].</li>
+				<li><b>Cutoff Wavelength</b> - Cutoff Wavelength [um].</li>
+			</ul>
+		</div>
+
+		<div id="documentationURLParameters" class="documentationSection">
+			<p>3. URL parameters</p>
+			<p style="margin-left:20px;">When the application detects arguments in the URL, the user will be asked to load them. Only valid values will be loaded. This is one of the ways to easily save and share a specific input configuration.</p>
+			<br>
+
+			<p><b>Available parameters:</b></p>
+			<table>
+				<tr><th>name</th><th>value</th></tr>
+				<tr><td><b>profile</b></td><td><i>1 / 2 / 3 / 4 / 5</i></td></tr>
+				<tr><td><b>germanium</b></td><td>decimal</td></tr>
+				<tr><td><b>fluoride</b></td><td>decimal</td></tr>
+				<tr><td><b>wavelength</b></td><td>decimal</td></tr>
+				<tr><td><b>a</b></td><td>decimal</td></tr>
+				<tr><td><b>b</b></td><td>decimal</td></tr>
+				<tr><td><b>c</b></td><td>decimal</td></tr>
+				<tr><td><b>q</b></td><td>decimal</td></tr>
+				<tr><td><b>points2D</b></td><td>integer</td></tr>
+				<tr><td><b>points3D</b></td><td>integer</td></tr>
+				<tr><td><b>plot2D</b></td><td><i>true / false</i></td></tr>
+				<tr><td><b>plot3D</b></td><td><i>true / false</i></td></tr>
+			</table>
+			<br>
+
+			<p><b>How to use?</b></p>
+			<p style="margin-left:20px;">
+				Example application URL: <i>example.com/<b>modeler.html</b></i><br><br>
+				1. append one query char <b>?</b> at the end of URL<br>
+				2. append <b>name=value</b> pair at the end of URL<br>
+				3. connect next pair by using the ampersand character <b>&</b>
+			</p>
+			<br>
+
+			<p><b>Example:</b></p>
+			<p style="margin-left:20px;">example.com/modeler.html<b>?</b>profile=5<b>&</b>germanium=6.34<b>&</b>fluoride=1<b>&</b>a=5.7<b>&</b>points2D=100<b>&</b>plot3D=false</p>
+		</div>
 	</div>
 </body>
 </html>

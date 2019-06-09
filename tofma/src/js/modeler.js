@@ -1392,14 +1392,26 @@ tofma.callback.urlArgsLoad = function(onlyCheck) {
 
 	if(args.has("plot2D")) {
 		temp = args.get("plot2D");
-		if(temp === "true")  tofma.input.plot2D.set(true);
-		if(temp === "false") tofma.input.plot2D.set(false);
+		if(temp === "true") {
+			tofma.input.plot2D.set(true);
+			tofma.dom.input.arguments.points2D.disabled = false;
+		}
+		if(temp === "false") {
+			tofma.input.plot2D.set(false);
+			tofma.dom.input.arguments.points2D.disabled = true;
+		}
 	}
 
 	if(args.has("plot3D")) {
 		temp = args.get("plot3D");
-		if(temp === "true")  tofma.input.plot3D.set(true);
-		if(temp === "false") tofma.input.plot3D.set(false);
+		if(temp === "true") {
+			tofma.input.plot3D.set(true);
+			tofma.dom.input.arguments.points3D.disabled = false;
+		}
+		if(temp === "false") {
+			tofma.input.plot3D.set(false);
+			tofma.dom.input.arguments.points3D.disabled = true;
+		}
 	}
 
 	if(args.has("profile")) switch(tofma.input.profile.get()) {

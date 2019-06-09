@@ -423,7 +423,67 @@ a:hover {
 }
 
 /* DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION-DOCUMENTATION--- */
+/* Table of Contents */
+.documentationTOC {
+	margin: 10px 0;
+}
 
+.documentationTOC p {
+	margin: 15px 0 10px;
+	padding: 0 5px;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+.documentationTOC ol {
+	margin: 0;
+}
+
+.documentationTOC li {
+	padding: 2px;
+}
+
+.documentationTOC a {
+	color: #0066cc;
+}
+
+/* Section */
+.documentationSection {
+	margin: 10px 0;
+}
+
+.documentationSection p:first-child {
+	margin: 15px 0 10px;
+	padding: 0 5px;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+.documentationSection p {
+	margin: 0;
+	padding: 2px 5px 2px 10px;
+}
+
+.documentationSection ul {
+	margin: 0;
+}
+
+.documentationSection li {
+	padding: 2px;
+}
+
+.documentationSection table {
+	margin-left: 30px;
+	margin-top: 5px;
+	border: 1px solid #222;
+}
+
+.documentationSection table tr, .documentationSection table td, .documentationSection table th {
+	vertical-align: middle;
+	text-align: center;
+	padding: 1px 5px;
+	border: 1px solid #222;
+}
 
 /* Helper classes =================================================================================================== */
 
