@@ -1858,13 +1858,20 @@ tofma.makePlot2D = function(args) {
 			activecolor: "#000"
 		},
 		margin: {
-			l: 80,
-			r: 20,
+			l: 85,
+			r: 25,
 			t: 40,
-			b: 60,
+			b: 70,
 			pad: 0
 		},
 		xaxis: {
+			title: {
+				text: "x - distance from the center of the optical fiber core",
+				font: {
+					size: 14,
+					color: "black"
+				}
+			},
 			gridcolor: "#444",
 			showline: true,
 			linecolor: "#000",
@@ -1880,6 +1887,14 @@ tofma.makePlot2D = function(args) {
 			dtick: 15.625
 		},
 		yaxis: {
+			title: {
+				text: "n - refractive index",
+				font: {
+					size: 14,
+					color: "black"
+				}
+			},
+			tickprefix: " ", /* make a distance between axis title and tick value, */
 			gridcolor: "#444",
 			showline: true,
 			linecolor: "#000",
