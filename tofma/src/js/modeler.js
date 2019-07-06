@@ -1837,7 +1837,7 @@ tofma.makePlot2D = function(args) {
 		x: arrX,
 		y: arrY,
 		line: {
-			color: "#1B273F",
+			color: "#000",
 			width: 3
 		}
 	};
