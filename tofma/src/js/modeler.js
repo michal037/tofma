@@ -1862,7 +1862,7 @@ tofma.makePlot2D = function(args) {
 		},
 		xaxis: {
 			title: {
-				text: "x - distance from the center of the optical fiber core",
+				text: "x - distance from the center of the optical fiber core [um]",
 				font: {
 					size: 14,
 					color: "black"
@@ -1878,9 +1878,12 @@ tofma.makePlot2D = function(args) {
 			autorange: false,
 			mirror: "ticks",
 			linewidth: 2,
-			tickmode: "linear",
+			//tickmode: "linear",
 			tick0: 0,
-			dtick: 15.625
+			dtick: 15.625,
+			tickmode: "array",
+			tickvals: [-62.50,  -46.88,  -31.25,  -15.63,   0.00,   15.63,   31.25,   46.88,   62.50],
+			ticktext: ["62.50", "46.88", "31.25", "15.63", "0.00", "15.63", "31.25", "46.88", "62.50"]
 		},
 		yaxis: {
 			title: {
