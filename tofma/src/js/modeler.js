@@ -1248,7 +1248,7 @@ tofma.input.plot3D.get = function() {
  */
 tofma.output.n1.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.n1.value = value.toFixed(4);
+	tofma.dom.output.values.n1.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
@@ -1259,7 +1259,7 @@ tofma.output.n1.set = function(value) {
  */
 tofma.output.n2.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.n2.value = value.toFixed(4);
+	tofma.dom.output.values.n2.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
@@ -1270,7 +1270,7 @@ tofma.output.n2.set = function(value) {
  */
 tofma.output.n3.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.n3.value = value.toFixed(4);
+	tofma.dom.output.values.n3.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
@@ -1281,7 +1281,7 @@ tofma.output.n3.set = function(value) {
  */
 tofma.output.v1.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.v1.value = value.toFixed(4);
+	tofma.dom.output.values.v1.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
@@ -1292,7 +1292,7 @@ tofma.output.v1.set = function(value) {
  */
 tofma.output.v2.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.v2.value = value.toFixed(4);
+	tofma.dom.output.values.v2.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
@@ -1303,7 +1303,7 @@ tofma.output.v2.set = function(value) {
  */
 tofma.output.v3.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.v3.value = value.toFixed(4);
+	tofma.dom.output.values.v3.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
@@ -1314,7 +1314,7 @@ tofma.output.v3.set = function(value) {
  */
 tofma.output.cutWave.set = function(value) {
 	if(tofma.isNotNumber(value)) return false;
-	tofma.dom.output.values.cutWave.value = value.toFixed(4);
+	tofma.dom.output.values.cutWave.value = value.toFixed(4).replace(".", ",");
 	return true;
 };
 
