@@ -1862,7 +1862,7 @@ tofma.makePlot2D = function(args) {
 		},
 		xaxis: {
 			title: {
-				text: "x - distance from the center of the optical fiber core [um]",
+				text: "r - distance from the center of the optical fiber core [um]",
 				font: {
 					size: 14,
 					color: "black"
@@ -2014,7 +2014,7 @@ tofma.makePlot3D = function(args) {
 			},
 			xaxis: {
 				title: {
-					text: "x [um]"
+					text: "r1 [um]"
 				},
 				gridcolor: "#222",
 				linecolor: "#222",
@@ -2028,7 +2028,7 @@ tofma.makePlot3D = function(args) {
 			},
 			yaxis: {
 				title: {
-					text: "y [um]"
+					text: "r2 [um]"
 				},
 				gridcolor: "#222",
 				linecolor: "#222",
