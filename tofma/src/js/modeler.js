@@ -1917,7 +1917,7 @@ tofma.makePlot2D = function(args) {
 	};
 
 	/* make plot */
-	Plotly.newPlot(handle, [dataPlot], layout, config);
+	Plotly.react(handle, [dataPlot], layout, config);
 
 	/* show plot 2D */
 	handle.style.display = "block";
@@ -2071,7 +2071,7 @@ tofma.makePlot3D = function(args) {
 	};
 
 	/* make plot */
-	Plotly.newPlot(handle, [dataPlot], layout, config);
+	Plotly.react(handle, [dataPlot], layout, config);
 
 	/* show plot 3D */
 	handle.style.display = "block";
