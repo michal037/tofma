@@ -2013,6 +2013,9 @@ tofma.makePlot3D = function(args) {
 				mirror: true
 			},
 			xaxis: {
+				title: {
+					text: "x [um]"
+				},
 				gridcolor: "#222",
 				linecolor: "#222",
 				zerolinecolor: "#222",
@@ -2024,6 +2027,9 @@ tofma.makePlot3D = function(args) {
 				mirror: true
 			},
 			yaxis: {
+				title: {
+					text: "y [um]"
+				},
 				gridcolor: "#222",
 				linecolor: "#222",
 				zerolinecolor: "#222",
