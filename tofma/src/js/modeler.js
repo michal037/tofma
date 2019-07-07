@@ -1486,6 +1486,9 @@ tofma.callback.profile1 = function() {
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(500);
+
+	/* clear the saveOut */
+	tofma.dom.input.submits.saveOut.value = "";
 };
 
 /** callback for profile2 radio input */
@@ -1517,6 +1520,9 @@ tofma.callback.profile2 = function() {
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(500);
+
+	/* clear the saveOut */
+	tofma.dom.input.submits.saveOut.value = "";
 };
 
 /** callback for profile3 radio input */
@@ -1548,6 +1554,9 @@ tofma.callback.profile3 = function() {
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(500);
+
+	/* clear the saveOut */
+	tofma.dom.input.submits.saveOut.value = "";
 };
 
 /** callback for profile4 radio input */
@@ -1579,6 +1588,9 @@ tofma.callback.profile4 = function() {
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(500);
+
+	/* clear the saveOut */
+	tofma.dom.input.submits.saveOut.value = "";
 };
 
 /** callback for profile5 radio input */
@@ -1610,6 +1622,9 @@ tofma.callback.profile5 = function() {
 	tofma.input.q.set(4);
 	tofma.input.points2D.set(1000);
 	tofma.input.points3D.set(500);
+
+	/* clear the saveOut */
+	tofma.dom.input.submits.saveOut.value = "";
 };
 
 /** callback for save button */
