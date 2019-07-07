@@ -767,6 +767,8 @@ tofma.getModelerDOM = function() {
 	tofma.dom.input.arguments.points2D = document.getElementById("modelerInputPoints2D");
 	tofma.dom.input.arguments.points3D = document.getElementById("modelerInputPoints3D");
 
+	tofma.dom.input.submits.save = document.getElementById("modelerInputSubmitsSave");
+	tofma.dom.input.submits.saveOut = document.getElementById("modelerInputSubmitsSaveOut");
 	tofma.dom.input.submits.plot2D = document.getElementById("modelerInputPlot2D");
 	tofma.dom.input.submits.plot3D = document.getElementById("modelerInputPlot3D");
 	tofma.dom.input.submits.generate = document.getElementById("modelerInputGenerate");
@@ -810,6 +812,8 @@ tofma.getModelerDOM = function() {
 		if(!tofma.dom.input.arguments.points2D) throw "tofma.dom.input.arguments.points2D";
 		if(!tofma.dom.input.arguments.points3D) throw "tofma.dom.input.arguments.points3D";
 
+		if(!tofma.dom.input.submits.save) throw "tofma.dom.input.submits.save";
+		if(!tofma.dom.input.submits.saveOut) throw "tofma.dom.input.submits.saveOut";
 		if(!tofma.dom.input.submits.plot2D) throw "tofma.dom.input.submits.plot2D";
 		if(!tofma.dom.input.submits.plot3D) throw "tofma.dom.input.submits.plot3D";
 		if(!tofma.dom.input.submits.generate) throw "tofma.dom.input.submits.generate";
@@ -1608,6 +1612,41 @@ tofma.callback.profile5 = function() {
 	tofma.input.points3D.set(500);
 };
 
+/** callback for save button */
+tofma.callback.submitSave = function() {
+	var data = {};
+
+	/* get data from UI */
+	if(tofma.input.profile.get() !== false)    data.profile    = tofma.input.profile.get();
+	if(tofma.input.germanium.get() !== false)  data.germanium  = tofma.input.germanium.get();
+	if(tofma.input.fluoride.get() !== false)   data.fluoride   = tofma.input.fluoride.get();
+	if(tofma.input.wavelength.get() !== false) data.wavelength = tofma.input.wavelength.get();
+	if(tofma.input.a.get() !== false)          data.a          = tofma.input.a.get();
+	if(tofma.input.b.get() !== false)          data.b          = tofma.input.b.get();
+	if(tofma.input.c.get() !== false)          data.c          = tofma.input.c.get();
+	if(tofma.input.q.get() !== false)          data.q          = tofma.input.q.get();
+	if(tofma.input.points2D.get() !== false)   data.points2D   = tofma.input.points2D.get();
+	if(tofma.input.points3D.get() !== false)   data.points3D   = tofma.input.points3D.get();
+
+	/* enabled by default, only check for disabled */
+	if(tofma.input.plot2D.get() === false) data.plot2D = "false";
+	if(tofma.input.plot3D.get() === false) data.plot3D = "false";
+
+	/* prepare query string */
+	var queryString = new URLSearchParams(data);
+
+	/* create element for parsing URL */
+	var temp = document.createElement('a');
+	temp.href = decodeURI(document.URL);
+
+	/* output */
+	tofma.dom.input.submits.saveOut.value = temp.origin + temp.pathname + "?" + queryString;
+
+	/* copy URL to clipboard; only for browsers with support of execCommand("copy") */
+	tofma.dom.input.submits.saveOut.select();
+	document.execCommand("copy");
+};
+
 /** callback for plot 2D checkbox */
 tofma.callback.submitPlot2D = function() {
 	if(tofma.dom.input.submits.plot2D.checked) {
@@ -2092,6 +2131,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	tofma.dom.input.profiles.p4.addEventListener("click", tofma.callback.profile4);
 	tofma.dom.input.profiles.p5.addEventListener("click", tofma.callback.profile5);
 
+	tofma.dom.input.submits.save.addEventListener("click", tofma.callback.submitSave);
 	tofma.dom.input.submits.plot2D.addEventListener("click", tofma.callback.submitPlot2D);
 	tofma.dom.input.submits.plot3D.addEventListener("click", tofma.callback.submitPlot3D);
 	tofma.dom.input.submits.generate.addEventListener("click", tofma.callback.submitGenerate);

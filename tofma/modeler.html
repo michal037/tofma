@@ -140,13 +140,19 @@
 				</div>
 
 				<div class="modelerInputSubmits">
-					<label>
-						2D: <input checked id="modelerInputPlot2D" name="modelerInputPlot2D" type="checkbox">
-					</label>
-					<label>
-						3D: <input checked id="modelerInputPlot3D" name="modelerInputPlot3D" type="checkbox">
-					</label>
-					<button id="modelerInputGenerate" name="modelerInputGenerate" type="button">GENERATE</button>
+					<span class="modelerInputSubmitsLeft">
+						<button id="modelerInputSubmitsSave" name="modelerInputSubmitsSave" type="button">SAVE | COPY</button>
+						<label><input id="modelerInputSubmitsSaveOut" name="modelerInputSubmitsSaveOut" placeholder="link with arguments" type="text"></label>
+					</span>
+					<span class="modelerInputSubmitsRight">
+						<label>
+							2D: <input checked id="modelerInputPlot2D" name="modelerInputPlot2D" type="checkbox">
+						</label>
+						<label>
+							3D: <input checked id="modelerInputPlot3D" name="modelerInputPlot3D" type="checkbox">
+						</label>
+						<button id="modelerInputGenerate" name="modelerInputGenerate" type="button">GENERATE</button>
+					</span>
 				</div>
 			</div>
 
