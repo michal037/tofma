@@ -1654,8 +1654,13 @@ tofma.callback.submitSave = function() {
 	var temp = document.createElement('a');
 	temp.href = decodeURI(document.URL);
 
+	/* fix: Internet Explorer does not provide the leading slash character in the pathname. */
+	var pathname = temp.pathname;
+	if(pathname[0] === "/") pathname = pathname.slice(1);
+	pathname = "/" + pathname;
+
 	/* output */
-	tofma.dom.input.submits.saveOut.value = temp.origin + temp.pathname + "?" + queryString;
+	tofma.dom.input.submits.saveOut.value = temp.protocol + "//" + temp.host + pathname + "?" + queryString;
 
 	/* copy URL to clipboard; only for browsers with support of execCommand("copy") */
 	tofma.dom.input.submits.saveOut.select();
