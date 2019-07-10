@@ -1639,10 +1639,13 @@ tofma.callback.submitSave = function() {
 	if(tofma.input.a.get() !== false)          data.a          = tofma.input.a.get();
 	if(tofma.input.b.get() !== false)          data.b          = tofma.input.b.get();
 	if(tofma.input.c.get() !== false)          data.c          = tofma.input.c.get();
-	if(tofma.input.q.get() !== false)          data.q          = tofma.input.q.get();
 	if(tofma.input.points2D.get() !== false)   data.points2D   = tofma.input.points2D.get();
 	if(tofma.input.points3D.get() !== false)   data.points3D   = tofma.input.points3D.get();
 
+	if(tofma.input.profile.get() === 2) {
+		if(tofma.input.q.get() !== false) data.q = tofma.input.q.get();
+	}
+	
 	/* enabled by default, only check for disabled */
 	if(tofma.input.plot2D.get() === false) data.plot2D = "false";
 	if(tofma.input.plot3D.get() === false) data.plot3D = "false";
