@@ -171,13 +171,38 @@ a:hover {
 	color: #0066cc;
 }
 
-/* Contact */
-.indexContact ul li {
+/* People */
+.indexPeople {
+	margin: 5px 0 40px;
+	overflow: hidden;
+}
+
+.indexPeople h2 {
+	font-size: 1.3em;
+	margin: 5px 0;
+	padding: 5px;
+}
+
+.indexPeople ul {
+	margin: 5px 0;
+}
+
+.indexPeople ul li {
 	list-style-type: none;
 }
 
-.indexContact ul li .indexContactEmail {
+.indexPeople a {
 	color: #222;
+}
+
+.indexPeopleProgrammer{
+	width: 380px;
+	float: left;
+}
+
+.indexPeopleSupervisor {
+	width: 620px;
+	float: left;
 }
 
 /* Footer */
