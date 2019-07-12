@@ -380,6 +380,7 @@ a:hover {
 	outline: 1px solid #0066cc;
 }
 
+/* save to url */
 .modelerInputSubmitsLeft button {
 	margin-right: 5px;
 	vertical-align: middle;
@@ -408,18 +409,20 @@ a:hover {
 
 .modelerInputSubmitsRight label {
 	margin-right: 5px;
-}
-
-.modelerInputSubmitsRight label, .modelerInputSubmitsRight input, .modelerInputSubmitsRight button {
+	font-weight: bold;
 	vertical-align: middle;
 	cursor: pointer;
 }
 
-.modelerInputSubmitsRight label, .modelerInputSubmitsRight button {
-	font-weight: bold;
+.modelerInputSubmitsRight input {
+	vertical-align: middle;
+	cursor: pointer;
 }
 
 .modelerInputSubmitsRight button {
+	vertical-align: middle;
+	cursor: pointer;
+	font-weight: bold;
 	padding: 8px;
 	color: #fff;
 	border: 1px solid #ccc;
