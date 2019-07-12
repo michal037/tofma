@@ -439,6 +439,49 @@ a:hover {
 	box-shadow: inset 0 0 10px 2px #402400;
 }
 
+/* Report */
+.modelerInputReport {
+	overflow: hidden;
+	padding: 5px;
+}
+
+.modelerInputReportDiv {
+	float: right;
+}
+
+.modelerInputReportDiv span {
+	display: inline-block;
+}
+
+.modelerInputReportReport {
+	font-weight: bold;
+}
+
+.modelerInputReportDiv button {
+	vertical-align: middle;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 8px;
+	color: #fff;
+	border: 1px solid #ccc;
+	background: #404040;
+	margin-left: 5px;
+}
+
+.modelerInputReportDiv button:hover {
+	border: 1px solid #1B273F;
+}
+
+.modelerInputReportDiv button:active {
+	background: #cc7600;
+	border: 1px solid #402400;
+	box-shadow: inset 0 0 10px 2px #402400;
+}
+
+#modelerInputReportMsg {
+	color: #808080;
+}
+
 /* Output Error */
 #modelerOutputError {
 	display: none;
