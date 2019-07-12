@@ -361,6 +361,7 @@ a:hover {
 .modelerInputSubmitsLeft {
 	display: inline-block;
 	float: left;
+	margin: 3px 0;
 }
 
 .modelerInputSubmitsLeft input {
