@@ -4,6 +4,16 @@
 	<strong>Telecommunications Optical Fibers Modeling Application</strong>
 </p>
 
+## Features
+* Generating a report file as PDF for printing and downloading
+* Generating interactive 2D and 3D plots with the ability to save as PNG
+* Generating refractive index and Verdet constant values as text
+* Saving input values as a URL with arguments
+* Support for admixture of germanium and fluoride
+* Support for different profiles of refractive index
+* High precision
+
+
 ## Screenshots
 ![ss1](screenshots/tofmaPlot3D.png)
 ![ss2](screenshots/tofmaPlot2D.png)
