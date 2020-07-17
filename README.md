@@ -5,7 +5,6 @@
 </p>
 
 ## Features
-* Generating a report file as PDF for printing and downloading
 * Generating interactive 2D and 3D plots with the ability to save as PNG
 * Generating refractive index and Verdet constant values as text
 * Saving input values as a URL with arguments
@@ -19,7 +18,7 @@
 ![ss2](screenshots/tofmaPlot2D.png)
 ![ss3](screenshots/tofma.png)
 
-## Bibliography
+## References
 1. Torbus S. A.: Projektowanie światłowodów jednomodowych dla celów metrologicznych i ich zastosowanie w czujnikach Faradaya. Wydawnictwa Uczelniane UTP w Bydgoszczy, Bydgoszcz 2014 [DOWNLOAD](tofma/src/pdf/Torbus_PSJDCMIIZWCF.pdf)
 2. Torbus S. A., Dutkiewicz P.: Projektowanie jednomodowych światłowodów telekomunikacyjnych dla czujników wykorzystujących magnetooptyczne zjawisko Faradaya. Przegląd Elektrotechniczny Nr 2/2015 [DOWNLOAD](tofma/src/pdf/Torbus_Dutkiewicz_PJSTDCWMZF.pdf)
 3. Torbus S. A., Fajfer M., Ratuszek M. J.: Projektowanie jednomodowych światłowodów telekomunikacyjnych odpornych na zginanie G.657 dla celów metrologicznych. Przegląd Elektrotechniczny Nr 8/2013 [DOWNLOAD](tofma/src/pdf/Torbus_Fajfer_Ratuszek_PJSTONZG.657DCM.pdf)
