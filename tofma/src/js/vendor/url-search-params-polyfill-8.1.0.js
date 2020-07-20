@@ -9,7 +9,15 @@
 (function(self) {
     'use strict';
 
-    var nativeURLSearchParams = (self.URLSearchParams && self.URLSearchParams.prototype.get) ? self.URLSearchParams : null,
+    var nativeURLSearchParams = (function() {
+            // #41 Fix issue in RN
+            try {
+                if (self.URLSearchParams && (new self.URLSearchParams('foo=bar')).get('foo') === 'bar') {
+                    return self.URLSearchParams;
+                }
+            } catch (e) {}
+            return null;
+        })(),
         isSupportObjectConstructor = nativeURLSearchParams && (new nativeURLSearchParams({a: 1})).toString() === 'a=1',
         // There is a bug in safari 10.1 (and earlier) that incorrectly decodes `%2B` as an empty space and not a plus.
         decodesPlusesCorrectly = nativeURLSearchParams && (new nativeURLSearchParams('s=%2B').get('s') === '+'),
@@ -73,7 +81,7 @@
      */
     prototype.get = function(name) {
         var dict = this [__URLSearchParams__];
-        return name in dict ? dict[name][0] : null;
+        return this.has(name) ? dict[name][0] : null;
     };
 
     /**
@@ -84,7 +92,7 @@
      */
     prototype.getAll = function(name) {
         var dict = this [__URLSearchParams__];
-        return name in dict ? dict [name].slice(0) : [];
+        return this.has(name) ? dict [name].slice(0) : [];
     };
 
     /**
@@ -94,7 +102,7 @@
      * @returns {boolean}
      */
     prototype.has = function(name) {
-        return name in this [__URLSearchParams__];
+        return hasOwnProperty(this [__URLSearchParams__], name);
     };
 
     /**
@@ -127,7 +135,7 @@
 
     // There is a bug in Safari 10.1 and `Proxy`ing it is not enough.
     var forSureUsePolyfill = !decodesPlusesCorrectly;
-    var useProxy = (!forSureUsePolyfill && nativeURLSearchParams && !isSupportObjectConstructor && self.Proxy)
+    var useProxy = (!forSureUsePolyfill && nativeURLSearchParams && !isSupportObjectConstructor && self.Proxy);
     /*
      * Apply polifill to global object and append other prototype into it
      */
@@ -320,9 +328,10 @@
     function appendTo(dict, name, value) {
         var val = typeof value === 'string' ? value : (
             value !== null && value !== undefined && typeof value.toString === 'function' ? value.toString() : JSON.stringify(value)
-        )
+        );
 
-        if (name in dict) {
+        // #47 Prevent using `hasOwnProperty` as a property name
+        if (hasOwnProperty(dict, name)) {
             dict[name].push(val);
         } else {
             dict[name] = [val];
@@ -331,6 +340,10 @@
 
     function isArray(val) {
         return !!val && '[object Array]' === Object.prototype.toString.call(val);
+    }
+
+    function hasOwnProperty(obj, prop) {
+        return Object.prototype.hasOwnProperty.call(obj, prop);
     }
 
 })(typeof global !== 'undefined' ? global : (typeof window !== 'undefined' ? window : this));
